@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs — Larp Client</title>
+<meta name="description" content="Larp Client is a visual client for Minecraft 1.21.11 built on Fabric.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://larpclient.vercel.app/docs">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Docs — Larp Client">
+<meta property="og:description" content="Larp Client is a visual client for Minecraft 1.21.11 built on Fabric.">
+<meta property="og:url" content="https://larpclient.vercel.app/docs">
+<meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/docs.css">
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
+    <div class="nav-right">
+      
+      <a class="hide-m" href="/docs/changelog">v0.9.5</a>
+      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="docs">
+<aside class="dside" aria-label="Docs navigation">
+  <div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search docs" data-dsearch autocomplete="off"><kbd>/</kbd><div class="dresults" hidden></div></div>
+  <div class="dgroup"><h4>Getting started</h4><a href="/docs" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-musicplayer"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles</a></div><div class="dgroup"><h4>Modules</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div>
+</aside>
+<main class="dmain" id="main">
+  <button type="button" class="dside-toggle" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button>
+  <div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-chevron_right"/></svg><span>Getting started</span></div>
+  <h1>Introduction</h1>
+  <p class="intro">Larp Client is a visual client for Minecraft 1.21.11 built on Fabric.</p>
+  <div class="prose">
+<p>Larp Client is a Fabric mod for Minecraft 1.21.11. It adds 63 modules (HUD elements, PvP info, visuals and 3D cosmetics), its own menus and a HUD editor. Everything it draws stays on your screen: it never changes how the game plays.</p>
+<div class="cards-doc">
+  <a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg><b>Installation</b><span>Get Larp running in about two minutes.</span></a>
+  <a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg><b>The client menu</b><span>Turn mods on, change settings and bind keys.</span></a>
+  <a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg><b>All modules</b><span>Every module and every setting, searchable.</span></a>
+  <a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg><b>Cosmetics</b><span>Wings, hats, auras, capes and trails.</span></a>
+</div>
+<h2 id="whats-inside">What's inside<a class="anchor" href="#whats-inside" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table><thead><tr><th>Section</th><th>Modules</th><th>Examples</th></tr></thead><tbody>
+<tr><td>HUD</td><td>18</td><td><a href="/docs/modules#infobar">Info Bar</a>, <a href="/docs/modules#modulelist">Module List</a>, <a href="/docs/modules#armorstatus">Armor Status</a>, <a href="/docs/modules#hotbarkeybinds">Hotbar Keybinds</a></td></tr>
+<tr><td>PvP</td><td>8</td><td><a href="/docs/modules#keystrokes">Keystrokes</a>, <a href="/docs/modules#targethud">Target HUD</a>, <a href="/docs/modules#sessionstats">Session Stats</a>, <a href="/docs/modules#cooldowns">Cooldowns</a></td></tr>
+<tr><td>Utility</td><td>10</td><td><a href="/docs/modules#zoom">Zoom</a>, <a href="/docs/modules#performance">Performance</a>, <a href="/docs/modules#waypoints">Waypoints</a>, <a href="/docs/modules#macros">Macros</a></td></tr>
+<tr><td>Visuals</td><td>20</td><td><a href="/docs/modules#hitfx">Hit FX</a>, <a href="/docs/modules#killeffect">Kill Effect</a>, <a href="/docs/modules#hitboxes">Hitboxes</a>, <a href="/docs/modules#customsky">Custom Sky</a></td></tr>
+<tr><td>Cosmetics</td><td>5</td><td><a href="/docs/modules#wings">Wings</a>, <a href="/docs/modules#hats">Hats</a>, <a href="/docs/modules#aura">Aura</a>, <a href="/docs/modules#cape">Cape</a></td></tr>
+<tr><td>Client</td><td>2</td><td><a href="/docs/modules#interface">Interface</a>, <a href="/docs/modules#discordrpc">Discord RPC</a></td></tr>
+</tbody></table></div>
+<h2 id="requirements">Requirements<a class="anchor" href="#requirements" aria-label="Link to this section">#</a></h2>
+<ul>
+<li>Minecraft <b>1.21.11</b> (Java Edition)</li>
+<li>Fabric Loader <b>0.18.1</b> or newer</li>
+<li><a href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Fabric API</a> for 1.21.11</li>
+<li>Java 21 (the official Minecraft Launcher already includes it)</li>
+</ul>
+<div class="callout warn"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg><p>Larp Client is private and in development. To get it, message Take for access.</p></div>
+<div class="callout note"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg><p>Larp is a Fabric mod, not a separate launcher like Lunar or Badlion. It runs inside the normal Minecraft Launcher, Prism, Modrinth App or any launcher that supports Fabric.</p></div>
+</div>
+  <nav class="pager" aria-label="Pages"><a class="next" href="/docs/installation"><span>Next</span><b>Installation</b></a></nav>
+  <p class="edited">Larp Client 0.9.5 · Minecraft 1.21.11</p>
+</main>
+<nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a class="" href="#whats-inside">What&#x27;s inside</a><a class="" href="#requirements">Requirements</a></nav>
+</div>
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by Take.</p>
+      </div>
+      <div><h4>Product</h4><ul>
+        <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
+        <li><a href="/#access">Get access</a></li><li><a href="/docs/changelog">Changelog</a></li></ul></div>
+      <div><h4>Docs</h4><ul>
+        <li><a href="/docs/installation">Installation</a></li><li><a href="/docs/modules">All modules</a></li>
+        <li><a href="/docs/performance">Performance</a></li><li><a href="/docs/troubleshooting">Troubleshooting</a></li></ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="/docs/credits">Credits</a></li><li><a href="/docs/faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© <span data-year>2026</span> Larp Client. Not affiliated with Mojang or Microsoft.</span>
+      <span>Minecraft 1.21.11 · Fabric</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/docs.js" defer></script>
+</body>
+</html>

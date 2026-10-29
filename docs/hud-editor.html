@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HUD editor — Larp Client</title>
+<meta name="description" content="Place every HUD element exactly where you want it.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://larpclient.vercel.app/docs/hud-editor">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HUD editor — Larp Client">
+<meta property="og:description" content="Place every HUD element exactly where you want it.">
+<meta property="og:url" content="https://larpclient.vercel.app/docs/hud-editor">
+<meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/docs.css">
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
+    <div class="nav-right">
+      
+      <a class="hide-m" href="/docs/changelog">v0.9.5</a>
+      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="docs">
+<aside class="dside" aria-label="Docs navigation">
+  <div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search docs" data-dsearch autocomplete="off"><kbd>/</kbd><div class="dresults" hidden></div></div>
+  <div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-musicplayer"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles</a></div><div class="dgroup"><h4>Modules</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div>
+</aside>
+<main class="dmain" id="main">
+  <button type="button" class="dside-toggle" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button>
+  <div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-chevron_right"/></svg><span>Features</span></div>
+  <h1>HUD editor</h1>
+  <p class="intro">Place every HUD element exactly where you want it.</p>
+  <div class="prose">
+<p>Open it from <b>Edit HUD</b> at the bottom of the client menu, or bind a key for it in Controls. Every HUD module that's on shows up and can be dragged.</p>
+<h2 id="moving">Moving elements<a class="anchor" href="#moving" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><b>Drag</b> an element to move it. It snaps to the screen edges, the center and the edges of other elements, with guide lines.</li>
+<li>Use the <b>arrow keys</b> to move the selected element by 1 pixel, or 10 with <kbd>Shift</kbd>.</li>
+<li>Positions are saved relative to the screen, so they stay put when you resize the window or change the GUI scale.</li>
+</ul>
+<h2 id="toolbar">Toolbar<a class="anchor" href="#toolbar" aria-label="Link to this section">#</a></h2>
+<div class="table-wrap"><table><tbody>
+<tr><td>Done</td><td>Save and close.</td></tr>
+<tr><td>Mods</td><td>Go to the client menu to turn elements on or off.</td></tr>
+<tr><td>Grid</td><td>Show a grid while you place things.</td></tr>
+<tr><td>Snap</td><td>Turn snapping on or off.</td></tr>
+<tr><td>Reset all</td><td>Put every element back in its default spot.</td></tr>
+</tbody></table></div>
+<h2 id="style">Styling elements<a class="anchor" href="#style" aria-label="Link to this section">#</a></h2>
+<p>Every HUD module shares the same style settings: <b>Scale</b>, <b>Background</b>, <b>Background color</b>, <b>Corner radius</b>, <b>Text color</b>, <b>Chroma text</b>, <b>Font</b> (Minecraft or Clean) and <b>Text shadow</b>.</p>
+</div>
+  <nav class="pager" aria-label="Pages"><a href="/docs/keybinds"><span>Previous</span><b>Keybinds</b></a><a class="next" href="/docs/cosmetics"><span>Next</span><b>Cosmetics</b></a></nav>
+  <p class="edited">Larp Client 0.9.5 · Minecraft 1.21.11</p>
+</main>
+<nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a class="" href="#moving">Moving elements</a><a class="" href="#toolbar">Toolbar</a><a class="" href="#style">Styling elements</a></nav>
+</div>
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by Take.</p>
+      </div>
+      <div><h4>Product</h4><ul>
+        <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
+        <li><a href="/#access">Get access</a></li><li><a href="/docs/changelog">Changelog</a></li></ul></div>
+      <div><h4>Docs</h4><ul>
+        <li><a href="/docs/installation">Installation</a></li><li><a href="/docs/modules">All modules</a></li>
+        <li><a href="/docs/performance">Performance</a></li><li><a href="/docs/troubleshooting">Troubleshooting</a></li></ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="/docs/credits">Credits</a></li><li><a href="/docs/faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© <span data-year>2026</span> Larp Client. Not affiliated with Mojang or Microsoft.</span>
+      <span>Minecraft 1.21.11 · Fabric</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/docs.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "Larp Client",
+  "version": "0.9.5",
+  "minecraft": "1.21.11",
+  "fabricLoader": "0.18.1",
+  "discordUrl": "",
+  "author": "Take",
+  "siteUrl": "https://larpclient.vercel.app",
+  "contactUrl": "https://discord.com/users/893966003690668102",
+  "contactLabel": "Message Take"
+}

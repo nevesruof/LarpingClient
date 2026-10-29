@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cosmetics — Larp Client</title>
+<meta name="description" content="3D wings, hats, auras, capes and trails that move with you.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://larpclient.vercel.app/docs/cosmetics">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cosmetics — Larp Client">
+<meta property="og:description" content="3D wings, hats, auras, capes and trails that move with you.">
+<meta property="og:url" content="https://larpclient.vercel.app/docs/cosmetics">
+<meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/docs.css">
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
+    <div class="nav-right">
+      
+      <a class="hide-m" href="/docs/changelog">v0.9.5</a>
+      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="docs">
+<aside class="dside" aria-label="Docs navigation">
+  <div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search docs" data-dsearch autocomplete="off"><kbd>/</kbd><div class="dresults" hidden></div></div>
+  <div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-musicplayer"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles</a></div><div class="dgroup"><h4>Modules</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div>
+</aside>
+<main class="dmain" id="main">
+  <button type="button" class="dside-toggle" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button>
+  <div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-chevron_right"/></svg><span>Features</span></div>
+  <h1>Cosmetics</h1>
+  <p class="intro">3D wings, hats, auras, capes and trails that move with you.</p>
+  <div class="prose">
+<p>Cosmetics are real 3D models drawn around your player. Only you see them, on your own screen. Press <kbd>F5</kbd> to look at yourself. Every cosmetic can use the theme accent, a fixed color, your own color or rainbow.</p>
+<div class="callout note"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg><p>The images on this page are rendered with the same code the client uses.</p></div>
+<h2 id="hats">Hats<a class="anchor" href="#hats" aria-label="Link to this section">#</a></h2>
+<p>22 hats: crowns, halos, ears, horns, antlers and the China Hat. In <a href="/docs/modules#hats">Hats</a> you can change the scale, height and opacity, and make it bob, spin or follow your head.</p>
+<div class="gallery"><figure><img src="/assets/img/cosmetics/hats/royal-crown.webp" alt="Royal Crown" loading="lazy" width="118" height="118"><figcaption>Royal Crown</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/cat-ears.webp" alt="Cat Ears" loading="lazy" width="118" height="118"><figcaption>Cat Ears</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/fox-ears.webp" alt="Fox Ears" loading="lazy" width="118" height="118"><figcaption>Fox Ears</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/bunny-ears.webp" alt="Bunny Ears" loading="lazy" width="118" height="118"><figcaption>Bunny Ears</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/bear-ears.webp" alt="Bear Ears" loading="lazy" width="118" height="118"><figcaption>Bear Ears</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/demon-horns.webp" alt="Demon Horns" loading="lazy" width="118" height="118"><figcaption>Demon Horns</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/stag-antlers.webp" alt="Stag Antlers" loading="lazy" width="118" height="118"><figcaption>Stag Antlers</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/reindeer-antlers.webp" alt="Reindeer Antlers" loading="lazy" width="118" height="118"><figcaption>Reindeer Antlers</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/unicorn-horn.webp" alt="Unicorn Horn" loading="lazy" width="118" height="118"><figcaption>Unicorn Horn</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/viking-horns.webp" alt="Viking Horns" loading="lazy" width="118" height="118"><figcaption>Viking Horns</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/classic-ring.webp" alt="Classic Ring" loading="lazy" width="118" height="118"><figcaption>Classic Ring</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/double-ring.webp" alt="Double Ring" loading="lazy" width="118" height="118"><figcaption>Double Ring</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/thorn-halo.webp" alt="Thorn Halo" loading="lazy" width="118" height="118"><figcaption>Thorn Halo</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/orbiting-orbs.webp" alt="Orbiting Orbs" loading="lazy" width="118" height="118"><figcaption>Orbiting Orbs</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/runic-halo.webp" alt="Runic Halo" loading="lazy" width="118" height="118"><figcaption>Runic Halo</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/spiked-crown.webp" alt="Spiked Crown" loading="lazy" width="118" height="118"><figcaption>Spiked Crown</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/laurel-wreath.webp" alt="Laurel Wreath" loading="lazy" width="118" height="118"><figcaption>Laurel Wreath</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/tiara.webp" alt="Tiara" loading="lazy" width="118" height="118"><figcaption>Tiara</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/flame-crown.webp" alt="Flame Crown" loading="lazy" width="118" height="118"><figcaption>Flame Crown</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/ice-crown.webp" alt="Ice Crown" loading="lazy" width="118" height="118"><figcaption>Ice Crown</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/floating-crown.webp" alt="Floating Crown" loading="lazy" width="118" height="118"><figcaption>Floating Crown</figcaption></figure><figure><img src="/assets/img/cosmetics/hats/china-hat.webp" alt="China Hat" loading="lazy" width="118" height="118"><figcaption>China Hat</figcaption></figure></div>
+<h2 id="wings">Wings<a class="anchor" href="#wings" aria-label="Link to this section">#</a></h2>
+<p>8 styles. They flap faster as you move, and you can set the scale, height, opacity and flap speed in <a href="/docs/modules#wings">Wings</a>.</p>
+<div class="gallery"><figure><img src="/assets/img/cosmetics/wings/angel.webp" alt="Angel" loading="lazy" width="118" height="118"><figcaption>Angel</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/dragon.webp" alt="Dragon" loading="lazy" width="118" height="118"><figcaption>Dragon</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/butterfly.webp" alt="Butterfly" loading="lazy" width="118" height="118"><figcaption>Butterfly</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/phoenix.webp" alt="Phoenix" loading="lazy" width="118" height="118"><figcaption>Phoenix</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/crystal.webp" alt="Crystal" loading="lazy" width="118" height="118"><figcaption>Crystal</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/cyber.webp" alt="Cyber" loading="lazy" width="118" height="118"><figcaption>Cyber</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/fairy.webp" alt="Fairy" loading="lazy" width="118" height="118"><figcaption>Fairy</figcaption></figure><figure><img src="/assets/img/cosmetics/wings/classic.webp" alt="Classic" loading="lazy" width="118" height="118"><figcaption>Classic</figcaption></figure></div>
+<h2 id="aura">Aura<a class="anchor" href="#aura" aria-label="Link to this section">#</a></h2>
+<p><a href="/docs/modules#aura">Aura</a> has five modes: <b>Orbiting</b> (shards, swords, orbs, runes or rings circling you), <b>Elemental</b> (flame, frost, void, sakura or storm), <b>Ground Runes</b>, <b>Energy Sphere</b> and <b>Lightning Arcs</b>.</p>
+<div class="gallery"><figure><img src="/assets/img/cosmetics/aura/shards.webp" alt="Shards" loading="lazy" width="118" height="118"><figcaption>Shards</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/swords.webp" alt="Swords" loading="lazy" width="118" height="118"><figcaption>Swords</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/orbs.webp" alt="Orbs" loading="lazy" width="118" height="118"><figcaption>Orbs</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/runes.webp" alt="Runes" loading="lazy" width="118" height="118"><figcaption>Runes</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/rings.webp" alt="Rings" loading="lazy" width="118" height="118"><figcaption>Rings</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/flame.webp" alt="Flame" loading="lazy" width="118" height="118"><figcaption>Flame</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/frost.webp" alt="Frost" loading="lazy" width="118" height="118"><figcaption>Frost</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/void.webp" alt="Void" loading="lazy" width="118" height="118"><figcaption>Void</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/sakura.webp" alt="Sakura" loading="lazy" width="118" height="118"><figcaption>Sakura</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/storm.webp" alt="Storm" loading="lazy" width="118" height="118"><figcaption>Storm</figcaption></figure><figure><img src="/assets/img/cosmetics/aura/ground-runes.webp" alt="Ground Runes" loading="lazy" width="118" height="118"><figcaption>Ground Runes</figcaption></figure></div>
+<h2 id="target-esp">Target ESP<a class="anchor" href="#target-esp" aria-label="Link to this section">#</a></h2>
+<p>A marker on the player you're fighting, from <a href="/docs/modules#targetesp">Target ESP</a>. 9 styles. It's part of Visuals, not Cosmetics, but uses the same 3D engine.</p>
+<div class="gallery"><figure><img src="/assets/img/cosmetics/target/corner-brackets.webp" alt="Corner Brackets" loading="lazy" width="118" height="118"><figcaption>Corner Brackets</figcaption></figure><figure><img src="/assets/img/cosmetics/target/hex-shield.webp" alt="Hex Shield" loading="lazy" width="118" height="118"><figcaption>Hex Shield</figcaption></figure><figure><img src="/assets/img/cosmetics/target/rotating-diamond.webp" alt="Rotating Diamond" loading="lazy" width="118" height="118"><figcaption>Rotating Diamond</figcaption></figure><figure><img src="/assets/img/cosmetics/target/chevron-lock-on.webp" alt="Chevron Lock-on" loading="lazy" width="118" height="118"><figcaption>Chevron Lock-on</figcaption></figure><figure><img src="/assets/img/cosmetics/target/orbiting-triangles.webp" alt="Orbiting Triangles" loading="lazy" width="118" height="118"><figcaption>Orbiting Triangles</figcaption></figure><figure><img src="/assets/img/cosmetics/target/spinning-ring.webp" alt="Spinning Ring" loading="lazy" width="118" height="118"><figcaption>Spinning Ring</figcaption></figure><figure><img src="/assets/img/cosmetics/target/light-pillar.webp" alt="Light Pillar" loading="lazy" width="118" height="118"><figcaption>Light Pillar</figcaption></figure><figure><img src="/assets/img/cosmetics/target/hologram-scan.webp" alt="Hologram Scan" loading="lazy" width="118" height="118"><figcaption>Hologram Scan</figcaption></figure><figure><img src="/assets/img/cosmetics/target/soul-flame.webp" alt="Soul Flame" loading="lazy" width="118" height="118"><figcaption>Soul Flame</figcaption></figure></div>
+<h2 id="cape-trail">Cape and Trail<a class="anchor" href="#cape-trail" aria-label="Link to this section">#</a></h2>
+<p><a href="/docs/modules#cape">Cape</a> is a flowing cape with your colors and the Larp logo, in Gradient, Solid or Split styles with physics you can tune. <a href="/docs/modules#trail">Trail</a> leaves a ribbon of light behind you, with optional sparkles.</p>
+<h2 id="performance">Performance<a class="anchor" href="#performance" aria-label="Link to this section">#</a></h2>
+<p>Cosmetic shapes are rebuilt up to 60 times a second and reused between frames, so at 144 FPS or more most of the work is skipped. Change it in <b>Settings → Performance → Cosmetic FPS</b> (30, 60, 120 or Max).</p>
+</div>
+  <nav class="pager" aria-label="Pages"><a href="/docs/hud-editor"><span>Previous</span><b>HUD editor</b></a><a class="next" href="/docs/waypoints"><span>Next</span><b>Waypoints</b></a></nav>
+  <p class="edited">Larp Client 0.9.5 · Minecraft 1.21.11</p>
+</main>
+<nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a class="" href="#hats">Hats</a><a class="" href="#wings">Wings</a><a class="" href="#aura">Aura</a><a class="" href="#target-esp">Target ESP</a><a class="" href="#cape-trail">Cape and Trail</a><a class="" href="#performance">Performance</a></nav>
+</div>
+<footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by Take.</p>
+      </div>
+      <div><h4>Product</h4><ul>
+        <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
+        <li><a href="/#access">Get access</a></li><li><a href="/docs/changelog">Changelog</a></li></ul></div>
+      <div><h4>Docs</h4><ul>
+        <li><a href="/docs/installation">Installation</a></li><li><a href="/docs/modules">All modules</a></li>
+        <li><a href="/docs/performance">Performance</a></li><li><a href="/docs/troubleshooting">Troubleshooting</a></li></ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="/docs/credits">Credits</a></li><li><a href="/docs/faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© <span data-year>2026</span> Larp Client. Not affiliated with Mojang or Microsoft.</span>
+      <span>Minecraft 1.21.11 · Fabric</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/docs.js" defer></script>
+</body>
+</html>

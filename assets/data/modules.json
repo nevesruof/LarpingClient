@@ -1,0 +1,3622 @@
+[
+ {
+  "id": "infobar",
+  "cls": "InfoBar",
+  "name": "Info Bar",
+  "description": "A sleek bar with your name, server, FPS and session time",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Server",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "FPS",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Ping",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Session time",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Logo",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Crown on name",
+    "type": "bool",
+    "group": "Crown",
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "modulelist",
+  "cls": "ModuleList",
+  "name": "Module List",
+  "description": "Your active modules, sorted and animated",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Hide HUD modules",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Accent bar",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Show mode",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Sort",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Width",
+     "Alphabetical"
+    ]
+   },
+   {
+    "name": "Animate",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "fps",
+  "cls": "FpsDisplay",
+  "name": "FPS",
+  "description": "Frames per second, updated live",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Format",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "144 FPS",
+     "FPS: 144",
+     "144"
+    ]
+   },
+   {
+    "name": "Color by performance",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "ping",
+  "cls": "PingDisplay",
+  "name": "Ping",
+  "description": "Your latency to the server",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color by ping",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "coordinates",
+  "cls": "Coordinates",
+  "name": "Coordinates",
+  "description": "Your X, Y and Z position",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Direction",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "direction",
+  "cls": "DirectionHud",
+  "name": "Direction",
+  "description": "A compass strip at the top of your screen",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "clock",
+  "cls": "ClockHud",
+  "name": "Clock",
+  "description": "Real-world time, always in sight",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "12 hours",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "speed",
+  "cls": "SpeedHud",
+  "name": "Speed",
+  "description": "Movement speed in blocks per second",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "armorstatus",
+  "cls": "ArmorStatus",
+  "name": "Armor Status",
+  "description": "Armor pieces and their durability",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Durability",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Value",
+     "Percent",
+     "None"
+    ]
+   },
+   {
+    "name": "Main hand",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Layout",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Vertical",
+     "Horizontal"
+    ]
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "potioneffects",
+  "cls": "PotionEffects",
+  "name": "Potion Effects",
+  "description": "Active effects and the time they have left",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "musicplayer",
+  "cls": "MusicPlayer",
+  "name": "Music Player",
+  "description": "Now playing from Spotify with cover art and controls",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Source",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Auto",
+     "Minecraft"
+    ]
+   },
+   {
+    "name": "Progress bar",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Controls",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "keybinds",
+  "cls": "KeybindsHud",
+  "name": "Keybinds",
+  "description": "Your keybinds and what is active right now",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "notifications",
+  "cls": "Notifications",
+  "name": "Notifications",
+  "description": "Clean toasts when you toggle a mod with its key",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Duration",
+    "type": "number",
+    "group": null,
+    "default": 1.8,
+    "min": 0.8,
+    "max": 5.0
+   }
+  ]
+ },
+ {
+  "id": "lowhealth",
+  "cls": "LowHealthWarning",
+  "name": "Low Health",
+  "description": "Pulsing red edges when your health is low",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Below hearts",
+    "type": "number",
+    "group": null,
+    "default": 4.0,
+    "min": 1.0,
+    "max": 10.0
+   },
+   {
+    "name": "Intensity",
+    "type": "number",
+    "group": null,
+    "default": 0.5,
+    "min": 0.1,
+    "max": 1.0
+   },
+   {
+    "name": "Color",
+    "type": "color",
+    "group": null,
+    "default": "#ff2a3a"
+   }
+  ]
+ },
+ {
+  "id": "inventoryhud",
+  "cls": "InventoryHud",
+  "name": "Inventory HUD",
+  "description": "Your inventory always visible on screen",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Include hotbar",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Slot backgrounds",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "worldinfo",
+  "cls": "WorldInfo",
+  "name": "World Info",
+  "description": "Biome, day, in-game time and memory usage",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Biome",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Day",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "In-game time",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Memory",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "hotbarkeybinds",
+  "cls": "HotbarKeybinds",
+  "name": "Hotbar Keybinds",
+  "description": "Shows the key bound to each hotbar slot",
+  "category": "HUD",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Show on hotbar",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Show in inventories",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Corner",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Top right",
+     "Bottom right",
+     "Top left"
+    ]
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Clean",
+     "Minecraft"
+    ]
+   },
+   {
+    "name": "Color",
+    "type": "color",
+    "group": null,
+    "default": "#ffffff"
+   },
+   {
+    "name": "Only changed keys",
+    "type": "bool",
+    "group": null,
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "hunger",
+  "cls": "HungerHud",
+  "name": "Hunger",
+  "description": "Exact food and hidden saturation",
+  "category": "HUD",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color by level",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "keystrokes",
+  "cls": "Keystrokes",
+  "name": "Keystrokes",
+  "description": "Shows the keys and clicks you press",
+  "category": "PVP",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Mouse buttons",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Space bar",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Show CPS",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Pressed color",
+    "type": "color",
+    "group": "Style",
+    "default": "#ffffff"
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "cps",
+  "cls": "CpsDisplay",
+  "name": "CPS",
+  "description": "Your clicks per second",
+  "category": "PVP",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Right click",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "reachdisplay",
+  "cls": "ReachDisplay",
+  "name": "Reach Display",
+  "description": "Distance of your last hit",
+  "category": "PVP",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "combocounter",
+  "cls": "ComboCounter",
+  "name": "Combo Counter",
+  "description": "Hits in a row without getting hit",
+  "category": "PVP",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "targethud",
+  "cls": "TargetHud",
+  "name": "Target HUD",
+  "description": "Health, distance and advantage over your target",
+  "category": "PVP",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Show advantage",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "sessionstats",
+  "cls": "SessionStats",
+  "name": "Session Stats",
+  "description": "Hits, kills, deaths, K/D and kill streak",
+  "category": "PVP",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Hits",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "K/D",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Kill streak",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "itemcounter",
+  "cls": "ItemCounter",
+  "name": "Item Counter",
+  "description": "Totems, apples, pearls, arrows and more at a glance",
+  "category": "PVP",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Layout",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Horizontal",
+     "Vertical"
+    ]
+   },
+   {
+    "name": "Hide when zero",
+    "type": "bool",
+    "group": "Style",
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "cooldowns",
+  "cls": "CooldownsHud",
+  "name": "Cooldowns",
+  "description": "Pearl, wind charge, shield and other cooldowns",
+  "category": "PVP",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Hide when none",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Background",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Background color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Corner radius",
+    "type": "number",
+    "group": "Style"
+   },
+   {
+    "name": "Text color",
+    "type": "color",
+    "group": "Style"
+   },
+   {
+    "name": "Chroma text",
+    "type": "bool",
+    "group": "Style"
+   },
+   {
+    "name": "Font",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Minecraft",
+     "Clean"
+    ]
+   },
+   {
+    "name": "Text shadow",
+    "type": "bool",
+    "group": "Style"
+   }
+  ]
+ },
+ {
+  "id": "togglesprint",
+  "cls": "ToggleSprint",
+  "name": "Toggle Sprint",
+  "description": "Sprint automatically while moving",
+  "category": "UTILITY",
+  "defaultOn": false,
+  "settings": []
+ },
+ {
+  "id": "zoom",
+  "cls": "Zoom",
+  "name": "Zoom",
+  "description": "Hold C to zoom in, smooth and cinematic",
+  "category": "UTILITY",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Factor",
+    "type": "number",
+    "group": null,
+    "default": 4.0,
+    "min": 2.0,
+    "max": 10.0
+   },
+   {
+    "name": "Smooth",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Cinematic camera",
+    "type": "bool",
+    "group": null,
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "fullbright",
+  "cls": "Fullbright",
+  "name": "Fullbright",
+  "description": "See clearly in caves and at night",
+  "category": "UTILITY",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Strength",
+    "type": "number",
+    "group": null,
+    "default": 10.0,
+    "min": 1.0,
+    "max": 16.0
+   }
+  ]
+ },
+ {
+  "id": "fpsboost",
+  "cls": "FpsBoost",
+  "name": "FPS Boost",
+  "description": "Turns heavy video settings down and restores them when off",
+  "category": "UTILITY",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "No entity shadows",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "No clouds",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "No biome blend",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Shorter entity distance",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "No view bobbing",
+    "type": "bool",
+    "group": null,
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "hitsounds",
+  "cls": "HitSounds",
+  "name": "Hit Sounds",
+  "description": "A satisfying sound on every hit and kill",
+  "category": "UTILITY",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Hit sound",
+    "type": "mode",
+    "group": "Hit",
+    "options": [
+     "Ding",
+     "Crystal",
+     "Pop",
+     "Arrow",
+     "Bell",
+     "Bass",
+     "Off"
+    ]
+   },
+   {
+    "name": "Hit volume",
+    "type": "number",
+    "group": "Hit",
+    "default": 0.6,
+    "min": 0.0,
+    "max": 1.0
+   },
+   {
+    "name": "Hit pitch",
+    "type": "number",
+    "group": "Hit",
+    "default": 1.2,
+    "min": 0.5,
+    "max": 2.0
+   },
+   {
+    "name": "Random pitch",
+    "type": "bool",
+    "group": "Hit",
+    "default": true
+   },
+   {
+    "name": "Kill sound",
+    "type": "mode",
+    "group": "Kill",
+    "options": [
+     "Level up",
+     "Ding",
+     "Crystal",
+     "Bell",
+     "Off"
+    ]
+   },
+   {
+    "name": "Kill volume",
+    "type": "number",
+    "group": "Kill",
+    "default": 0.7,
+    "min": 0.0,
+    "max": 1.0
+   }
+  ]
+ },
+ {
+  "id": "performance",
+  "cls": "Performance",
+  "name": "Performance",
+  "description": "Smart FPS limits in menus, while AFK and when tabbed out",
+  "category": "UTILITY",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Limit when unfocused",
+    "type": "bool",
+    "group": "Unfocused",
+    "default": true
+   },
+   {
+    "name": "Unfocused FPS",
+    "type": "number",
+    "group": "Unfocused",
+    "default": 15.0,
+    "min": 5.0,
+    "max": 60.0
+   },
+   {
+    "name": "Limit in menus",
+    "type": "bool",
+    "group": "Menus",
+    "default": true
+   },
+   {
+    "name": "Menu FPS",
+    "type": "number",
+    "group": "Menus",
+    "default": 75.0,
+    "min": 30.0,
+    "max": 240.0
+   },
+   {
+    "name": "Limit when AFK",
+    "type": "bool",
+    "group": "AFK",
+    "default": true
+   },
+   {
+    "name": "AFK after (seconds)",
+    "type": "number",
+    "group": "AFK",
+    "default": 60.0,
+    "min": 15.0,
+    "max": 300.0
+   },
+   {
+    "name": "AFK FPS",
+    "type": "number",
+    "group": "AFK",
+    "default": 20.0,
+    "min": 5.0,
+    "max": 60.0
+   }
+  ]
+ },
+ {
+  "id": "waypoints",
+  "cls": "Waypoints",
+  "name": "Waypoints",
+  "description": "Saved places with beams and labels in the world",
+  "category": "UTILITY",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Beams",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Labels",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Show distance",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Death waypoint",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Label size",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.5,
+    "max": 2.0
+   }
+  ]
+ },
+ {
+  "id": "breadcrumbs",
+  "cls": "Breadcrumbs",
+  "name": "Breadcrumbs",
+  "description": "A glowing path showing where you walked",
+  "category": "UTILITY",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Length",
+    "type": "number",
+    "group": null,
+    "default": 600.0,
+    "min": 50.0,
+    "max": 2000.0
+   },
+   {
+    "name": "Width",
+    "type": "number",
+    "group": null,
+    "default": 0.08,
+    "min": 0.02,
+    "max": 0.3
+   },
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Accent",
+     "White",
+     "Custom"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": null,
+    "default": "#4dff9a"
+   }
+  ]
+ },
+ {
+  "id": "durabilitywarning",
+  "cls": "DurabilityWarning",
+  "name": "Durability Warning",
+  "description": "A heads up before your armor or tool breaks",
+  "category": "UTILITY",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Warn below %",
+    "type": "number",
+    "group": null,
+    "default": 15.0,
+    "min": 5.0,
+    "max": 50.0
+   },
+   {
+    "name": "Held item too",
+    "type": "bool",
+    "group": null,
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "macros",
+  "cls": "Macros",
+  "name": "Macros",
+  "description": "Keys that send commands or chat messages",
+  "category": "UTILITY",
+  "defaultOn": true,
+  "settings": []
+ },
+ {
+  "id": "customsky",
+  "cls": "CustomSky",
+  "name": "Custom Sky",
+  "description": "Animated skies: aurora, nebula, storm and fire",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Sky",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Galaxy",
+     "Aurora",
+     "Nebula",
+     "Storm",
+     "Inferno"
+    ]
+   },
+   {
+    "name": "Animation speed",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.0,
+    "max": 3.0
+   },
+   {
+    "name": "Glow intensity",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.2,
+    "max": 2.0
+   },
+   {
+    "name": "Stars",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Falling streaks",
+    "type": "bool",
+    "group": null,
+    "default": false
+   },
+   {
+    "name": "Shooting stars",
+    "type": "bool",
+    "group": null,
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "hitfx",
+  "cls": "HitFx",
+  "name": "Hit FX",
+  "description": "Lightning bolts and a shockwave on every hit",
+  "category": "VISUALS",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Ground lightning",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Shockwave",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Bolts",
+    "type": "number",
+    "group": null,
+    "default": 6.0,
+    "min": 2.0,
+    "max": 12.0
+   },
+   {
+    "name": "Length",
+    "type": "number",
+    "group": null,
+    "default": 2.5,
+    "min": 1.0,
+    "max": 5.0
+   },
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "White",
+     "Accent",
+     "Custom"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Style",
+    "default": "#b8c8ff"
+   }
+  ]
+ },
+ {
+  "id": "hitparticles",
+  "cls": "HitParticles",
+  "name": "Hit Particles",
+  "description": "Stars or particles burst on every hit",
+  "category": "VISUALS",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Type",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Stars",
+     "Sparkle",
+     "Crit",
+     "Magic",
+     "Hearts"
+    ]
+   },
+   {
+    "name": "Amount",
+    "type": "number",
+    "group": null,
+    "default": 10.0,
+    "min": 2.0,
+    "max": 40.0
+   },
+   {
+    "name": "Star color",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "White",
+     "Accent",
+     "Custom"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Style",
+    "default": "#ffe27a"
+   }
+  ]
+ },
+ {
+  "id": "targetring",
+  "cls": "TargetRing",
+  "name": "Target Ring",
+  "description": "A glowing ring around your target",
+  "category": "VISUALS",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Style",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Bob",
+     "Feet"
+    ]
+   },
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Accent",
+     "White",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Style",
+    "default": "#ffd34d"
+   },
+   {
+    "name": "Speed",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.2,
+    "max": 3.0
+   },
+   {
+    "name": "Glow height",
+    "type": "number",
+    "group": "Style",
+    "default": 0.35,
+    "min": 0.0,
+    "max": 1.0
+   }
+  ]
+ },
+ {
+  "id": "targetesp",
+  "cls": "TargetEsp",
+  "name": "Target ESP",
+  "description": "Animated 3D marker on the player you are fighting",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Style",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Corner Brackets",
+     "Hex Shield",
+     "Rotating Diamond",
+     "Chevron Lock-on",
+     "Orbiting Triangles",
+     "Spinning Ring",
+     "Light Pillar",
+     "Hologram Scan",
+     "Soul Flame"
+    ]
+   },
+   {
+    "name": "Natural colors",
+    "type": "bool",
+    "group": "Color",
+    "default": true
+   },
+   {
+    "name": "Color",
+    "type": "color",
+    "group": "Color",
+    "default": "#ff3b3b"
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Color",
+    "default": "#ff9c3b"
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.6,
+    "max": 1.6
+   },
+   {
+    "name": "Opacity",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.9,
+    "min": 0.2,
+    "max": 1.0
+   },
+   {
+    "name": "Speed",
+    "type": "number",
+    "group": "Motion",
+    "default": 0.4,
+    "min": -1.5,
+    "max": 1.5
+   },
+   {
+    "name": "Also on looked-at entity",
+    "type": "bool",
+    "group": "Trigger",
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "hitboxes",
+  "cls": "Hitboxes",
+  "name": "Hitboxes",
+  "description": "Clean custom hitboxes instead of F3+B",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Players",
+    "type": "bool",
+    "group": "Show",
+    "default": true
+   },
+   {
+    "name": "Monsters",
+    "type": "bool",
+    "group": "Show",
+    "default": true
+   },
+   {
+    "name": "Animals",
+    "type": "bool",
+    "group": "Show",
+    "default": false
+   },
+   {
+    "name": "Items",
+    "type": "bool",
+    "group": "Show",
+    "default": false
+   },
+   {
+    "name": "Projectiles",
+    "type": "bool",
+    "group": "Show",
+    "default": true
+   },
+   {
+    "name": "Yourself (F5)",
+    "type": "bool",
+    "group": "Show",
+    "default": false
+   },
+   {
+    "name": "Range",
+    "type": "number",
+    "group": "Show",
+    "default": 32.0,
+    "min": 8.0,
+    "max": 96.0
+   },
+   {
+    "name": "Player color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "Accent",
+     "White",
+     "Custom",
+     "Health"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color",
+    "default": "#ffffff"
+   },
+   {
+    "name": "Monster color",
+    "type": "color",
+    "group": "Color",
+    "default": "#ff5a5a"
+   },
+   {
+    "name": "Other color",
+    "type": "color",
+    "group": "Color",
+    "default": "#b8c8ff"
+   },
+   {
+    "name": "Thickness",
+    "type": "number",
+    "group": "Style",
+    "default": 1.5,
+    "min": 0.5,
+    "max": 4.0
+   },
+   {
+    "name": "Fill",
+    "type": "bool",
+    "group": "Style",
+    "default": false
+   },
+   {
+    "name": "Fill opacity",
+    "type": "number",
+    "group": "Style",
+    "default": 0.12,
+    "min": 0.02,
+    "max": 0.5
+   },
+   {
+    "name": "Eye height line",
+    "type": "bool",
+    "group": "Style",
+    "default": true
+   },
+   {
+    "name": "Look direction",
+    "type": "bool",
+    "group": "Style",
+    "default": true
+   },
+   {
+    "name": "Flash when hurt",
+    "type": "bool",
+    "group": "Style",
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "hitmarker",
+  "cls": "HitMarker",
+  "name": "Hit Marker",
+  "description": "A crosshair X every time a hit lands",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "color",
+    "group": null,
+    "default": "#ffffff"
+   },
+   {
+    "name": "Kill color",
+    "type": "color",
+    "group": null,
+    "default": "#ff3b3b"
+   },
+   {
+    "name": "Size",
+    "type": "number",
+    "group": null,
+    "default": 5.0,
+    "min": 2.0,
+    "max": 12.0
+   },
+   {
+    "name": "Duration",
+    "type": "number",
+    "group": null,
+    "default": 0.3,
+    "min": 0.1,
+    "max": 1.0
+   }
+  ]
+ },
+ {
+  "id": "projectiletrails",
+  "cls": "ProjectileTrails",
+  "name": "Projectile Trails",
+  "description": "Light trails behind arrows, pearls and more",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Length",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.3,
+    "max": 3.0
+   },
+   {
+    "name": "Width",
+    "type": "number",
+    "group": null,
+    "default": 0.06,
+    "min": 0.02,
+    "max": 0.2
+   },
+   {
+    "name": "Arrow color",
+    "type": "color",
+    "group": null,
+    "default": "#ffffff"
+   },
+   {
+    "name": "Pearl color",
+    "type": "color",
+    "group": null,
+    "default": "#b06cff"
+   },
+   {
+    "name": "Other color",
+    "type": "color",
+    "group": null,
+    "default": "#6fc3ff"
+   }
+  ]
+ },
+ {
+  "id": "killeffect",
+  "cls": "KillEffect",
+  "name": "Kill Effect",
+  "description": "Lightning, black holes, phoenix and more when you get a kill",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Effect",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Lightning Strike",
+     "Shockwave",
+     "Shatter",
+     "Black Hole",
+     "Phoenix",
+     "Ascend"
+    ]
+   },
+   {
+    "name": "Natural colors",
+    "type": "bool",
+    "group": "Color",
+    "default": true
+   },
+   {
+    "name": "Color",
+    "type": "color",
+    "group": "Color",
+    "default": "#3cb4ff"
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Color",
+    "default": "#c8ffff"
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.5,
+    "max": 2.0
+   },
+   {
+    "name": "Opacity",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.9,
+    "min": 0.2,
+    "max": 1.0
+   },
+   {
+    "name": "Duration",
+    "type": "number",
+    "group": "Shape",
+    "default": 2.5,
+    "min": 0.5,
+    "max": 6.0
+   },
+   {
+    "name": "Shockwave radius",
+    "type": "number",
+    "group": "Shape",
+    "default": 5.0,
+    "min": 1.0,
+    "max": 12.0
+   },
+   {
+    "name": "Only my kills",
+    "type": "bool",
+    "group": "Trigger",
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "jumpcircles",
+  "cls": "JumpCircles",
+  "name": "Jump Circles",
+  "description": "Glowing rings on the ground when you jump or land",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Style",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Ripple",
+     "Double",
+     "Shockwave",
+     "Spectrum"
+    ]
+   },
+   {
+    "name": "Trigger",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Jump",
+     "Land",
+     "Both"
+    ]
+   },
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "Accent",
+     "White",
+     "Custom"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color",
+    "default": "#6fc3ff"
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Color",
+    "default": "#c77dff"
+   },
+   {
+    "name": "Size",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.4,
+    "min": 0.5,
+    "max": 3.0
+   },
+   {
+    "name": "Duration",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.9,
+    "min": 0.3,
+    "max": 2.0
+   },
+   {
+    "name": "Only when sprinting",
+    "type": "bool",
+    "group": "Style",
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "damagenumbers",
+  "cls": "DamageNumbers",
+  "name": "Damage Numbers",
+  "description": "Floating damage numbers when you hit",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "color",
+    "group": null,
+    "default": "#ff5a5a"
+   },
+   {
+    "name": "Big hit color",
+    "type": "color",
+    "group": null,
+    "default": "#ffd36b"
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.5,
+    "max": 2.0
+   },
+   {
+    "name": "Duration",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.4,
+    "max": 2.5
+   },
+   {
+    "name": "Only my targets",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Show as hearts",
+    "type": "bool",
+    "group": null,
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "blockoutline",
+  "cls": "BlockOutline",
+  "name": "Block Outline",
+  "description": "Custom outline and fill on the block you look at",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Outline",
+    "options": [
+     "Accent",
+     "White",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Outline",
+    "default": "#ffffff"
+   },
+   {
+    "name": "Thickness",
+    "type": "number",
+    "group": "Outline",
+    "default": 2.0,
+    "min": 1.0,
+    "max": 5.0
+   },
+   {
+    "name": "Fill",
+    "type": "bool",
+    "group": "Fill",
+    "default": true
+   },
+   {
+    "name": "Fill opacity",
+    "type": "number",
+    "group": "Fill",
+    "default": 0.15,
+    "min": 0.02,
+    "max": 0.6
+   },
+   {
+    "name": "Pulse",
+    "type": "bool",
+    "group": "Fill",
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "nametags",
+  "cls": "Nametags",
+  "name": "Nametags",
+  "description": "Health, distance and ping on nametags",
+  "category": "VISUALS",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Health",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Distance",
+    "type": "bool",
+    "group": null,
+    "default": true
+   },
+   {
+    "name": "Ping",
+    "type": "bool",
+    "group": null,
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "crosshair",
+  "cls": "Crosshair",
+  "name": "Crosshair",
+  "description": "Design your own crosshair",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Style",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Cross",
+     "Cross + Dot",
+     "Dot",
+     "Circle"
+    ]
+   },
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "White",
+     "Accent",
+     "Red",
+     "Green"
+    ]
+   },
+   {
+    "name": "Size",
+    "type": "number",
+    "group": null,
+    "default": 5.0,
+    "min": 2.0,
+    "max": 12.0
+   },
+   {
+    "name": "Gap",
+    "type": "number",
+    "group": null,
+    "default": 2.0,
+    "min": 0.0,
+    "max": 8.0
+   },
+   {
+    "name": "Thickness",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 1.0,
+    "max": 3.0
+   },
+   {
+    "name": "Outline",
+    "type": "bool",
+    "group": null,
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "timechanger",
+  "cls": "TimeChanger",
+  "name": "Time Changer",
+  "description": "Pick your own time of day",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Time",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Sunset",
+     "Day",
+     "Noon",
+     "Night",
+     "Midnight",
+     "Sunrise",
+     "Custom",
+     "Cycle"
+    ]
+   },
+   {
+    "name": "Custom time",
+    "type": "number",
+    "group": null,
+    "default": 13000.0,
+    "min": 0.0,
+    "max": 24000.0
+   },
+   {
+    "name": "Cycle speed",
+    "type": "number",
+    "group": null,
+    "default": 10.0,
+    "min": 1.0,
+    "max": 100.0
+   }
+  ]
+ },
+ {
+  "id": "weather",
+  "cls": "Weather",
+  "name": "Weather",
+  "description": "Clear skies or your own rain, client side",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Weather",
+    "type": "mode",
+    "group": null,
+    "options": [
+     "Clear",
+     "Rain",
+     "Thunder"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "lowfire",
+  "cls": "LowFire",
+  "name": "Low Fire",
+  "description": "Lower or hide the fire overlay",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Lower by",
+    "type": "number",
+    "group": null,
+    "default": 0.3,
+    "min": 0.0,
+    "max": 0.6
+   },
+   {
+    "name": "Hide completely",
+    "type": "bool",
+    "group": null,
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "viewmodel",
+  "cls": "ViewModel",
+  "name": "View Model",
+  "description": "Move, scale and rotate your hands and items",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Main X",
+    "type": "number",
+    "group": "Main hand",
+    "default": 0.0,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Main Y",
+    "type": "number",
+    "group": "Main hand",
+    "default": 0.0,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Main Z",
+    "type": "number",
+    "group": "Main hand",
+    "default": 0.0,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Main scale",
+    "type": "number",
+    "group": "Main hand",
+    "default": 1.0,
+    "min": 0.3,
+    "max": 1.5
+   },
+   {
+    "name": "Main rotation",
+    "type": "number",
+    "group": "Main hand",
+    "default": 0.0,
+    "min": -90.0,
+    "max": 90.0
+   },
+   {
+    "name": "Off hand same as main",
+    "type": "bool",
+    "group": "Off hand",
+    "default": true
+   },
+   {
+    "name": "Off X",
+    "type": "number",
+    "group": "Off hand",
+    "default": 0.0,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Off Y",
+    "type": "number",
+    "group": "Off hand",
+    "default": 0.0,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Off Z",
+    "type": "number",
+    "group": "Off hand",
+    "default": 0.0,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Off scale",
+    "type": "number",
+    "group": "Off hand",
+    "default": 1.0,
+    "min": 0.3,
+    "max": 1.5
+   }
+  ]
+ },
+ {
+  "id": "tnttimer",
+  "cls": "TntTimer",
+  "name": "TNT Timer",
+  "description": "Countdown above lit TNT",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": null,
+    "default": 1.0,
+    "min": 0.5,
+    "max": 2.0
+   }
+  ]
+ },
+ {
+  "id": "nohurtcam",
+  "cls": "NoHurtCam",
+  "name": "No Hurt Cam",
+  "description": "No camera shake when you take damage",
+  "category": "VISUALS",
+  "defaultOn": false,
+  "settings": []
+ },
+ {
+  "id": "cape",
+  "cls": "Cape",
+  "name": "Cape",
+  "description": "A flowing cape with your colors and the Larp logo",
+  "category": "COSMETICS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "Accent",
+     "White",
+     "Crimson",
+     "Gold",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color"
+   },
+   {
+    "name": "Style",
+    "type": "mode",
+    "group": "Design",
+    "options": [
+     "Gradient",
+     "Solid",
+     "Split"
+    ]
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Design",
+    "default": "#0b0b10"
+   },
+   {
+    "name": "Logo",
+    "type": "bool",
+    "group": "Design",
+    "default": true
+   },
+   {
+    "name": "Trim",
+    "type": "bool",
+    "group": "Design",
+    "default": true
+   },
+   {
+    "name": "Length",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.7,
+    "max": 1.3
+   },
+   {
+    "name": "Width",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.8,
+    "max": 1.2
+   },
+   {
+    "name": "Physics",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.0,
+    "max": 2.0
+   }
+  ]
+ },
+ {
+  "id": "wings",
+  "cls": "Wings",
+  "name": "Wings",
+  "description": "3D wings in 8 styles that flap as you move",
+  "category": "COSMETICS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "White",
+     "Accent",
+     "Gold",
+     "Crimson",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color"
+   },
+   {
+    "name": "Style",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Angel",
+     "Dragon",
+     "Butterfly",
+     "Phoenix",
+     "Crystal",
+     "Cyber",
+     "Fairy",
+     "Classic"
+    ]
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Color",
+    "default": "#7a8cff"
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.5,
+    "max": 1.8
+   },
+   {
+    "name": "Height",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.0,
+    "min": -0.3,
+    "max": 0.3
+   },
+   {
+    "name": "Opacity",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.9,
+    "min": 0.2,
+    "max": 1.0
+   },
+   {
+    "name": "Animate",
+    "type": "bool",
+    "group": "Motion",
+    "default": true
+   },
+   {
+    "name": "Flap speed",
+    "type": "number",
+    "group": "Motion",
+    "default": 1.0,
+    "min": 0.2,
+    "max": 3.0
+   }
+  ]
+ },
+ {
+  "id": "hats",
+  "cls": "Hats",
+  "name": "Hats",
+  "description": "Crowns, halos, ears, horns and the China Hat",
+  "category": "COSMETICS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "Gold",
+     "Accent",
+     "White",
+     "Crimson",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color"
+   },
+   {
+    "name": "Hat",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Royal Crown",
+     "Cat Ears",
+     "Fox Ears",
+     "Bunny Ears",
+     "Bear Ears",
+     "Demon Horns",
+     "Stag Antlers",
+     "Reindeer Antlers",
+     "Unicorn Horn",
+     "Viking Horns",
+     "Classic Ring",
+     "Double Ring",
+     "Thorn Halo",
+     "Orbiting Orbs",
+     "Runic Halo",
+     "Spiked Crown",
+     "Laurel Wreath",
+     "Tiara",
+     "Flame Crown",
+     "Ice Crown",
+     "Floating Crown",
+     "China Hat"
+    ]
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Color",
+    "default": "#ff9a3c"
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.5,
+    "max": 1.6
+   },
+   {
+    "name": "Height",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.0,
+    "min": -0.2,
+    "max": 0.4
+   },
+   {
+    "name": "Opacity",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.2,
+    "max": 1.0
+   },
+   {
+    "name": "Animate",
+    "type": "bool",
+    "group": "Motion",
+    "default": true
+   },
+   {
+    "name": "Bob",
+    "type": "bool",
+    "group": "Motion",
+    "default": true
+   },
+   {
+    "name": "Follow head tilt",
+    "type": "bool",
+    "group": "Motion",
+    "default": true
+   },
+   {
+    "name": "Spin",
+    "type": "number",
+    "group": "Motion",
+    "default": 0.15,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Show in first person",
+    "type": "bool",
+    "group": "Motion",
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "aura",
+  "cls": "Aura",
+  "name": "Aura",
+  "description": "Orbiting shards, elements, runes and energy around you",
+  "category": "COSMETICS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "Accent",
+     "White",
+     "Gold",
+     "Crimson",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color"
+   },
+   {
+    "name": "Mode",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Orbiting",
+     "Elemental",
+     "Ground Runes",
+     "Energy Sphere",
+     "Lightning Arcs"
+    ]
+   },
+   {
+    "name": "Orbit style",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Shards",
+     "Swords",
+     "Orbs",
+     "Runes",
+     "Rings"
+    ]
+   },
+   {
+    "name": "Element",
+    "type": "mode",
+    "group": "Style",
+    "options": [
+     "Flame",
+     "Frost",
+     "Void",
+     "Sakura",
+     "Storm"
+    ]
+   },
+   {
+    "name": "Natural colors",
+    "type": "bool",
+    "group": "Color",
+    "default": true
+   },
+   {
+    "name": "Second color",
+    "type": "color",
+    "group": "Color",
+    "default": "#a56bff"
+   },
+   {
+    "name": "Count",
+    "type": "number",
+    "group": "Shape",
+    "default": 5.0,
+    "min": 1.0,
+    "max": 12.0
+   },
+   {
+    "name": "Radius",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.5,
+    "max": 2.0
+   },
+   {
+    "name": "Scale",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.5,
+    "max": 1.6
+   },
+   {
+    "name": "Opacity",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.9,
+    "min": 0.2,
+    "max": 1.0
+   },
+   {
+    "name": "Speed",
+    "type": "number",
+    "group": "Motion",
+    "default": 0.25,
+    "min": -1.0,
+    "max": 1.0
+   },
+   {
+    "name": "Speed reaction",
+    "type": "number",
+    "group": "Motion",
+    "default": 1.0,
+    "min": 0.0,
+    "max": 2.0
+   },
+   {
+    "name": "Show in first person",
+    "type": "bool",
+    "group": "Motion",
+    "default": false
+   }
+  ]
+ },
+ {
+  "id": "trail",
+  "cls": "Trail",
+  "name": "Trail",
+  "description": "A ribbon of light behind you as you move",
+  "category": "COSMETICS",
+  "defaultOn": false,
+  "settings": [
+   {
+    "name": "Color",
+    "type": "mode",
+    "group": "Color",
+    "options": [
+     "Accent",
+     "White",
+     "Gold",
+     "Crimson",
+     "Custom",
+     "Rainbow"
+    ]
+   },
+   {
+    "name": "Custom color",
+    "type": "color",
+    "group": "Color"
+   },
+   {
+    "name": "Length",
+    "type": "number",
+    "group": "Shape",
+    "default": 1.0,
+    "min": 0.3,
+    "max": 2.5
+   },
+   {
+    "name": "Ribbon height",
+    "type": "number",
+    "group": "Shape",
+    "default": 0.5,
+    "min": 0.1,
+    "max": 1.2
+   },
+   {
+    "name": "Opacity",
+    "type": "number",
+    "group": "Effects",
+    "default": 0.8,
+    "min": 0.2,
+    "max": 1.0
+   },
+   {
+    "name": "Sparkles",
+    "type": "bool",
+    "group": "Effects",
+    "default": true
+   }
+  ]
+ },
+ {
+  "id": "discordrpc",
+  "cls": "DiscordRpc",
+  "name": "Discord RPC",
+  "description": "Your Discord status with logo, name, server and buttons",
+  "category": "CLIENT",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Application ID",
+    "type": "string",
+    "group": "Connection",
+    "default": ""
+   },
+   {
+    "name": "Logo asset",
+    "type": "string",
+    "group": "Connection",
+    "default": "logo"
+   },
+   {
+    "name": "Show server IP",
+    "type": "bool",
+    "group": "Status",
+    "default": true
+   },
+   {
+    "name": "Player head icon",
+    "type": "bool",
+    "group": "Status",
+    "default": false
+   },
+   {
+    "name": "Show game version",
+    "type": "bool",
+    "group": "Status",
+    "default": true
+   },
+   {
+    "name": "Show elapsed time",
+    "type": "bool",
+    "group": "Status",
+    "default": true
+   },
+   {
+    "name": "Button 1 text",
+    "type": "string",
+    "group": "Buttons",
+    "default": "Private Client"
+   },
+   {
+    "name": "Button 1 link",
+    "type": "string",
+    "group": "Buttons",
+    "default": "https://discord.com"
+   },
+   {
+    "name": "Button 2 text",
+    "type": "string",
+    "group": "Buttons",
+    "default": "Made by Take"
+   },
+   {
+    "name": "Button 2 link",
+    "type": "string",
+    "group": "Buttons",
+    "default": "https://discord.com"
+   }
+  ]
+ },
+ {
+  "id": "interface",
+  "cls": "Interface",
+  "name": "Interface",
+  "description": "Theme, menus and performance",
+  "category": "CLIENT",
+  "defaultOn": true,
+  "settings": [
+   {
+    "name": "Accent",
+    "type": "mode",
+    "group": "Theme",
+    "options": [
+     "Indigo",
+     "Orange",
+     "Purple",
+     "Blue",
+     "Red",
+     "Pink",
+     "Green",
+     "White"
+    ]
+   },
+   {
+    "name": "Custom menus",
+    "type": "bool",
+    "group": "Menus",
+    "default": true
+   },
+   {
+    "name": "Menu background",
+    "type": "mode",
+    "group": "Menus",
+    "options": [
+     "Curtains",
+     "Panorama"
+    ]
+   },
+   {
+    "name": "Custom loading screen",
+    "type": "bool",
+    "group": "Menus",
+    "default": true
+   },
+   {
+    "name": "Menu transitions",
+    "type": "bool",
+    "group": "Menus",
+    "default": true
+   },
+   {
+    "name": "Pause menu button",
+    "type": "bool",
+    "group": "Menus",
+    "default": true
+   },
+   {
+    "name": "Menu character",
+    "type": "bool",
+    "group": "Main menu",
+    "default": true
+   },
+   {
+    "name": "Character size",
+    "type": "number",
+    "group": "Main menu",
+    "default": 1.0,
+    "min": 0.5,
+    "max": 1.5
+   },
+   {
+    "name": "Cosmetic FPS",
+    "type": "mode",
+    "group": "Performance",
+    "options": [
+     "60",
+     "30",
+     "120",
+     "Max"
+    ]
+   },
+   {
+    "name": "Reduced menu effects",
+    "type": "bool",
+    "group": "Performance",
+    "default": false
+   }
+  ]
+ }
+]
