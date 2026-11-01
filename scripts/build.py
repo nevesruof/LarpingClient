@@ -5,21 +5,28 @@ assets/data/modules.json y el contenido de scripts/docs_content.py.
 Uso:  python scripts/build.py
 Vercel sirve los .html generados tal cual (no necesita paso de build).
 """
-import json, html, re, pathlib, datetime, sys
+import json, html, re, pathlib, datetime, sys, hashlib, shutil
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 CFG = json.loads((ROOT / "site.config.json").read_text())
 MODS = json.loads((ROOT / "assets/data/modules.json").read_text())
 SPRITE = "/assets/img/icons.svg"
-ALIAS = {"fps": "fpsdisplay", "ping": "pingdisplay"}
+ALIAS = {"fps":"fpsdisplay","ping":"pingdisplay","killeffect":"hitfx","instantreplay":"play","recorder":"camera","lyrics":"music","shulkerpreview":"inventoryhud","performancemonitor":"performance","lightmeter":"fullbright","itemdetails":"info","inventoryalert":"inventoryhud"}
+KNOWN = set(re.findall(r'id="i-([^\"]+)"', (ROOT / "assets/img/icons.svg").read_text()))
 CATS = [("HUD", "HUD"), ("PVP", "PvP"), ("UTILITY", "Utility"), ("VISUALS", "Visuals"), ("COSMETICS", "Cosmetics"), ("CLIENT", "Client")]
 CAT_LABEL = dict(CATS)
 esc = html.escape
 
 
 def icon(name, cls="ico"):
-    return f'<svg class="{cls}" aria-hidden="true"><use href="{SPRITE}#i-{ALIAS.get(name, name)}"/></svg>'
+    name=ALIAS.get(name,name)
+    if name not in KNOWN:name="modules"
+    return f'<svg class="{cls}" aria-hidden="true"><use href="{SPRITE}#i-{name}"/></svg>'
+
+
+def asset(path):
+    return path + '?v=' + hashlib.sha256((ROOT/path.lstrip('/')).read_bytes()).hexdigest()[:8]
 
 
 def discord_btn(cls="btn btn-glass", label="Join our Discord"):
@@ -51,7 +58,8 @@ def head(title, desc, path, extra_css=""):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">{extra_css}
+<link rel="stylesheet" href="{asset("/assets/css/site.css")}">
+<link rel="stylesheet" href="{asset("/assets/css/client-preview.css")}">{extra_css}
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -105,7 +113,7 @@ def footer(scripts=""):
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js" defer></script>{scripts}
+<script src="{asset("/assets/js/site.js")}" defer></script><script src="{asset("/assets/js/client-preview.js")}" defer></script>{scripts}
 </body>
 </html>
 """
@@ -143,7 +151,7 @@ def stats():
     def opts(mod, setting):
         return len(next(s for s in by[mod]["settings"] if s["name"] == setting)["options"])
     items = [(len(MODS), "Modules"), (opts("Hats", "Hat"), "Hats"), (opts("Wings", "Style"), "Wing styles"),
-             (opts("Target ESP", "Style"), "Target markers"), (opts("Kill Effect", "Effect"), "Kill effects")]
+             (opts("Target ESP", "Style"), "Target markers"), (opts("Kill Efects", "Effect"), "Kill effects")]
     return "".join(f'<div class="stat"><b>{n}</b><span>{l}</span></div>' for n, l in items)
 
 
@@ -166,29 +174,18 @@ def cosmetics_data():
 
 
 FAQ = [
-    ("How do I get Larp Client?",
-     f"Larp Client is private and still in development, so it isn't public yet. Message {CFG['author']} and you'll get access."),
-    ("Is Larp Client allowed on servers?",
-     "Larp only changes what you see on your own screen. It has no combat, movement or auto-click modules, so it plays like any other visual client. "
-     "Each server sets its own rules, so check theirs if you are unsure."),
-    ("Can other players see my cosmetics?",
-     "No. Cosmetics are drawn on your screen only. Press <kbd>F5</kbd> to see them on yourself."),
-    ("How do I open the menu?",
-     "Press <kbd>Right Shift</kbd> in game, or click <b>Client</b> on the title screen. You can change the key in Options › Controls › Larp Client."),
-    ("Does it work with Sodium and other performance mods?",
-     "Yes. Larp is made to run next to Sodium, Lithium and Entity Culling, and they are the first mods we recommend. "
-     "With Iris shaderpacks, some 3D effects can look different depending on the pack."),
-    ("Which Minecraft versions are supported?",
-     f"Minecraft {CFG['minecraft']} with Fabric Loader {CFG['fabricLoader']} or newer, Fabric API and Java 21. Forge, NeoForge and older versions are not supported."),
-    ("Where are my settings saved?",
-     "In your <code>config</code> folder: <code>larpclient.json</code> for settings, <code>larpclient-profile-1.json</code> to <code>-3</code> for profiles, "
-     "and <code>larpclient-waypoints.json</code> and <code>larpclient-macros.json</code>. Copy them to move your setup to another PC."),
-    ("The Music Player doesn't show the album cover.",
-     'The Music Player reads Windows media controls, so it only works on Windows. If the cover still doesn\'t show, see <a href="/docs/music-player">Music player</a> for the log file to check.'),
+    ("How do I get Larp Client?", "Larp Client is private and in active development. Message iTake to request access; there is no public download on this website."),
+    ("Which version do I need?", "Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21."),
+    ("Do 30-second clips include sound?", "Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone."),
+    ("Can other players see my cosmetics?", "Cosmetics are rendered locally on your screen. Use third-person view to see your own setup."),
+    ("How do I open the client menu?", "Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls."),
+    ("Does it guarantee more FPS?", "No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup."),
+    ("Are the website previews connected to my game?", "No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media."),
 ]
 
 
 def index():
+    from menu_preview import render as current_menu, additions as preview_additions
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
@@ -201,13 +198,22 @@ def index():
     perf_li = "".join(f'<li>{icon("check_circle")}<a href="https://modrinth.com/mod/{s}" target="_blank" rel="noopener">{n}</a></li>' for s, n in perf)
     features = [
         ("performance", "Smart FPS limits", "Menus, AFK and alt-tab get their own frame cap. Your FPS limit in Options is never touched."),
-        ("wings", "Cached 3D cosmetics", "Wings, hats and auras rebuild their geometry up to 60 times a second and reuse it between frames, so high refresh rates stay smooth."),
+        ("wings", "Cached 3D cosmetics", "Prepared geometry, reusable buffers and adjustable refresh rates reduce repeated work. Tune effects to suit your hardware."),
         ("edithud", "A HUD that snaps", "Drag any element. It snaps to edges, the center and other elements, with a grid and 1 px arrow-key nudges."),
-        ("layers", "Three profiles", "Save your whole setup in three slots and swap between a PvP layout and a clean one in a click."),
-        ("rpc", "Discord presence", "Your Discord status shows Larp Client, the server you're on and the game version, with two buttons you choose."),
+        ("layers", "Three profiles", "Save, load or delete a setup in three profile slots. Use the confirmed reset when you want a fresh start."),
+        ("rpc", "Discord presence", "The application identity and logo are built in. Choose your status details and links without creating a Discord app."),
         ("hotbarkeybinds", "Your real hotbar keys", "Each hotbar slot shows the key it's bound to, even if your binds are 1 2 3 4 G R."),
     ]
+    fresh = [
+        ("instantreplay", "Instant Replay", "Keep the last 30 seconds with game audio and music on Windows. Save with F8 or after a player kill."),
+        ("killeffect", "Kill Efects", "Choose Tralalero or Samurai in their own section. One selected animation after a player kill, with an in-menu preview."),
+        ("lyrics", "Lyrics", "LRCLIB lyrics in the world, on the HUD or in a compact line. Adjust size, placement, font, color and transitions."),
+        ("shulkerpreview", "Shulker Preview", "All 27 slots in a color-matched tooltip, with a preview key you can rebind."),
+        ("performancemonitor", "Performance Monitor", "Frame times, 1% lows, P95 and memory use. Optional module-tick CPU profiling shows where to look closer."),
+        ("recorder", "Recorder & screenshots", "Windowed or F11 capture, a Recordings gallery, numbered screenshots and animated previews.")
+    ]
     feat = "".join(f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t}</h3><p>{d}</p></article>' for i, t, d in features)
+    feat += "".join(f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t} <span class="new-badge">NEW</span></h3><p>{d}</p></article>' for i,t,d in fresh)
     steps = [
         ("Install Fabric", f'Run the <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Fabric installer</a> for Minecraft {CFG["minecraft"]}.'),
         ("Add the mods", "Put the Larp Client jar you got from Take and <a href=\"https://modrinth.com/mod/fabric-api\" target=\"_blank\" rel=\"noopener\" style=\"text-decoration:underline;text-underline-offset:3px\">Fabric API</a> in your <code>.minecraft/mods</code> folder."),
@@ -220,7 +226,7 @@ def index():
     cats_btn = "".join(f'<button type="button" data-cat="{k}" aria-selected="{str(i == 0).lower()}">{v["label"]}</button>' for i, (k, v) in enumerate(cos.items()))
 
     body = head("Larp Client — a visual client for Minecraft " + CFG["minecraft"],
-                f"Larp Client is a Fabric client for Minecraft {CFG['minecraft']} with {len(MODS)} modules, 3D cosmetics, a snapping HUD editor and smart FPS limits.", "/")
+                f"Larp Client is a Fabric client for Minecraft {CFG['minecraft']} with {len(MODS)} modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.", "/")
     body += nav()
     body += f"""<main id="main">
 <section class="hero">
@@ -228,27 +234,15 @@ def index():
   <div class="wrap">
     <div class="hero-copy">
       <h1>Looks illegal.<span>Isn't.</span></h1>
-      <p class="lead">Larp Client is a Fabric client for Minecraft {CFG['minecraft']}. {len(MODS)} modules, 3D cosmetics, a HUD you place anywhere and smart FPS limits. Every effect stays on your screen.</p>
+      <p class="lead">Larp Client is a Fabric client for Minecraft {CFG['minecraft']}. {len(MODS)} modules, 3D cosmetics, a HUD you place anywhere, lyrics and clips with desktop audio. Build a setup that feels like yours.</p>
       <div class="actions">
         <a class="btn btn-light" href="#access">{icon('person')}You are my friend?</a>
         {discord_btn() or f'<a class="btn btn-glass" href="/docs">{icon("doc")}Read the docs</a>'}
       </div>
       <p class="fine">Private and in development. Ask {esc(CFG['author'])} for access.</p>
     </div>
-    <div class="stage" aria-hidden="true">
-      <div class="window">
-        {window_side()}
-        <div class="main">
-          <div class="head"><div><h4>Modules</h4><p>Configure built-in client mods</p></div><span class="search">{icon('search')}</span></div>
-          <div class="tabs"><span>All</span><span class="on">HUD</span><span>PvP</span><span>Utility</span><span>Pinned</span></div>
-          <div class="cards">
-            {mini_card('infobar', 'Info Bar', 'A sleek bar with your name, server, FPS and session time', True)}
-            {mini_card('modulelist', 'Module List', 'Your active modules, sorted and animated', True)}
-            {mini_card('fps', 'FPS', 'Frames per second, updated live', False)}
-            {mini_card('ping', 'Ping', 'Your latency to the server', False)}
-          </div>
-        </div>
-      </div>
+    <div class="stage" aria-hidden="true" inert>
+      {current_menu(globals(), False)}
       <div class="splash-card"><span class="x">{icon('close')}</span><div class="dots">{dots}</div><div class="logo-wrap"><img src="/assets/img/logo.svg" alt=""></div><div class="bar"><i></i></div></div>
     </div>
   </div>
@@ -260,26 +254,20 @@ def index():
   <div class="wrap">
     <div class="section-head">
       <h2>Everything lives in one menu.</h2>
-      <p>Turn mods on, place your HUD and pick your cosmetics without leaving the game. Try it here: it's the same menu.</p>
+      <p>Turn mods on, place your HUD and pick your cosmetics without leaving the game. Try it here: it is a browser preview of the current layout.</p>
     </div>
     <div class="show-tabs" role="tablist" data-tabs aria-label="Product preview">
       <button class="show-tab" role="tab" aria-selected="true" aria-controls="p-menu" id="t-menu"><b>Menu</b><span>Right Shift in game</span></button>
       <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-hud" id="t-hud" tabindex="-1"><b>HUD editor</b><span>Drag, snap, done</span></button>
       <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-cos" id="t-cos" tabindex="-1"><b>Cosmetics</b><span>Seen in third person</span></button>
+      <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-music" id="t-music" tabindex="-1"><b>Music &amp; lyrics <small class="new-badge">NEW</small></b><span>Your soundtrack, in your world</span></button>
+      <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-captures" id="t-captures" tabindex="-1"><b>Captures <small class="new-badge">NEW</small></b><span>Clips, recordings and audio</span></button>
     </div>
     <div class="show-frame">
       <div class="chrome"><i></i><i></i><i></i><span>larp client / {CFG['version']}</span></div>
 
       <div class="panel" id="p-menu" role="tabpanel" aria-labelledby="t-menu">
-        <div class="window big" data-menu>
-          {window_side(big=True)}
-          <div class="main">
-            <div class="head"><div><h4 data-title>Modules</h4><p data-sub>Configure built-in client mods</p></div>
-              <div class="search-box"><input class="search-input" type="search" placeholder="Search mods" aria-label="Search mods"><button type="button" class="search" aria-label="Search">{icon('search')}</button></div></div>
-            <div class="tabs" data-tabs-mock></div>
-            <div class="cards" data-cards></div>
-          </div>
-        </div>
+        {current_menu(globals(), True)}
       </div>
 
       <div class="panel" id="p-hud" role="tabpanel" aria-labelledby="t-hud" hidden>
@@ -316,6 +304,7 @@ def index():
           <div class="cos-side"><div class="cos-cats" role="group" aria-label="Cosmetic type">{cats_btn}</div><div class="cos-grid"></div></div>
         </div>
       </div>
+      {preview_additions(globals())}
     </div>
   </div>
 </section>
@@ -353,7 +342,7 @@ def index():
     <div class="fair">
       <div>
         <h2>Visual only. On purpose.</h2>
-        <p>Larp changes how the game looks, never how it plays. These are the things you won't find in it, and won't in future versions.</p>
+        <p>Larp changes how the game looks, with local visuals and tools you choose. Check server rules for the modules and macros you enable.</p>
         <p style="margin-top:22px"><a class="btn btn-glass btn-sm" href="/docs/modules">See every module</a></p>
       </div>
       <ul>{nots_li}</ul>
@@ -378,22 +367,16 @@ def index():
         {dl_btn}
       </article>
       <article class="dl-card">
-        <span class="tag">In development</span>
-        <h3>Larp Launcher</h3>
-        <p class="sub">One click installs Fabric, Larp Client and the performance mods, then opens the game with your Minecraft account.</p>
-        <ul>
-          <li>{icon('check_circle')}Updates itself and your mods</li>
-          <li>{icon('check_circle')}Its own profile and folder</li>
-          <li>{icon('check_circle')}Pick your RAM and mods</li>
-        </ul>
-        <span class="btn btn-glass" aria-disabled="true">Coming soon</span>
+        <span class="tag">New in 0.14.1</span><h3>Your moments, saved.</h3>
+        <p class="sub">Instant Replay and Recorder bring captures together with your setup.</p>
+        <ul><li>{icon('check_circle')}30-second clips with desktop audio</li><li>{icon('check_circle')}A configurable clip key and kill trigger</li><li>{icon('check_circle')}Recordings in one gallery</li></ul>
+        <a class="btn btn-glass" href="/docs/instant-replay">Explore captures</a>
       </article>
       <article class="dl-card">
-        <span class="tag">Recommended</span>
-        <h3>Performance pack</h3>
-        <p class="sub">Install these next to Larp for the biggest FPS gains.</p>
-        <ul>{perf_li}</ul>
-        <a class="btn btn-glass" href="/docs/performance">Why these mods</a>
+        <span class="tag">Make it yours</span><h3>A setup that stays yours.</h3>
+        <p class="sub">Profiles, custom colors and small quality-of-life improvements throughout the client.</p>
+        <ul><li>{icon('check_circle')}Save, load and delete profiles</li><li>{icon('check_circle')}Custom accent and editable text fields</li><li>{icon('check_circle')}English and Spanish in the client</li></ul>
+        <a class="btn btn-glass" href="/docs/profiles">Set up your client</a>
       </article>
     </div>
   </div>
@@ -438,9 +421,22 @@ def not_found():
     (ROOT / "404.html").write_text(body)
 
 
+def deploy_folder():
+    dist=ROOT/'dist';dist.mkdir(exist_ok=True)
+    for name in ['index.html','404.html','favicon.png']:shutil.copy2(ROOT/name,dist/name)
+    shutil.copytree(ROOT/'assets',dist/'assets',dirs_exist_ok=True)
+    for page in (ROOT/'docs').glob('*.html'):
+        target=dist/'docs' if page.stem=='index' else dist/'docs'/page.stem
+        target.mkdir(parents=True,exist_ok=True);shutil.copy2(page,target/'index.html')
+    for name in ['sitemap.xml','robots.txt']:
+        if (ROOT/name).exists():shutil.copy2(ROOT/name,dist/name)
+
+
 if __name__ == "__main__":
     index()
     not_found()
     import docs_build
     docs_build.build(globals())
+    (ROOT/"assets/data/icons.json").write_text(json.dumps(sorted(KNOWN)))
+    deploy_folder()
     print("ok")
