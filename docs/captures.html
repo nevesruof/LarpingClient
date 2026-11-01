@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Screenshots &amp; Recorder — Larp Client</title>
+<meta name="description" content="Keep a screenshot or record a whole session.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://larpclient.vercel.app/docs/captures">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Screenshots &amp; Recorder — Larp Client">
+<meta property="og:description" content="Keep a screenshot or record a whole session.">
+<meta property="og:url" content="https://larpclient.vercel.app/docs/captures">
+<meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
+<link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
+<link rel="stylesheet" href="/assets/css/docs.css?v=a226ead9">
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
+    <div class="nav-right">
+      
+      <a class="hide-m" href="/docs/changelog">v0.14.1</a>
+      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="docs"><aside class="dside" id="docs-nav" aria-label="Documentation navigation"><button class="docs-menu-close" type="button" data-close-docs>Close navigation ×</button><div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search documentation" data-dsearch role="combobox" aria-expanded="false" aria-controls="docs-search-results" aria-autocomplete="list" autocomplete="off"><kbd>/</kbd><div class="dresults" id="docs-search-results" role="listbox" hidden></div></div><div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles & settings</a><a href="/docs/instant-replay"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg>Instant Replay</a><a href="/docs/kill-effects"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg>Kill Efects</a><a href="/docs/lyrics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Lyrics</a><a href="/docs/shulker-preview"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg>Shulker Preview</a><a href="/docs/captures" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Screenshots & Recorder</a></div><div class="dgroup"><h4>Reference</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div></aside><main class="dmain" id="main"><button class="dside-toggle" type="button" aria-expanded="false" aria-controls="docs-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button><div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg><span>Features</span></div><h1>Screenshots & Recorder</h1><p class="intro">Keep a screenshot or record a whole session.</p><div class="prose"><h2 id="screenshots">Screenshots<a class="anchor" href="#screenshots" aria-label="Link to this section">#</a></h2><p>Take a screenshot with Minecraft’s screenshot key, normally <kbd>F2</kbd>. The client uses numbered <code>ScreenShot-N</code> names, an animated preview and chat actions for copying and previewing the result.</p><h2 id="recorder">Recorder<a class="anchor" href="#recorder" aria-label="Link to this section">#</a></h2><p>Enable Recorder for an ongoing recording. Options include frame rate, resolution, encoder, quality and desktop audio. Windows capture reads the Minecraft framebuffer, so windowed and F11 modes use the same capture path.</p><h2 id="gallery">Your recordings<a class="anchor" href="#gallery" aria-label="Link to this section">#</a></h2><p>Use the Recordings button to browse captures and clips. Recorder is for a recording you explicitly start and stop; <a href="/docs/instant-replay">Instant Replay</a> keeps a rolling 30-second history.</p><h2 id="audio">Audio and resource use<a class="anchor" href="#audio" aria-label="Link to this section">#</a></h2><p>Desktop audio uses the default Windows output device. Recorder and Replay cannot be active together. Enable capture only when needed, and check the saved file before relying on a recording.</p></div><nav class="pager" aria-label="Documentation pages"><a class="" href="/docs/shulker-preview"><span>Previous</span><b>Shulker Preview</b></a><a class="next" href="/docs/modules"><span>Next</span><b>All modules</b></a></nav><p class="edited">Larp Client 0.14.1 · Minecraft 1.21.11</p></main><nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a href="#screenshots">Screenshots</a><a href="#recorder">Recorder</a><a href="#gallery">Your recordings</a><a href="#audio">Audio and resource use</a></nav></div><footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by iTake.</p>
+      </div>
+      <div><h4>Product</h4><ul>
+        <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
+        <li><a href="/#access">Get access</a></li><li><a href="/docs/changelog">Changelog</a></li></ul></div>
+      <div><h4>Docs</h4><ul>
+        <li><a href="/docs/installation">Installation</a></li><li><a href="/docs/modules">All modules</a></li>
+        <li><a href="/docs/performance">Performance</a></li><li><a href="/docs/troubleshooting">Troubleshooting</a></li></ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="/docs/credits">Credits</a></li><li><a href="/docs/faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© <span data-year>2026</span> Larp Client. Not affiliated with Mojang or Microsoft.</span>
+      <span>Minecraft 1.21.11 · Fabric</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=6666522f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script><script src="/assets/js/docs.js?v=0581a0e4" defer></script>
+</body>
+</html>

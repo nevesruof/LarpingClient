@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Macros — Larp Client</title>
-<meta name="description" content="Keys that send a command or a chat message.">
+<meta name="description" content="Commands triggered by keys and supported game events.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://larpclient.vercel.app/docs/macros">
 <link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
@@ -12,14 +12,15 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Macros — Larp Client">
-<meta property="og:description" content="Keys that send a command or a chat message.">
+<meta property="og:description" content="Commands triggered by keys and supported game events.">
 <meta property="og:url" content="https://larpclient.vercel.app/docs/macros">
 <meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">
-<link rel="stylesheet" href="/assets/css/docs.css">
+<link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
+<link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
+<link rel="stylesheet" href="/assets/css/docs.css?v=a226ead9">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -29,42 +30,19 @@
     <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
     <div class="nav-right">
       
-      <a class="hide-m" href="/docs/changelog">v0.9.5</a>
+      <a class="hide-m" href="/docs/changelog">v0.14.1</a>
       <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
-<div class="docs">
-<aside class="dside" aria-label="Docs navigation">
-  <div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search docs" data-dsearch autocomplete="off"><kbd>/</kbd><div class="dresults" hidden></div></div>
-  <div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-musicplayer"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles</a></div><div class="dgroup"><h4>Modules</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div>
-</aside>
-<main class="dmain" id="main">
-  <button type="button" class="dside-toggle" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button>
-  <div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-chevron_right"/></svg><span>Features</span></div>
-  <h1>Macros</h1>
-  <p class="intro">Keys that send a command or a chat message.</p>
-  <div class="prose">
-<p>Open the <b>Macros</b> page in the client menu and add a macro. Pick a key and type what it sends: a command like <code>/home</code> or <code>/spawn</code>, or a normal chat message.</p>
-<ul>
-<li>Press the key in game and Larp sends it, exactly as if you typed it.</li>
-<li>Macros are saved in <code>config/larpclient-macros.json</code>.</li>
-</ul>
-<div class="callout warn"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg><p>Some servers limit how fast you can send messages. Don't spam macros or you might get kicked.</p></div>
-</div>
-  <nav class="pager" aria-label="Pages"><a href="/docs/waypoints"><span>Previous</span><b>Waypoints</b></a><a class="next" href="/docs/discord-rpc"><span>Next</span><b>Discord RPC</b></a></nav>
-  <p class="edited">Larp Client 0.9.5 · Minecraft 1.21.11</p>
-</main>
-<nav class="dtoc" aria-label="On this page"></nav>
-</div>
-<footer class="foot">
+<div class="docs"><aside class="dside" id="docs-nav" aria-label="Documentation navigation"><button class="docs-menu-close" type="button" data-close-docs>Close navigation ×</button><div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search documentation" data-dsearch role="combobox" aria-expanded="false" aria-controls="docs-search-results" aria-autocomplete="list" autocomplete="off"><kbd>/</kbd><div class="dresults" id="docs-search-results" role="listbox" hidden></div></div><div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles & settings</a><a href="/docs/instant-replay"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg>Instant Replay</a><a href="/docs/kill-effects"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg>Kill Efects</a><a href="/docs/lyrics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Lyrics</a><a href="/docs/shulker-preview"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg>Shulker Preview</a><a href="/docs/captures"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Screenshots & Recorder</a></div><div class="dgroup"><h4>Reference</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div></aside><main class="dmain" id="main"><button class="dside-toggle" type="button" aria-expanded="false" aria-controls="docs-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button><div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg><span>Features</span></div><h1>Macros</h1><p class="intro">Commands triggered by keys and supported game events.</p><div class="prose"><h2 id="create">Create a macro<a class="anchor" href="#create" aria-label="Link to this section">#</a></h2><p>Open Macros, choose New macro, select a trigger and type a command such as <code>/spawn</code> or a chat message. A slash sends a command.</p><h2 id="triggers">Keys and actions<a class="anchor" href="#triggers" aria-label="Link to this section">#</a></h2><p>Macros can use key presses or supported event triggers such as a player kill, death and joining a world. Choose the action in the macro menu instead of assigning every macro a key.</p><p>Example: a kill-triggered macro can send <code>/spawn</code> after a qualifying player kill. Event detection depends on the information the server sends to the client.</p><h2 id="storage">Keep control of automation<a class="anchor" href="#storage" aria-label="Link to this section">#</a></h2><p>Edit or delete macros in the same menu. Macros are stored in <code>config/larpclient-macros.json</code>. Use commands and automation only where the server allows them; avoid repeated chat spam.</p></div><nav class="pager" aria-label="Documentation pages"><a class="" href="/docs/waypoints"><span>Previous</span><b>Waypoints</b></a><a class="next" href="/docs/discord-rpc"><span>Next</span><b>Discord RPC</b></a></nav><p class="edited">Larp Client 0.14.1 · Minecraft 1.21.11</p></main><nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a href="#create">Create a macro</a><a href="#triggers">Keys and actions</a><a href="#storage">Keep control of automation</a></nav></div><footer class="foot">
   <div class="wrap">
     <div class="top">
       <div class="about">
         <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
-        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by Take.</p>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by iTake.</p>
       </div>
       <div><h4>Product</h4><ul>
         <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
@@ -81,7 +59,6 @@
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/docs.js" defer></script>
+<script src="/assets/js/site.js?v=6666522f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script><script src="/assets/js/docs.js?v=0581a0e4" defer></script>
 </body>
 </html>
