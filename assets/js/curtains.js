@@ -11,7 +11,8 @@
     const d = img.data;
     const tint = (canvas.dataset.tint || "108,123,255").split(",").map(Number);
     const strength = parseFloat(canvas.dataset.strength || "1");
-    let visible = true, raf = 0, last = 0;
+    let intersecting = false, raf = 0, last = 0;
+    const visible = () => intersecting && !document.hidden;
 
     // Pliegues: posición, ancho y fase propios; se mueven como tela colgando.
     const folds = [];
@@ -25,8 +26,8 @@
 
     function frame(now) {
       raf = 0;
-      if (!visible) return;
-      if (now - last < 33 && !reduce) { raf = requestAnimationFrame(frame); return; } // ~30 fps
+      if (!visible()) return;
+      if (now - last < 67 && !reduce) { raf = requestAnimationFrame(frame); return; } // ~30 fps
       last = now;
       const t = reduce ? 0 : now / 1000;
       let o = 0;
@@ -63,15 +64,16 @@
 
     if ("IntersectionObserver" in window) {
       new IntersectionObserver((es) => {
-        visible = es[0].isIntersecting;
-        if (visible && !raf) raf = requestAnimationFrame(frame);
+        intersecting = es[0].isIntersecting;
+        if (!intersecting && raf) { cancelAnimationFrame(raf); raf = 0; }
+        if (visible() && !raf) raf = requestAnimationFrame(frame);
       }).observe(canvas);
     }
     document.addEventListener("visibilitychange", () => {
-      visible = !document.hidden;
-      if (visible && !raf) raf = requestAnimationFrame(frame);
+      if (document.hidden && raf) { cancelAnimationFrame(raf); raf = 0; }
+      if (visible() && !raf) raf = requestAnimationFrame(frame);
     });
-    raf = requestAnimationFrame(frame);
+    if (!("IntersectionObserver" in window)) { intersecting = true; raf = requestAnimationFrame(frame); }
   }
 
   document.querySelectorAll("canvas.curtains").forEach(start);

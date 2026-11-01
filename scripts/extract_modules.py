@@ -1,72 +1,68 @@
-"""Lee el código del mod y genera assets/data/modules.json para las docs."""
-import json, re, sys, pathlib
-src = pathlib.Path(sys.argv[1])
-out = pathlib.Path(sys.argv[2])
-order = []
-mm = (src / "module/ModuleManager.java").read_text()
-for m in re.finditer(r"new (\w+)\(\)", mm): order.append(m.group(1))
-mods = []
-STR = r'"((?:[^"\\]|\\.)*)"'
-for f in list((src / "module/impl").rglob("*.java")):
-    t = f.read_text()
-    m = re.search(r"super\(\s*" + STR + r"\s*,\s*" + STR + r"\s*,?\s*(Category\.(\w+))?\s*,?\s*(true|false)?", t, re.S)
-    if not m: continue
-    name, desc = m.group(1), m.group(2)
-    cat = m.group(4)
-    on = m.group(5) == "true"
-    if not cat:
-        if "extends HudModule" in t: cat = "HUD"
-        elif "extends Cosmetic" in t: cat = "COSMETICS"
-    cmodes = None
-    if "extends Cosmetic" in t:
-        cat, on = "COSMETICS", False
-        arr = re.search(r"new String\[\]\s*\{([^}]*)\}", t[m.start():m.start()+400])
-        cmodes = re.findall(STR, arr.group(1)) if arr else None
-    settings = []
-    for s in re.finditer(r"add\(new (Bool|Number|Mode|Color|String)Setting\(([^;]*?)\)\)(?:\.in\(" + STR + r"\))?", t, re.S):
-        kind, args, group = s.group(1), s.group(2), s.group(3)
-        strs = re.findall(STR, args)
-        if not strs: continue
-        e = {"name": strs[0], "type": kind.lower(), "group": group}
-        rest = args[args.find('"', args.find('"') + 1) + 1:]
-        if kind == "Bool": e["default"] = "true" in rest.split(",")[1]
-        elif kind == "Number":
-            nums = re.findall(r"-?\d+(?:\.\d+)?", rest)
-            if len(nums) >= 3: e.update(default=float(nums[0]), min=float(nums[1]), max=float(nums[2]))
-        elif kind == "Mode":
-            e["options"] = strs[1:]
-            const = re.search(r",\s*(\w+)\s*$", args)
-            if not e["options"] and const:
-                arr = re.search(r"String\[\]\s+" + const.group(1) + r"\s*=\s*\{([^}]*)\}", t)
-                if arr: e["options"] = re.findall(STR, arr.group(1))
-            if not e["options"]:
-                en = re.search(r"(\w+)\[\] all = \1\.values\(\)", t)
-                if en:
-                    ef = next(src.rglob(en.group(1) + ".java"), None)
-                    if ef:
-                        labels = [re.findall(STR, l.group(1))[-1] for l in re.finditer(r"^\s*[A-Z_]+\(((?:\s*\"[^\"]*\"\s*,)+)", ef.read_text(), re.M)]
-                        if "ROYAL_CROWN" in ef.read_text() and "Royal Crown" in labels:
-                            labels.remove("Royal Crown"); labels.insert(0, "Royal Crown")
-                        e["options"] = labels
-        elif kind == "String": e["default"] = strs[1] if len(strs) > 1 else ""
-        elif kind == "Color":
-            hx = re.search(r"0x([0-9A-Fa-f]{8})", rest)
-            if hx: e["default"] = "#" + hx.group(1)[2:].lower()
-        settings.append(e)
-    if "extends Cosmetic" in t:
-        settings[:0] = [{"name": "Color", "type": "mode", "group": "Color", "options": cmodes or []},
-                        {"name": "Custom color", "type": "color", "group": "Color"}]
-    if "extends HudModule" in t:
-        settings += [{"name": n, "type": ty, "group": "Style"} for n, ty in
-                     [("Scale", "number"), ("Background", "bool"), ("Background color", "color"), ("Corner radius", "number"),
-                      ("Text color", "color"), ("Chroma text", "bool"), ("Font", "mode"), ("Text shadow", "bool")]]
-        for s in settings:
-            if s["name"] == "Font" and s["group"] == "Style": s["options"] = ["Minecraft", "Clean"]
-    mods.append({"id": name.lower().replace(" ", "").replace("-", ""), "cls": f.stem, "name": name, "description": desc,
-                 "category": cat or "CLIENT", "defaultOn": on, "settings": settings})
-idx = {c: i for i, c in enumerate(order)}
-mods.sort(key=lambda m: idx.get(m["cls"], 999))
-out.parent.mkdir(parents=True, exist_ok=True)
-out.write_text(json.dumps(mods, indent=1))
+"""Build the catalog from registered Java modules and the imported Clarity definitions.
+Usage: python scripts/extract_modules.py CLIENT_JAVA_ROOT OUTPUT [CLARITY_MODULES_JSON]
+"""
+import json,re,sys,pathlib
 from collections import Counter
-print(len(mods), Counter(m["category"] for m in mods))
+src=pathlib.Path(sys.argv[1]);out=pathlib.Path(sys.argv[2])
+manager=(src/'module/ModuleManager.java').read_text()
+order=re.findall(r'MODULES\.add\(new (\w+)\(\)\)',manager)
+imported=re.search(r'for \(String n : new String\[\] \{(.*?)\}\)',manager,re.S)
+extra=re.findall(r'"(\w+)"',imported[1]) if imported else []
+order=order[:-3]+extra+order[-3:]
+clarity=json.loads(pathlib.Path(sys.argv[3]).read_text()) if len(sys.argv)>3 else {}
+old={m['cls']:m for m in json.loads(out.read_text())} if out.exists() else {}
+STR=r'"((?:[^"\\]|\\.)*)"'
+new={'ShulkerPreview','ItemDetails','InventoryAlert','LightMeter','Lyrics','KillEffect','Recorder','InstantReplay','PerformanceMonitor'}
+mods=[]
+for cls in order:
+ f=next(src.rglob(cls+'.java'));t=f.read_text();base=old.get(cls,{})
+ normal=re.search(r'super\(\s*'+STR+r'\s*,\s*'+STR,t)
+ single=re.search(r'super\(\s*'+STR+r'\s*,\s*(?:dev\.larp\.client\.module\.)?Category\.(\w+)\s*,\s*(true|false)',t)
+ if normal:
+  name,desc=normal.groups();tail=t[normal.end():];cat=re.search(r'Category\.(\w+)',tail[:200]);category=cat[1] if cat else ('HUD' if re.search(r'extends (?:Stat)?HudModule',t) else 'COSMETICS' if 'extends Cosmetic' in t else 'CLIENT')
+  on=bool(re.match(r'\s*,\s*(?:Category\.\w+\s*,\s*)?true',tail));settings=[]
+  for match in re.finditer(r'add\(new (Bool|Number|Mode|Color|String)Setting\(([^;]*?)\)\)(?:\.in\('+STR+r'\))?',t,re.S):
+   kind,args,group=match.groups();strings=re.findall(STR,args)
+   if not strings:continue
+   owner=re.search(r'(\w+)\s*=\s*$',t[:match.start()])
+   if owner and re.search(r'\b'+re.escape(owner[1])+r'\.visible\s*=\s*\(\)\s*->\s*false',t):continue
+   entry={'name':strings[0],'type':kind.lower(),'group':group}
+   rest=args[args.find('"',args.find('"')+1)+1:]
+   if kind=='Bool':entry['default']=bool(re.match(r'\s*,\s*true',rest))
+   elif kind=='Number':
+    nums=re.findall(r'(?<![\w])-?(?:\d+(?:\.\d+)?|\.\d+)',rest)
+    if len(nums)>=3:entry.update(default=float(nums[0]),min=float(nums[1]),max=float(nums[2]))
+   elif kind=='Mode':
+    entry['options']=strings[1:]
+    if not entry['options']:
+     previous=next((s for s in base.get('settings',[]) if s['name']==entry['name']),{})
+     entry['options']=previous.get('options',[])
+   elif kind=='String':entry['default']=strings[1] if len(strings)>1 else ''
+   elif kind=='Color':
+    color=re.search(r'0x[0-9a-fA-F]{2}([0-9a-fA-F]{6})',rest)
+    if color:entry['default']='#'+color[1].lower()
+   if cls=='DiscordRpc' and entry['name'] in ['Application ID','Large image key']:continue
+   if cls=='KillEffect' and entry['name'] in ['Natural colors','Color','Second color','Shockwave radius']:continue
+   settings.append(entry)
+  if re.search(r'extends (?:Stat)?HudModule',t):
+   for s in base.get('settings',[]):
+    if s.get('group')=='Style' and s['name'] not in {x['name'] for x in settings}:settings.append(s)
+ elif single:
+  name,category,on=single.groups();on=on=='true';desc=clarity.get('descriptions',{}).get(name,base.get('description',name)).rstrip('.');settings=[]
+  for row in clarity.get('settings',{}).get(name,[]):
+   label,kind,value=row[:3];entry={'name':label,'group':None}
+   if kind=='check':entry.update(type='bool',default=value)
+   elif kind=='range':entry.update(type='number',min=value[0],max=value[1],default=value[2])
+   elif kind in ['select','skinselect','capeselect']:entry.update(type='mode',options=value if isinstance(value,list) else [value])
+   elif kind in ['text','keybind']:entry.update(type='string',default=value)
+   elif kind=='color':entry.update(type='color')
+   else:continue
+   settings.append(entry)
+  if not clarity:settings=base.get('settings',[])
+ else:raise ValueError('Unrecognized registered module '+cls)
+ mid=re.search(r'String id\(\)\s*\{\s*return "([^"]+)"',t)
+ mid=mid[1] if mid else re.sub(r'[ -]','',name.lower())
+ mods.append(dict(id=mid,cls=cls,name=name,description=desc,category=category,defaultOn=on,settings=settings,new=cls in new))
+assert len({m['id'] for m in mods})==len(mods)
+out.write_text(json.dumps(mods,indent=1)+'\n')
+print(len(mods),'registered modules',dict(Counter(m['category'] for m in mods)))

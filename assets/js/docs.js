@@ -1,108 +1,30 @@
-/* Larp Client — documentación: búsqueda, filtro de módulos, índice y menú móvil */
-(function () {
-  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-
-  /* ---------- Búsqueda ---------- */
-  const input = document.querySelector("[data-dsearch]");
-  const box = document.querySelector(".dresults");
-  let index = null, sel = 0, results = [];
-  const load = () => index || (index = fetch("/assets/data/search.json").then((r) => r.json()));
-
-  function score(e, q) {
-    const t = e.t.toLowerCase(), x = (e.x + " " + (e.k || "")).toLowerCase();
-    let s = 0;
-    for (const w of q.split(/\s+/).filter(Boolean)) {
-      if (t === w) s += 10;
-      else if (t.startsWith(w)) s += 6;
-      else if (t.includes(w)) s += 4;
-      else if (x.includes(w)) s += 1;
-      else return 0;
-    }
-    return s;
-  }
-  function draw() {
-    if (!results.length) { box.innerHTML = `<div class="none">Nothing found for "${esc(input.value)}"</div>`; return; }
-    box.innerHTML = results.map((r, i) => `<a href="${r.u}" class="${i === sel ? "sel" : ""}"><b>${esc(r.t)}</b><span>${esc(r.x)}</span></a>`).join("");
-  }
-  async function run() {
-    const q = input.value.trim().toLowerCase();
-    if (!q) { box.hidden = true; return; }
-    const all = await load();
-    results = all.map((e) => [score(e, q), e]).filter((a) => a[0] > 0).sort((a, b) => b[0] - a[0]).slice(0, 8).map((a) => a[1]);
-    sel = 0; box.hidden = false; draw();
-  }
-  if (input) {
-    input.addEventListener("focus", load, { once: true });
-    input.addEventListener("input", run);
-    input.addEventListener("keydown", (e) => {
-      if (box.hidden) return;
-      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); sel = (sel + (e.key === "ArrowDown" ? 1 : results.length - 1)) % Math.max(1, results.length); draw(); }
-      else if (e.key === "Enter" && results[sel]) { location.href = results[sel].u; box.hidden = true; }
-      else if (e.key === "Escape") { box.hidden = true; input.blur(); }
-    });
-    document.addEventListener("click", (e) => { if (!e.target.closest(".dsearch")) box.hidden = true; });
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "/" && !/input|textarea/i.test(document.activeElement.tagName)) {
-        e.preventDefault();
-        const side = document.querySelector(".dside");
-        if (getComputedStyle(document.querySelector(".dside-toggle")).display !== "none") side.classList.add("open");
-        input.focus();
-      }
-    });
-  }
-
-  /* ---------- Menú lateral en móvil ---------- */
-  const tog = document.querySelector(".dside-toggle"), side = document.querySelector(".dside");
-  if (tog && side) {
-    tog.addEventListener("click", () => { const o = side.classList.toggle("open"); tog.setAttribute("aria-expanded", o); });
-    side.addEventListener("click", (e) => { if (e.target.closest(".dgroup a")) side.classList.remove("open"); });
-  }
-
-  /* ---------- Filtro de módulos ---------- */
-  const mf = document.querySelector("[data-mfilter]");
-  if (mf) {
-    const btns = [...document.querySelectorAll(".mfilter button")];
-    const mods = [...document.querySelectorAll(".mod")], heads = [...document.querySelectorAll(".mcat")];
-    const none = document.querySelector("[data-mnone]");
-    let cat = "";
-    const apply = () => {
-      const q = mf.value.trim().toLowerCase();
-      let shown = 0;
-      const per = {};
-      mods.forEach((m) => {
-        const ok = (!cat || m.dataset.cat === cat) && (!q || q.split(/\s+/).every((w) => m.dataset.text.includes(w)));
-        m.hidden = !ok;
-        if (ok) { shown++; per[m.dataset.cat] = (per[m.dataset.cat] || 0) + 1; }
-        if (ok && q) m.open = false;
-      });
-      heads.forEach((h) => (h.hidden = !per[h.dataset.cat]));
-      none.hidden = shown > 0;
-    };
-    mf.addEventListener("input", apply);
-    btns.forEach((b) => b.addEventListener("click", () => { cat = b.dataset.cat; btns.forEach((x) => x.setAttribute("aria-pressed", x === b)); apply(); }));
-    // Abrir el módulo enlazado con #id
-    const openHash = () => {
-      const t = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-      if (t && t.classList.contains("mod")) { t.hidden = false; t.open = true; setTimeout(() => t.scrollIntoView({ block: "start" }), 0); }
-    };
-    addEventListener("hashchange", openHash);
-    openHash();
-  }
-
-  /* ---------- Índice: resaltar la sección actual ---------- */
-  const links = [...document.querySelectorAll(".dtoc a")];
-  if (links.length && "IntersectionObserver" in window) {
-    const targets = links.map((a) => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
-    const vis = new Set();
-    const io = new IntersectionObserver((es) => {
-      es.forEach((e) => (e.isIntersecting ? vis.add(e.target) : vis.delete(e.target)));
-      let cur = targets.find((t) => vis.has(t));
-      if (!cur) {
-        const above = targets.filter((t) => t.getBoundingClientRect().top < 120);
-        cur = above[above.length - 1];
-      }
-      links.forEach((a) => a.classList.toggle("active", !!cur && a.getAttribute("href") === "#" + cur.id));
-    }, { rootMargin: "-70px 0px -60% 0px" });
-    targets.forEach((t) => io.observe(t));
-  }
+/* Documentation search, accessible navigation and catalog filtering. */
+(() => {
+ const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+ const input=$('[data-dsearch]'),box=$('.dresults');let cached=null,selected=0,results=[],sequence=0;
+ const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const getIndex=()=>cached||(cached=fetch('/assets/data/search.json').then(r=>{if(!r.ok)throw Error();return r.json();}).catch(e=>{cached=null;throw e;}));
+ function closeSearch(){if(!box)return;box.hidden=true;input.setAttribute('aria-expanded','false');input.removeAttribute('aria-activedescendant');}
+ function draw(){box.innerHTML=results.length?results.map((r,i)=>'<a role="option" id="doc-result-'+i+'" aria-selected="'+String(i===selected)+'" href="'+escape(r.u)+'" class="'+(i===selected?'sel':'')+'"><b>'+escape(r.t)+'</b><span>'+escape(r.x)+'</span></a>').join(''):'<p class="none">No results for “'+escape(input.value)+'”.</p>';if(results.length)input.setAttribute('aria-activedescendant','doc-result-'+selected);else input.removeAttribute('aria-activedescendant');}
+ async function search(){const current=++sequence,q=input.value.trim().toLowerCase();if(!q){closeSearch();return;}try{const all=await getIndex();if(current!==sequence)return;const words=q.split(/\s+/);results=all.map(item=>{const t=item.t.toLowerCase(),content=(t+' '+item.x+' '+(item.k||'')).toLowerCase();return [words.every(w=>content.includes(w))?words.reduce((n,w)=>n+(t===w?10:t.startsWith(w)?6:t.includes(w)?4:1),0):0,item];}).filter(x=>x[0]).sort((a,b)=>b[0]-a[0]).slice(0,8).map(x=>x[1]);selected=0;box.hidden=false;input.setAttribute('aria-expanded','true');draw();}catch{box.hidden=false;box.innerHTML='<p class="none">Search is unavailable. Use the navigation below.</p>';}}
+ input?.addEventListener('focus',()=>{getIndex().catch(()=>{});if(input.value.trim())search();});
+ input?.addEventListener('input',search);
+ input?.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSearch();return;}if(box.hidden)return;if(['ArrowDown','ArrowUp'].includes(e.key)){e.preventDefault();selected=(selected+(e.key==='ArrowDown'?1:results.length-1))%Math.max(1,results.length);draw();$('#doc-result-'+selected)?.scrollIntoView({block:'nearest'});}if(e.key==='Enter'&&results[selected]){e.preventDefault();location.href=results[selected].u;closeSearch();}});
+ document.addEventListener('click',e=>{if(!e.target.closest('.dsearch'))closeSearch();});
+ const toggle=$('.dside-toggle'),side=$('.dside'),mobile=matchMedia('(max-width:860px)');
+ function closeDocs(){side?.classList.remove('open');toggle?.setAttribute('aria-expanded','false');if(side)side.inert=mobile.matches;}
+ function openDocs(){side.classList.add('open');side.inert=false;toggle.setAttribute('aria-expanded','true');}
+ toggle?.addEventListener('click',()=>{if(side.classList.contains('open'))closeDocs();else openDocs();});
+ $('[data-close-docs]')?.addEventListener('click',()=>{closeDocs();toggle.focus();});
+ side?.addEventListener('click',e=>{if(e.target.closest('.dgroup a'))closeDocs();});
+ mobile.addEventListener('change',closeDocs);closeDocs();
+ document.addEventListener('keydown',e=>{if(e.key==='/'&&!e.metaKey&&!e.ctrlKey&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();if(mobile.matches)openDocs();input?.focus();}if(e.key==='Escape'&&side?.classList.contains('open')){closeDocs();toggle.focus();}});
+ const filter=$('[data-msearch]'),buttons=$$('[data-f]'),modules=$$('.mod'),heads=$$('.mcat');let category='all';
+ function apply(){const words=filter.value.trim().toLowerCase().split(/\s+/).filter(Boolean),counts={};let count=0;modules.forEach(m=>{const show=(category==='all'||m.dataset.cat===category)&&words.every(w=>m.dataset.text.includes(w));m.hidden=!show;if(show){count++;counts[m.dataset.cat]=(counts[m.dataset.cat]||0)+1;}});heads.forEach(h=>h.hidden=!counts[h.dataset.cat]);$$('.dtoc a').forEach(a=>{if(a.hash.startsWith('#cat-'))a.hidden=!counts[a.hash.slice(5).toUpperCase()];});$('.mod-empty').hidden=count>0;$('[data-mcount]').textContent=count+' of '+modules.length+' modules';}
+ filter?.addEventListener('input',apply);
+ buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.f;buttons.forEach(b=>{b.classList.toggle('on',b===button);b.setAttribute('aria-pressed',String(b===button));});apply();}));
+ function openHash(){let id;try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}const target=document.getElementById(id);if(target?.classList.contains('mod')){if(filter){filter.value='';category='all';buttons.forEach(b=>{b.classList.toggle('on',b.dataset.f==='all');b.setAttribute('aria-pressed',String(b.dataset.f==='all'));});apply();}target.open=true;setTimeout(()=>target.scrollIntoView({block:'start'}),50);}}
+ if(filter){apply();openHash();addEventListener('hashchange',openHash);}
+ const links=$$('.dtoc a'),targets=links.map(a=>document.getElementById(a.hash.slice(1))).filter(Boolean);
+ if(targets.length){const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash==='#'+entry.target.id));});},{rootMargin:'-100px 0px -60% 0px'});targets.forEach(t=>observer.observe(t));}
 })();

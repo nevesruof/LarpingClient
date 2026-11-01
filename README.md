@@ -1,49 +1,55 @@
-# Larp Client — sitio web
+# Larp Client website · 0.14.1
 
-Landing + documentación de Larp Client, estilo zeta.ac. HTML/CSS/JS estático (sin frameworks), listo para Vercel.
+The original Larp website, updated in place. Its original landing layout, Inter typography, black/glass palette, rounded cards, curtains, tilted hero and loading-card preview are preserved.
 
-## Subirlo a Vercel
-1. Sube esta carpeta a un repo de GitHub.
-2. En vercel.com → **Add New → Project** → importa el repo.
-3. Framework Preset: **Other**. Build Command: vacío. Output Directory: vacío (la raíz).
-4. Deploy. `vercel.json` ya activa las URLs limpias (`/docs/modules` en vez de `/docs/modules.html`) y la caché.
+## What changed
 
-Con la CLI: `npm i -g vercel` y luego `vercel --prod` dentro de la carpeta.
+- The old menu illustration is replaced by the current client layout: category sidebar, separate profile panel, two-column module cards and lower search/actions bar.
+- The interactive preview includes HUD, PvP, Utility, Visuals, Cosmetics, Kill Efects, Waypoints, Macros, Discord and Client settings.
+- Existing product-preview tabs retain the HUD editor and cosmetic selector. Music & lyrics and Captures are added in the same tab system.
+- Text, feature cards, requirements, release notes and guides reflect client 0.14.1, with 116 registered modules and NEW badges for recent additions.
+- Discord identity is built in. The existing private-access contact remains unchanged.
 
-## Antes de publicar
-El cliente es privado: los botones dicen **"You are my friend?"** y llevan a la sección de acceso, donde
-la gente te escribe para que les des el mod. En `site.config.json`:
-- **contactUrl**: tu link de contacto (por ejemplo tu perfil de Discord `https://discord.com/users/TU_ID`
-  o una invitación). Si está vacío se usa `discordUrl`; si ambos están vacíos el botón aparece sin link.
-- **contactLabel**: el texto del botón (por defecto "Message Take").
-- **discordUrl**: invitación a tu servidor. Si está vacío, los botones de Discord no aparecen.
-- **siteUrl**: tu dominio final (se usa en las etiquetas para compartir en Discord/Twitter).
+## Build and preview
 
-Después de cambiar `site.config.json` vuelve a generar:
-```
-python scripts/build.py
+No Node packages or framework installation are required. Python 3 builds the site:
+
+```sh
+python3 scripts/build.py
+python3 scripts/validate.py
+python3 -m http.server 8000 --directory dist
 ```
 
-## Estructura
-```
-index.html            landing (generada)
-404.html              página no encontrada (generada)
-docs/*.html           documentación (generada, 17 páginas)
-assets/css            site.css (landing y base) · docs.css
-assets/js             site.js (menú interactivo, HUD arrastrable, cosméticos) · curtains.js (fondo de cortinas) · docs.js (búsqueda, filtro, índice)
-assets/data           modules.json (sacado del código del mod) · search.json (índice de búsqueda)
-assets/img            logo.svg · icons.svg (mismos íconos Material que el cliente) · cosmetics/ (renders reales) · og.jpg
-assets/fonts          Inter (OFL)
-scripts/              build.py · docs_build.py (contenido de las docs) · extract_modules.py · build_icons.py
+Open `http://localhost:8000`. For Vercel, the repository includes the generated pages and assets at its root: use framework **Other**, no install/build commands and output directory **.** (the root). The build also produces `dist/` for other static hosts. Regenerate before publishing source changes.
+
+## Source structure
+
+- `scripts/build.py`: original landing composition, common header/footer and static output.
+- `scripts/menu_preview.py`: updated menu and new preview-tab markup.
+- `assets/css/site.css`: original stylesheet, preserved unchanged.
+- `assets/css/docs.css`: original documentation stylesheet, preserved unchanged.
+- `assets/css/client-preview.css`: scoped styling for the current menu and added controls.
+- `assets/js/site.js`: original tabs, draggable HUD and cosmetic selector; the obsolete menu renderer is removed.
+- `assets/js/client-preview.js`: current menu, category navigation, local module toggles/settings, exclusive kill selection, profile/reset demonstrations and sample lyrics controls.
+- `assets/js/curtains.js`: original visual effect, throttled and suspended offscreen or while the tab is hidden.
+- `assets/data/modules.json`: current 116-module catalog extracted from the client source.
+- `scripts/content_updates.py` and `scripts/docs_build.py`: current guides and searchable reference.
+- `site.config.json`: version, requirements and existing contact.
+
+To refresh the catalog from client source:
+
+```sh
+python3 scripts/extract_modules.py PATH_TO_CLIENT/src/main/java/dev/larp/client assets/data/modules.json PATH_TO_CLIENT/src/main/resources/assets/larpclient/clarity/modules.json
+python3 scripts/build.py
+python3 scripts/validate.py
 ```
 
-## Cuando agregues módulos al cliente
-```
-python scripts/extract_modules.py <ruta>/larp-client/src/main/java/dev/larp/client assets/data/modules.json
-python scripts/build.py
-```
-Eso actualiza el menú interactivo de la landing, los números y la referencia de módulos de las docs.
-Para cambiar textos de las docs edita `scripts/docs_build.py`; para la landing, `scripts/build.py`.
+## Preview boundaries
 
-## Créditos
-Íconos Material (Apache 2.0), fuente Inter (SIL OFL 1.1), motor de cosméticos de Clarity (CC0).
+The menu is a browser demonstration; its controls never change Minecraft settings or send game commands. Supplied gameplay screenshots and original cosmetic renders are real assets. Lyrics text is original sample copy. Capture posters do not play or record actual media.
+
+Client desktop media features require Windows. Website previews do not establish client FPS or native capture compatibility.
+
+## Credits
+
+Material Icons (Apache 2.0), Inter (SIL OFL), Clarity cosmetic renders (CC0) and gameplay screenshots supplied by the project owner. Not affiliated with Mojang or Microsoft.

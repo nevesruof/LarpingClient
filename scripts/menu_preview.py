@@ -1,0 +1,29 @@
+"""The current client menu, contained within the original website preview frame."""
+import html
+
+def render(g,interactive=False):
+ icon,cfg,mods=g['icon'],g['CFG'],g['MODS'];esc=html.escape
+ counts={c:sum(m['category']==c for m in mods) for c in ['HUD','PVP','UTILITY','VISUALS','COSMETICS']}
+ pages=[('HUD','HUD','modules'),('PVP','PvP','keystrokes'),('UTILITY','Utility','performance'),('VISUALS','Visuals','visuals'),('COSMETICS','Cosmetics','cosmetics'),('KILL','Kill Efects','killeffect'),('WAYPOINTS','Waypoints','waypoints'),('MACROS','Macros','macros'),('DISCORD','Discord','rpc'),('CLIENT','Client','settings')]
+ navigation=[]
+ for key,label,ic in pages:
+  count=counts.get(key,2 if key=='KILL' else '')
+  inner=f'{icon(ic)}<span>{label}</span>'+ (f'<b>{count}</b>' if count!='' else '')
+  navigation.append(f'<button type="button" class="cp-nav{(" selected" if key=="HUD" else "")}" data-cp-page="{key}" aria-pressed="{str(key=="HUD").lower()}">{inner}</button>' if interactive else f'<div class="cp-nav{(" selected" if key=="HUD" else "")}">{inner}</div>')
+ selected=[next(m for m in mods if m['id']==key) for key in ['infobar','modulelist','fps','ping','coordinates','direction']]
+ cards=''.join(f'<article class="cp-module{(" enabled" if m["defaultOn"] else "")}"><h5>{esc(m["name"])}</h5><p>{esc(m["description"])}</p><span class="cp-gear">{icon("settings")}</span><span class="cp-switch"></span></article>' for m in selected)
+ attrs=' data-client-preview' if interactive else ''
+ footer=f'<label class="cp-search">{icon("search")}'+('<input type="search" placeholder="Search modules…" aria-label="Search client preview modules" data-cp-search>' if interactive else '<span>Search modules…</span>')+'<kbd>⌘ F</kbd></label>'
+ for action,ic,label in [('PROFILES','layers','Profiles'),('HUD_EDITOR','edithud','Open HUD editor preview'),('CLIENT','settings','Client settings'),('CAPTURES','play','Recordings')]:
+  footer+=f'<button type="button" class="cp-tool" data-cp-action="{action}" aria-label="{label}">{icon(ic)}</button>' if interactive else f'<span class="cp-tool">{icon(ic)}</span>'
+ return f'''<div class="window client-preview{(' big' if interactive else '')}"{attrs}>
+ <aside class="cp-left"><div class="cp-sidebar"><div class="cp-brand"><img src="/assets/img/logo.svg" width="36" height="36" alt=""><div><b>Larp</b><span>Client {cfg['version']}</span></div></div><nav aria-label="Client preview categories">{''.join(navigation)}</nav></div><div class="cp-profile"><img src="/assets/img/logo.svg" width="30" height="30" alt=""><div><b>{esc(cfg['author'])}</b><span>Web preview</span><small data-cp-active>Customize your setup</small></div></div></aside>
+ <section class="cp-panel"><header class="cp-header"><span class="cp-header-icon" data-cp-icon>{icon('modules')}</span><div><h4 data-cp-title>HUD</h4><p data-cp-sub>{counts['HUD']} modules · your information, your way</p></div><span class="cp-grip">⠿</span></header><div class="cp-content" data-cp-content>{cards}</div></section>
+ <div class="cp-toolbar">{footer}</div>
+ {('<div class="cp-options" data-cp-options hidden><div class="cp-options-head"><h4 data-cp-options-title>Module settings</h4><button type="button" data-cp-close aria-label="Close preview options">'+icon('close')+'</button></div><div data-cp-options-body></div></div><p class="cp-toast" data-cp-toast role="status" aria-live="polite"></p>') if interactive else ''}
+ </div>'''
+
+def additions(g):
+ icon=g['icon']
+ return f'''<div class="panel" id="p-music" role="tabpanel" aria-labelledby="t-music" hidden><div class="music-preview"><div class="music-world"><span class="preview-caption">Illustrative lyrics placement · actual gameplay background</span><div class="sample-lyrics" data-preview-lyric>Your world. Your soundtrack.</div><div class="sample-music"><img src="/assets/img/logo.svg" width="48" height="48" alt=""><div><b>A world of your own</b><span>Sample track · web preview</span></div><button type="button" data-next-lyric aria-label="Next sample lyric">{icon('play')}</button></div></div><div class="music-settings"><h3>Music, as part of your world.</h3><p>Lyrics from LRCLIB, shown in the world, on your HUD or in a compact line. The words below are original sample copy.</p><label>Font <select data-preview-font aria-label="Lyrics demo font"><option value="regular">Inter</option><option value="bold">Inter Bold</option></select></label><label>Size <input type="range" min="18" max="36" value="26" data-preview-size aria-label="Lyrics demo size"></label><label>Color <input type="color" value="#c4c7ff" data-preview-color aria-label="Lyrics demo color"></label><a class="btn btn-glass btn-sm" href="/docs/lyrics">Read the lyrics guide {icon('arrow')}</a></div></div></div>
+ <div class="panel" id="p-captures" role="tabpanel" aria-labelledby="t-captures" hidden><div class="capture-preview"><div class="capture-poster"><img src="/assets/img/screenshots/aurora-800.webp" width="800" height="420" loading="lazy" alt="Actual Larp gameplay used as a sample recording poster"><span class="preview-caption">Illustrative capture interface</span><div class="capture-bottom"><span>{icon('music')} Desktop audio</span><b>Clip-1.mp4 · 00:30</b></div></div><div class="capture-copy"><span class="new-badge">NEW</span><h3>Keep the moment. Keep the sound.</h3><p>Instant Replay saves your last 30 seconds with Windows desktop audio. Press F8, choose your own key, or save after a player kill.</p><ul><li>Clip-N.mp4 files in the Recordings gallery</li><li>Game audio and music from your output device</li><li>Bounded buffers and background export</li></ul><a class="btn btn-glass btn-sm" href="/docs/instant-replay">Instant Replay guide {icon('arrow')}</a><p class="preview-note">Recorder is available for longer sessions. These previews do not record your browser or change client settings.</p></div></div></div>'''

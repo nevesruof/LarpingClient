@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Troubleshooting — Larp Client</title>
-<meta name="description" content="Fixes for the most common problems.">
+<meta name="description" content="Find a clear starting point when something goes wrong.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://larpclient.vercel.app/docs/troubleshooting">
 <link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
@@ -12,14 +12,15 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Troubleshooting — Larp Client">
-<meta property="og:description" content="Fixes for the most common problems.">
+<meta property="og:description" content="Find a clear starting point when something goes wrong.">
 <meta property="og:url" content="https://larpclient.vercel.app/docs/troubleshooting">
 <meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">
-<link rel="stylesheet" href="/assets/css/docs.css">
+<link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
+<link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
+<link rel="stylesheet" href="/assets/css/docs.css?v=a226ead9">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -29,57 +30,19 @@
     <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
     <div class="nav-right">
       
-      <a class="hide-m" href="/docs/changelog">v0.9.5</a>
+      <a class="hide-m" href="/docs/changelog">v0.14.1</a>
       <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
-<div class="docs">
-<aside class="dside" aria-label="Docs navigation">
-  <div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search docs" data-dsearch autocomplete="off"><kbd>/</kbd><div class="dresults" hidden></div></div>
-  <div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-musicplayer"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles</a></div><div class="dgroup"><h4>Modules</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div>
-</aside>
-<main class="dmain" id="main">
-  <button type="button" class="dside-toggle" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button>
-  <div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-chevron_right"/></svg><span>Help</span></div>
-  <h1>Troubleshooting</h1>
-  <p class="intro">Fixes for the most common problems.</p>
-  <div class="prose">
-<h2 id="crash-on-start">The game crashes on start<a class="anchor" href="#crash-on-start" aria-label="Link to this section">#</a></h2>
-<ul>
-<li>Check that Fabric API is the <b>1.21.11</b> version and that there's only one copy of it.</li>
-<li>Check you're launching the Fabric 1.21.11 profile, not vanilla or another version.</li>
-<li>Remove other mods to find a conflict, especially ones that change the title screen, menus or HUD.</li>
-<li>The crash report is in <code>.minecraft/crash-reports</code>; the latest log is <code>.minecraft/logs/latest.log</code>.</li>
-</ul>
-<h2 id="menu-wont-open">The menu doesn't open<a class="anchor" href="#menu-wont-open" aria-label="Link to this section">#</a></h2>
-<p>Another mod may use <kbd>Right Shift</kbd>. Change the key in Options → Controls → Larp Client, or use the <b>Client</b> button on the title screen.</p>
-<h2 id="low-fps">Low FPS<a class="anchor" href="#low-fps" aria-label="Link to this section">#</a></h2>
-<p>Install the <a href="/docs/performance#recommended-mods">recommended mods</a>, turn on <a href="/docs/modules#fpsboost">FPS Boost</a>, lower <b>Cosmetic FPS</b> to 30 and turn on <b>Reduced menu effects</b> in Settings.</p>
-<h2 id="cosmetics-missing">I can't see my cosmetics<a class="anchor" href="#cosmetics-missing" aria-label="Link to this section">#</a></h2>
-<p>Press <kbd>F5</kbd>: cosmetics are hidden in first person unless you turn on <b>Show in first person</b> in their settings. Other players don't see them.</p>
-<h2 id="rpc-not-showing">Discord status doesn't show<a class="anchor" href="#rpc-not-showing" aria-label="Link to this section">#</a></h2>
-<ul>
-<li>Use the Discord desktop app, not the browser.</li>
-<li>In Discord, turn on User Settings → Activity Privacy → <b>Share my activity</b>.</li>
-<li>Check the Application ID and that the asset is named exactly <code>logo</code>.</li>
-</ul>
-<h2 id="settings-reset">My settings reset<a class="anchor" href="#settings-reset" aria-label="Link to this section">#</a></h2>
-<p>If the game closes by crashing, the last changes may not be saved. Save a <a href="/docs/profiles">profile</a> as a backup.</p>
-</div>
-  <nav class="pager" aria-label="Pages"><a href="/docs/faq"><span>Previous</span><b>FAQ</b></a><a class="next" href="/docs/changelog"><span>Next</span><b>Changelog</b></a></nav>
-  <p class="edited">Larp Client 0.9.5 · Minecraft 1.21.11</p>
-</main>
-<nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a class="" href="#crash-on-start">The game crashes on start</a><a class="" href="#menu-wont-open">The menu doesn&#x27;t open</a><a class="" href="#low-fps">Low FPS</a><a class="" href="#cosmetics-missing">I can&#x27;t see my cosmetics</a><a class="" href="#rpc-not-showing">Discord status doesn&#x27;t show</a><a class="" href="#settings-reset">My settings reset</a></nav>
-</div>
-<footer class="foot">
+<div class="docs"><aside class="dside" id="docs-nav" aria-label="Documentation navigation"><button class="docs-menu-close" type="button" data-close-docs>Close navigation ×</button><div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search documentation" data-dsearch role="combobox" aria-expanded="false" aria-controls="docs-search-results" aria-autocomplete="list" autocomplete="off"><kbd>/</kbd><div class="dresults" id="docs-search-results" role="listbox" hidden></div></div><div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles & settings</a><a href="/docs/instant-replay"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg>Instant Replay</a><a href="/docs/kill-effects"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg>Kill Efects</a><a href="/docs/lyrics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Lyrics</a><a href="/docs/shulker-preview"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg>Shulker Preview</a><a href="/docs/captures"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Screenshots & Recorder</a></div><div class="dgroup"><h4>Reference</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div></aside><main class="dmain" id="main"><button class="dside-toggle" type="button" aria-expanded="false" aria-controls="docs-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button><div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg><span>Help</span></div><h1>Troubleshooting</h1><p class="intro">Find a clear starting point when something goes wrong.</p><div class="prose"><h2 id="startup">Minecraft does not start<a class="anchor" href="#startup" aria-label="Link to this section">#</a></h2><p>Use Minecraft 1.21.11, Java 21, Fabric Loader 0.20.1+ and matching Fabric API. Remove duplicate Larp JARs. Keep the latest log when asking for help.</p><h2 id="performance">Frame times are high<a class="anchor" href="#performance" aria-label="Link to this section">#</a></h2><p>Enable the Performance Monitor, compare the same scene and disable effects one at a time. Recording, blur, shaders and high effect counts have a cost. See <a href="/docs/performance">the performance guide</a>.</p><h2 id="clips">Replay did not save<a class="anchor" href="#clips" aria-label="Link to this section">#</a></h2><p>Wait for the 30-second buffer, leave 10 seconds between save requests, check disk space and confirm Recorder is stopped. Read the capture notification for an audio-device or encoder error.</p><h2 id="audio">No audio or media information<a class="anchor" href="#audio" aria-label="Link to this section">#</a></h2><p>Desktop media features require Windows. Check the active output device and media session. Instant Replay uses the default output device and does not capture a microphone.</p><h2 id="rpc">Discord presence is missing<a class="anchor" href="#rpc" aria-label="Link to this section">#</a></h2><p>Use the Discord desktop app and review activity visibility. The application identity is built in; there is no Application ID field you need to fill.</p><h2 id="lyrics">Lyrics are unavailable<a class="anchor" href="#lyrics" aria-label="Link to this section">#</a></h2><p>Verify the title and artist reported by your player. LRCLIB may not have the same recording, an instrumental track or synchronized lines.</p><h2 id="keys">A key does nothing<a class="anchor" href="#keys" aria-label="Link to this section">#</a></h2><p>Check for conflicting keybinds in Minecraft Controls. The module must be enabled, and some actions require a world or an inventory to be open.</p></div><nav class="pager" aria-label="Documentation pages"><a class="" href="/docs/faq"><span>Previous</span><b>FAQ</b></a><a class="next" href="/docs/changelog"><span>Next</span><b>Changelog</b></a></nav><p class="edited">Larp Client 0.14.1 · Minecraft 1.21.11</p></main><nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a href="#startup">Minecraft does not start</a><a href="#performance">Frame times are high</a><a href="#clips">Replay did not save</a><a href="#audio">No audio or media information</a><a href="#rpc">Discord presence is missing</a><a href="#lyrics">Lyrics are unavailable</a><a href="#keys">A key does nothing</a></nav></div><footer class="foot">
   <div class="wrap">
     <div class="top">
       <div class="about">
         <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
-        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by Take.</p>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by iTake.</p>
       </div>
       <div><h4>Product</h4><ul>
         <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
@@ -96,7 +59,6 @@
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js" defer></script>
-<script src="/assets/js/docs.js" defer></script>
+<script src="/assets/js/site.js?v=6666522f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script><script src="/assets/js/docs.js?v=0581a0e4" defer></script>
 </body>
 </html>

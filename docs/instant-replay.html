@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instant Replay — Larp Client</title>
+<meta name="description" content="Keep the last 30 seconds, including desktop audio.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://larpclient.vercel.app/docs/instant-replay">
+<link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Instant Replay — Larp Client">
+<meta property="og:description" content="Keep the last 30 seconds, including desktop audio.">
+<meta property="og:url" content="https://larpclient.vercel.app/docs/instant-replay">
+<meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
+<link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
+<link rel="stylesheet" href="/assets/css/docs.css?v=a226ead9">
+</head>
+<body>
+<a class="sr-only" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a></nav>
+    <div class="nav-right">
+      
+      <a class="hide-m" href="/docs/changelog">v0.14.1</a>
+      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs" aria-current="page">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="docs"><aside class="dside" id="docs-nav" aria-label="Documentation navigation"><button class="docs-menu-close" type="button" data-close-docs>Close navigation ×</button><div class="dsearch"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search docs" aria-label="Search documentation" data-dsearch role="combobox" aria-expanded="false" aria-controls="docs-search-results" aria-autocomplete="list" autocomplete="off"><kbd>/</kbd><div class="dresults" id="docs-search-results" role="listbox" hidden></div></div><div class="dgroup"><h4>Getting started</h4><a href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-home"/></svg>Introduction</a><a href="/docs/installation"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-download"/></svg>Installation</a><a href="/docs/client-menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>The client menu</a><a href="/docs/keybinds"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keybinds"/></svg>Keybinds</a></div><div class="dgroup"><h4>Features</h4><a href="/docs/hud-editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>HUD editor</a><a href="/docs/cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg>Cosmetics</a><a href="/docs/waypoints"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</a><a href="/docs/macros"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</a><a href="/docs/discord-rpc"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>Discord RPC</a><a href="/docs/music-player"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Music player</a><a href="/docs/profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg>Profiles & settings</a><a href="/docs/instant-replay" aria-current="page"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg>Instant Replay</a><a href="/docs/kill-effects"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg>Kill Efects</a><a href="/docs/lyrics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Lyrics</a><a href="/docs/shulker-preview"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg>Shulker Preview</a><a href="/docs/captures"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Screenshots & Recorder</a></div><div class="dgroup"><h4>Reference</h4><a href="/docs/modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>All modules</a></div><div class="dgroup"><h4>Help</h4><a href="/docs/performance"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg>Performance</a><a href="/docs/faq"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-info"/></svg>FAQ</a><a href="/docs/troubleshooting"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-warning2"/></svg>Troubleshooting</a><a href="/docs/changelog"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>Changelog</a><a href="/docs/credits"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-favorite"/></svg>Credits</a></div></aside><main class="dmain" id="main"><button class="dside-toggle" type="button" aria-expanded="false" aria-controls="docs-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg>Docs menu</button><div class="crumbs"><a href="/docs">Docs</a><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg><span>Features</span></div><h1>Instant Replay</h1><p class="intro">Keep the last 30 seconds, including desktop audio.</p><div class="prose"><h2 id="enable">Start your replay buffer<a class="anchor" href="#enable" aria-label="Link to this section">#</a></h2><p>On Windows, enable Utility → Instant Replay. Wait at least 30 seconds for the rolling buffer to warm up. Capture is off by default and is not restored automatically from a profile.</p><h2 id="save">Save a moment<a class="anchor" href="#save" aria-label="Link to this section">#</a></h2><ul><li>Press <kbd>F8</kbd> to save a clip. Rebind Save last 30 seconds in Minecraft Controls if needed.</li><li>Enable Save on player kill for automatic clips after qualifying player kills.</li><li>Clips are named <code>Clip-N.mp4</code> and appear in the recordings folder and Recordings gallery.</li></ul><h2 id="sound">Game audio and music<a class="anchor" href="#sound" aria-label="Link to this section">#</a></h2><p>Version 0.14.1 captures stereo audio from Windows’ default output device, including game audio and music using that device. It does not capture your microphone. Missing audio packets are kept as silence so later sound does not shift forward.</p><h2 id="limits">A deliberately bounded buffer<a class="anchor" href="#limits" aria-label="Link to this section">#</a></h2><p>Capture is up to 720p at 30 FPS. The client retains roughly 33 compressed video segments and 40 seconds of PCM audio. At 48 kHz, the audio history is about 7.3 MiB. Clip export uses AAC audio and runs in the background.</p><p>There is one pending export at a time and at least 10 seconds between requests. The video buffer stops if it exceeds its 256 MiB storage limit.</p><h2 id="exclusive">Recorder and Replay<a class="anchor" href="#exclusive" aria-label="Link to this section">#</a></h2><p>Recorder and Instant Replay are mutually exclusive because they share the capture path. Stop one before enabling the other. Disabling Replay stops audio capture and removes its temporary buffer.</p><h2 id="troubleshoot">If a clip cannot be saved<a class="anchor" href="#troubleshoot" aria-label="Link to this section">#</a></h2><p>Check the warm-up notice, your default Windows audio device, free disk space and the capture module state. Audio initialization failure is reported instead of silently saving a muted clip.</p></div><nav class="pager" aria-label="Documentation pages"><a class="" href="/docs/profiles"><span>Previous</span><b>Profiles & settings</b></a><a class="next" href="/docs/kill-effects"><span>Next</span><b>Kill Efects</b></a></nav><p class="edited">Larp Client 0.14.1 · Minecraft 1.21.11</p></main><nav class="dtoc" aria-label="On this page"><h4>On this page</h4><a href="#enable">Start your replay buffer</a><a href="#save">Save a moment</a><a href="#sound">Game audio and music</a><a href="#limits">A deliberately bounded buffer</a><a href="#exclusive">Recorder and Replay</a><a href="#troubleshoot">If a clip cannot be saved</a></nav></div><footer class="foot">
+  <div class="wrap">
+    <div class="top">
+      <div class="about">
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by iTake.</p>
+      </div>
+      <div><h4>Product</h4><ul>
+        <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
+        <li><a href="/#access">Get access</a></li><li><a href="/docs/changelog">Changelog</a></li></ul></div>
+      <div><h4>Docs</h4><ul>
+        <li><a href="/docs/installation">Installation</a></li><li><a href="/docs/modules">All modules</a></li>
+        <li><a href="/docs/performance">Performance</a></li><li><a href="/docs/troubleshooting">Troubleshooting</a></li></ul></div>
+      <div><h4>More</h4><ul>
+        <li><a href="/docs/credits">Credits</a></li><li><a href="/docs/faq">FAQ</a></li></ul></div>
+    </div>
+    <div class="bottom">
+      <span>© <span data-year>2026</span> Larp Client. Not affiliated with Mojang or Microsoft.</span>
+      <span>Minecraft 1.21.11 · Fabric</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js?v=6666522f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script><script src="/assets/js/docs.js?v=0581a0e4" defer></script>
+</body>
+</html>

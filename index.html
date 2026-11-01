@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Larp Client — a visual client for Minecraft 1.21.11</title>
-<meta name="description" content="Larp Client is a Fabric client for Minecraft 1.21.11 with 63 modules, 3D cosmetics, a snapping HUD editor and smart FPS limits.">
+<meta name="description" content="Larp Client is a Fabric client for Minecraft 1.21.11 with 116 modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://larpclient.vercel.app/">
 <link rel="icon" href="/assets/img/logo.svg" type="image/svg+xml">
@@ -12,13 +12,14 @@
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Larp Client — a visual client for Minecraft 1.21.11">
-<meta property="og:description" content="Larp Client is a Fabric client for Minecraft 1.21.11 with 63 modules, 3D cosmetics, a snapping HUD editor and smart FPS limits.">
+<meta property="og:description" content="Larp Client is a Fabric client for Minecraft 1.21.11 with 116 modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.">
 <meta property="og:url" content="https://larpclient.vercel.app/">
 <meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/site.css">
+<link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
+<link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -28,7 +29,7 @@
     <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs">Docs</a><a href="/#faq">FAQ</a></nav>
     <div class="nav-right">
       
-      <a class="hide-m" href="/docs/changelog">v0.9.5</a>
+      <a class="hide-m" href="/docs/changelog">v0.14.1</a>
       <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
     </div>
@@ -41,81 +42,57 @@
   <div class="wrap">
     <div class="hero-copy">
       <h1>Looks illegal.<span>Isn't.</span></h1>
-      <p class="lead">Larp Client is a Fabric client for Minecraft 1.21.11. 63 modules, 3D cosmetics, a HUD you place anywhere and smart FPS limits. Every effect stays on your screen.</p>
+      <p class="lead">Larp Client is a Fabric client for Minecraft 1.21.11. 116 modules, 3D cosmetics, a HUD you place anywhere, lyrics and clips with desktop audio. Build a setup that feels like yours.</p>
       <div class="actions">
         <a class="btn btn-light" href="#access"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-person"/></svg>You are my friend?</a>
         <a class="btn btn-glass" href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-doc"/></svg>Read the docs</a>
       </div>
-      <p class="fine">Private and in development. Ask Take for access.</p>
+      <p class="fine">Private and in development. Ask iTake for access.</p>
     </div>
-    <div class="stage" aria-hidden="true">
-      <div class="window">
-        <div class="side">
-  <div class="wordmark"><img src="/assets/img/logo.svg" alt="" width="32" height="32"><span>LARP<br>CLIENT</span></div>
-  <div class="welcome">Welcome, Take</div>
-  <div class="navi on"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Modules</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-visuals"/></svg>Visuals</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>RPC</div>
-  <div class="grow"></div>
-  <div class="sbtn"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg>Settings</div>
-  <div class="sbtn"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>Edit HUD</div>
-  <div class="date" data-clock>28 Oct 2026</div>
-</div>
-        <div class="main">
-          <div class="head"><div><h4>Modules</h4><p>Configure built-in client mods</p></div><span class="search"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg></span></div>
-          <div class="tabs"><span>All</span><span class="on">HUD</span><span>PvP</span><span>Utility</span><span>Pinned</span></div>
-          <div class="cards">
-            <div class="mcard on"><span class="pin"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-pin"/></svg></span><div class="banner"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-infobar"/></svg></div><h5>Info Bar</h5><p>A sleek bar with your name, server, FPS and session time</p><span class="sw"></span></div>
-            <div class="mcard on"><span class="pin"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-pin"/></svg></span><div class="banner"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modulelist"/></svg></div><h5>Module List</h5><p>Your active modules, sorted and animated</p><span class="sw"></span></div>
-            <div class="mcard"><span class="pin"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-pin"/></svg></span><div class="banner"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-fpsdisplay"/></svg></div><h5>FPS</h5><p>Frames per second, updated live</p><span class="sw"></span></div>
-            <div class="mcard"><span class="pin"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-pin"/></svg></span><div class="banner"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-pingdisplay"/></svg></div><h5>Ping</h5><p>Your latency to the server</p><span class="sw"></span></div>
-          </div>
-        </div>
-      </div>
+    <div class="stage" aria-hidden="true" inert>
+      <div class="window client-preview">
+ <aside class="cp-left"><div class="cp-sidebar"><div class="cp-brand"><img src="/assets/img/logo.svg" width="36" height="36" alt=""><div><b>Larp</b><span>Client 0.14.1</span></div></div><nav aria-label="Client preview categories"><div class="cp-nav selected"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg><span>HUD</span><b>30</b></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keystrokes"/></svg><span>PvP</span><b>8</b></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg><span>Utility</span><b>22</b></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-visuals"/></svg><span>Visuals</span><b>42</b></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg><span>Cosmetics</span><b>11</b></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg><span>Kill Efects</span><b>2</b></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg><span>Waypoints</span></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg><span>Macros</span></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg><span>Discord</span></div><div class="cp-nav"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg><span>Client</span></div></nav></div><div class="cp-profile"><img src="/assets/img/logo.svg" width="30" height="30" alt=""><div><b>iTake</b><span>Web preview</span><small data-cp-active>Customize your setup</small></div></div></aside>
+ <section class="cp-panel"><header class="cp-header"><span class="cp-header-icon" data-cp-icon><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg></span><div><h4 data-cp-title>HUD</h4><p data-cp-sub>30 modules · your information, your way</p></div><span class="cp-grip">⠿</span></header><div class="cp-content" data-cp-content><article class="cp-module"><h5>Info Bar</h5><p>A glass bar with your head, FPS, server and time</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Module List</h5><p>Your active modules, sorted and animated</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>FPS</h5><p>Frames per second, updated live</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Ping</h5><p>Your latency to the server</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Coordinates</h5><p>Your X, Y and Z position</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Direction</h5><p>A compass strip at the top of your screen</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article></div></section>
+ <div class="cp-toolbar"><label class="cp-search"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><span>Search modules…</span><kbd>⌘ F</kbd></label><span class="cp-tool"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></span><span class="cp-tool"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg></span><span class="cp-tool"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-tool"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></span></div>
+ 
+ </div>
       <div class="splash-card"><span class="x"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-close"/></svg></span><div class="dots"><i style="left:0%;top:0%;opacity:0.15"></i><i style="left:37%;top:53%;opacity:0.23"></i><i style="left:74%;top:6%;opacity:0.31"></i><i style="left:11%;top:59%;opacity:0.39"></i><i style="left:48%;top:12%;opacity:0.15"></i><i style="left:85%;top:65%;opacity:0.23"></i><i style="left:22%;top:18%;opacity:0.31"></i><i style="left:59%;top:71%;opacity:0.39"></i><i style="left:96%;top:24%;opacity:0.15"></i><i style="left:33%;top:77%;opacity:0.23"></i><i style="left:70%;top:30%;opacity:0.31"></i><i style="left:7%;top:83%;opacity:0.39"></i><i style="left:44%;top:36%;opacity:0.15"></i><i style="left:81%;top:89%;opacity:0.23"></i><i style="left:18%;top:42%;opacity:0.31"></i><i style="left:55%;top:95%;opacity:0.39"></i><i style="left:92%;top:48%;opacity:0.15"></i><i style="left:29%;top:1%;opacity:0.23"></i></div><div class="logo-wrap"><img src="/assets/img/logo.svg" alt=""></div><div class="bar"><i></i></div></div>
     </div>
   </div>
 </section>
 
-<section class="strip" aria-label="Larp Client in numbers"><div class="wrap"><div class="stat"><b>63</b><span>Modules</span></div><div class="stat"><b>22</b><span>Hats</span></div><div class="stat"><b>8</b><span>Wing styles</span></div><div class="stat"><b>9</b><span>Target markers</span></div><div class="stat"><b>6</b><span>Kill effects</span></div></div></section>
+<section class="strip" aria-label="Larp Client in numbers"><div class="wrap"><div class="stat"><b>116</b><span>Modules</span></div><div class="stat"><b>22</b><span>Hats</span></div><div class="stat"><b>8</b><span>Wing styles</span></div><div class="stat"><b>9</b><span>Target markers</span></div><div class="stat"><b>2</b><span>Kill effects</span></div></div></section>
 
 <section class="section" id="product">
   <div class="wrap">
     <div class="section-head">
       <h2>Everything lives in one menu.</h2>
-      <p>Turn mods on, place your HUD and pick your cosmetics without leaving the game. Try it here: it's the same menu.</p>
+      <p>Turn mods on, place your HUD and pick your cosmetics without leaving the game. Try it here: it is a browser preview of the current layout.</p>
     </div>
     <div class="show-tabs" role="tablist" data-tabs aria-label="Product preview">
       <button class="show-tab" role="tab" aria-selected="true" aria-controls="p-menu" id="t-menu"><b>Menu</b><span>Right Shift in game</span></button>
       <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-hud" id="t-hud" tabindex="-1"><b>HUD editor</b><span>Drag, snap, done</span></button>
       <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-cos" id="t-cos" tabindex="-1"><b>Cosmetics</b><span>Seen in third person</span></button>
+      <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-music" id="t-music" tabindex="-1"><b>Music &amp; lyrics <small class="new-badge">NEW</small></b><span>Your soundtrack, in your world</span></button>
+      <button class="show-tab" role="tab" aria-selected="false" aria-controls="p-captures" id="t-captures" tabindex="-1"><b>Captures <small class="new-badge">NEW</small></b><span>Clips, recordings and audio</span></button>
     </div>
     <div class="show-frame">
-      <div class="chrome"><i></i><i></i><i></i><span>larp client / 0.9.5</span></div>
+      <div class="chrome"><i></i><i></i><i></i><span>larp client / 0.14.1</span></div>
 
       <div class="panel" id="p-menu" role="tabpanel" aria-labelledby="t-menu">
-        <div class="window big" data-menu>
-          <div class="side">
-  <div class="wordmark"><img src="/assets/img/logo.svg" alt="" width="32" height="32"><span>LARP<br>CLIENT</span></div>
-  <div class="welcome">Welcome, Take</div>
-  <button type="button" class="navi on" data-page="modules"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Modules<b></b></button><button type="button" class="navi" data-page="cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg>Cosmetics<b></b></button><button type="button" class="navi" data-page="visuals"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-visuals"/></svg>Visuals<b></b></button><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg>Waypoints</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg>Macros</div><div class="navi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg>RPC</div>
-  <div class="grow"></div>
-  <div class="sbtn"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg>Settings</div>
-  <div class="sbtn"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg>Edit HUD</div>
-  <div class="date" data-clock>28 Oct 2026</div>
-</div>
-          <div class="main">
-            <div class="head"><div><h4 data-title>Modules</h4><p data-sub>Configure built-in client mods</p></div>
-              <div class="search-box"><input class="search-input" type="search" placeholder="Search mods" aria-label="Search mods"><button type="button" class="search" aria-label="Search"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg></button></div></div>
-            <div class="tabs" data-tabs-mock></div>
-            <div class="cards" data-cards></div>
-          </div>
-        </div>
+        <div class="window client-preview big" data-client-preview>
+ <aside class="cp-left"><div class="cp-sidebar"><div class="cp-brand"><img src="/assets/img/logo.svg" width="36" height="36" alt=""><div><b>Larp</b><span>Client 0.14.1</span></div></div><nav aria-label="Client preview categories"><button type="button" class="cp-nav selected" data-cp-page="HUD" aria-pressed="true"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg><span>HUD</span><b>30</b></button><button type="button" class="cp-nav" data-cp-page="PVP" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-keystrokes"/></svg><span>PvP</span><b>8</b></button><button type="button" class="cp-nav" data-cp-page="UTILITY" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg><span>Utility</span><b>22</b></button><button type="button" class="cp-nav" data-cp-page="VISUALS" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-visuals"/></svg><span>Visuals</span><b>42</b></button><button type="button" class="cp-nav" data-cp-page="COSMETICS" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-cosmetics"/></svg><span>Cosmetics</span><b>11</b></button><button type="button" class="cp-nav" data-cp-page="KILL" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg><span>Kill Efects</span><b>2</b></button><button type="button" class="cp-nav" data-cp-page="WAYPOINTS" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-waypoints"/></svg><span>Waypoints</span></button><button type="button" class="cp-nav" data-cp-page="MACROS" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-macros"/></svg><span>Macros</span></button><button type="button" class="cp-nav" data-cp-page="DISCORD" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg><span>Discord</span></button><button type="button" class="cp-nav" data-cp-page="CLIENT" aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg><span>Client</span></button></nav></div><div class="cp-profile"><img src="/assets/img/logo.svg" width="30" height="30" alt=""><div><b>iTake</b><span>Web preview</span><small data-cp-active>Customize your setup</small></div></div></aside>
+ <section class="cp-panel"><header class="cp-header"><span class="cp-header-icon" data-cp-icon><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg></span><div><h4 data-cp-title>HUD</h4><p data-cp-sub>30 modules · your information, your way</p></div><span class="cp-grip">⠿</span></header><div class="cp-content" data-cp-content><article class="cp-module"><h5>Info Bar</h5><p>A glass bar with your head, FPS, server and time</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Module List</h5><p>Your active modules, sorted and animated</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>FPS</h5><p>Frames per second, updated live</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Ping</h5><p>Your latency to the server</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Coordinates</h5><p>Your X, Y and Z position</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article><article class="cp-module"><h5>Direction</h5><p>A compass strip at the top of your screen</p><span class="cp-gear"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span class="cp-switch"></span></article></div></section>
+ <div class="cp-toolbar"><label class="cp-search"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" placeholder="Search modules…" aria-label="Search client preview modules" data-cp-search><kbd>⌘ F</kbd></label><button type="button" class="cp-tool" data-cp-action="PROFILES" aria-label="Profiles"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></button><button type="button" class="cp-tool" data-cp-action="HUD_EDITOR" aria-label="Open HUD editor preview"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg></button><button type="button" class="cp-tool" data-cp-action="CLIENT" aria-label="Client settings"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></button><button type="button" class="cp-tool" data-cp-action="CAPTURES" aria-label="Recordings"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></button></div>
+ <div class="cp-options" data-cp-options hidden><div class="cp-options-head"><h4 data-cp-options-title>Module settings</h4><button type="button" data-cp-close aria-label="Close preview options"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-close"/></svg></button></div><div data-cp-options-body></div></div><p class="cp-toast" data-cp-toast role="status" aria-live="polite"></p>
+ </div>
       </div>
 
       <div class="panel" id="p-hud" role="tabpanel" aria-labelledby="t-hud" hidden>
         <div class="hud-scene">
           <div class="grid"></div><div class="guide v"></div><div class="guide h"></div>
           <div class="hud-el hud-box infobar" style="left:14px;top:14px">
-            <span><img class="logo" src="/assets/img/logo.svg" alt=""><span class="name"><svg class="crown" aria-hidden="true"><use href="/assets/img/icons.svg#i-crown"/></svg>Take</span></span>
+            <span><img class="logo" src="/assets/img/logo.svg" alt=""><span class="name"><svg class="crown" aria-hidden="true"><use href="/assets/img/icons.svg#i-crown"/></svg>iTake</span></span>
             <span class="muted">eskmc.net</span><span>144 FPS</span><span class="muted">12:48</span>
           </div>
           <div class="hud-el modlist" style="right:14px;top:14px">
@@ -145,6 +122,8 @@
           <div class="cos-side"><div class="cos-cats" role="group" aria-label="Cosmetic type"><button type="button" data-cat="hats" aria-selected="true">Hats</button><button type="button" data-cat="wings" aria-selected="false">Wings</button><button type="button" data-cat="aura" aria-selected="false">Aura</button><button type="button" data-cat="target" aria-selected="false">Target</button></div><div class="cos-grid"></div></div>
         </div>
       </div>
+      <div class="panel" id="p-music" role="tabpanel" aria-labelledby="t-music" hidden><div class="music-preview"><div class="music-world"><span class="preview-caption">Illustrative lyrics placement · actual gameplay background</span><div class="sample-lyrics" data-preview-lyric>Your world. Your soundtrack.</div><div class="sample-music"><img src="/assets/img/logo.svg" width="48" height="48" alt=""><div><b>A world of your own</b><span>Sample track · web preview</span></div><button type="button" data-next-lyric aria-label="Next sample lyric"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></button></div></div><div class="music-settings"><h3>Music, as part of your world.</h3><p>Lyrics from LRCLIB, shown in the world, on your HUD or in a compact line. The words below are original sample copy.</p><label>Font <select data-preview-font aria-label="Lyrics demo font"><option value="regular">Inter</option><option value="bold">Inter Bold</option></select></label><label>Size <input type="range" min="18" max="36" value="26" data-preview-size aria-label="Lyrics demo size"></label><label>Color <input type="color" value="#c4c7ff" data-preview-color aria-label="Lyrics demo color"></label><a class="btn btn-glass btn-sm" href="/docs/lyrics">Read the lyrics guide <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div></div></div>
+ <div class="panel" id="p-captures" role="tabpanel" aria-labelledby="t-captures" hidden><div class="capture-preview"><div class="capture-poster"><img src="/assets/img/screenshots/aurora-800.webp" width="800" height="420" loading="lazy" alt="Actual Larp gameplay used as a sample recording poster"><span class="preview-caption">Illustrative capture interface</span><div class="capture-bottom"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg> Desktop audio</span><b>Clip-1.mp4 · 00:30</b></div></div><div class="capture-copy"><span class="new-badge">NEW</span><h3>Keep the moment. Keep the sound.</h3><p>Instant Replay saves your last 30 seconds with Windows desktop audio. Press F8, choose your own key, or save after a player kill.</p><ul><li>Clip-N.mp4 files in the Recordings gallery</li><li>Game audio and music from your output device</li><li>Bounded buffers and background export</li></ul><a class="btn btn-glass btn-sm" href="/docs/instant-replay">Instant Replay guide <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><p class="preview-note">Recorder is available for longer sessions. These previews do not record your browser or change client settings.</p></div></div></div>
     </div>
   </div>
 </section>
@@ -155,7 +134,7 @@
       <h2>Built to stay out of your way.</h2>
       <p>The visuals are loud. The client isn't: it caps frames when you're not playing and caches what it can.</p>
     </div>
-    <div class="features"><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></div><h3>Smart FPS limits</h3><p>Menus, AFK and alt-tab get their own frame cap. Your FPS limit in Options is never touched.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg></div><h3>Cached 3D cosmetics</h3><p>Wings, hats and auras rebuild their geometry up to 60 times a second and reuse it between frames, so high refresh rates stay smooth.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg></div><h3>A HUD that snaps</h3><p>Drag any element. It snaps to edges, the center and other elements, with a grid and 1 px arrow-key nudges.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></div><h3>Three profiles</h3><p>Save your whole setup in three slots and swap between a PvP layout and a clean one in a click.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg></div><h3>Discord presence</h3><p>Your Discord status shows Larp Client, the server you're on and the game version, with two buttons you choose.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hotbarkeybinds"/></svg></div><h3>Your real hotbar keys</h3><p>Each hotbar slot shows the key it's bound to, even if your binds are 1 2 3 4 G R.</p></article></div>
+    <div class="features"><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></div><h3>Smart FPS limits</h3><p>Menus, AFK and alt-tab get their own frame cap. Your FPS limit in Options is never touched.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg></div><h3>Cached 3D cosmetics</h3><p>Prepared geometry, reusable buffers and adjustable refresh rates reduce repeated work. Tune effects to suit your hardware.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg></div><h3>A HUD that snaps</h3><p>Drag any element. It snaps to edges, the center and other elements, with a grid and 1 px arrow-key nudges.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></div><h3>Three profiles</h3><p>Save, load or delete a setup in three profile slots. Use the confirmed reset when you want a fresh start.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg></div><h3>Discord presence</h3><p>The application identity and logo are built in. Choose your status details and links without creating a Discord app.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hotbarkeybinds"/></svg></div><h3>Your real hotbar keys</h3><p>Each hotbar slot shows the key it's bound to, even if your binds are 1 2 3 4 G R.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></div><h3>Instant Replay <span class="new-badge">NEW</span></h3><p>Keep the last 30 seconds with game audio and music on Windows. Save with F8 or after a player kill.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg></div><h3>Kill Efects <span class="new-badge">NEW</span></h3><p>Choose Tralalero or Samurai in their own section. One selected animation after a player kill, with an in-menu preview.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg></div><h3>Lyrics <span class="new-badge">NEW</span></h3><p>LRCLIB lyrics in the world, on the HUD or in a compact line. Adjust size, placement, font, color and transitions.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg></div><h3>Shulker Preview <span class="new-badge">NEW</span></h3><p>All 27 slots in a color-matched tooltip, with a preview key you can rebind.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></div><h3>Performance Monitor <span class="new-badge">NEW</span></h3><p>Frame times, 1% lows, P95 and memory use. Optional module-tick CPU profiling shows where to look closer.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg></div><h3>Recorder & screenshots <span class="new-badge">NEW</span></h3><p>Windowed or F11 capture, a Recordings gallery, numbered screenshots and animated previews.</p></article></div>
   </div>
 </section>
 
@@ -182,7 +161,7 @@
     <div class="fair">
       <div>
         <h2>Visual only. On purpose.</h2>
-        <p>Larp changes how the game looks, never how it plays. These are the things you won't find in it, and won't in future versions.</p>
+        <p>Larp changes how the game looks, with local visuals and tools you choose. Check server rules for the modules and macros you enable.</p>
         <p style="margin-top:22px"><a class="btn btn-glass btn-sm" href="/docs/modules">See every module</a></p>
       </div>
       <ul><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-block"/></svg>Tracers and chams</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-block"/></svg>Reach, aim assist or velocity</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-block"/></svg>Auto clicker</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-block"/></svg>X-ray or ore finders</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-block"/></svg>Entity radar</li></ul>
@@ -192,37 +171,31 @@
 
 <section class="section" id="access">
   <div class="wrap">
-    <div class="section-head center"><h2>You are my friend?</h2><p>Larp Client is private and still in development. Message me, Take, and I'll give you access.</p></div>
+    <div class="section-head center"><h2>You are my friend?</h2><p>Larp Client is private and still in development. Message me, iTake, and I'll give you access.</p></div>
     <div class="dl">
       <article class="dl-card main">
-        <span class="tag">Private · v0.9.5</span>
+        <span class="tag">Private · v0.14.1</span>
         <h3>Larp Client</h3>
-        <p class="sub">Only for friends while it's in development. Ask Take and you'll get the mod.</p>
+        <p class="sub">Only for friends while it's in development. Ask iTake and you'll get the mod.</p>
         <ul>
           <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Minecraft 1.21.11</li>
-          <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Fabric Loader 0.18.1+</li>
+          <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Fabric Loader 0.20.1+</li>
           <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Fabric API</a></li>
           <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Java 21</li>
         </ul>
-        <a class="btn btn-light" href="https://discord.com/users/893966003690668102" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-discord"/></svg>Message Take</a>
+        <a class="btn btn-light" href="https://discord.com/users/893966003690668102" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-discord"/></svg>Message iTake</a>
       </article>
       <article class="dl-card">
-        <span class="tag">In development</span>
-        <h3>Larp Launcher</h3>
-        <p class="sub">One click installs Fabric, Larp Client and the performance mods, then opens the game with your Minecraft account.</p>
-        <ul>
-          <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Updates itself and your mods</li>
-          <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Its own profile and folder</li>
-          <li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Pick your RAM and mods</li>
-        </ul>
-        <span class="btn btn-glass" aria-disabled="true">Coming soon</span>
+        <span class="tag">New in 0.14.1</span><h3>Your moments, saved.</h3>
+        <p class="sub">Instant Replay and Recorder bring captures together with your setup.</p>
+        <ul><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>30-second clips with desktop audio</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>A configurable clip key and kill trigger</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Recordings in one gallery</li></ul>
+        <a class="btn btn-glass" href="/docs/instant-replay">Explore captures</a>
       </article>
       <article class="dl-card">
-        <span class="tag">Recommended</span>
-        <h3>Performance pack</h3>
-        <p class="sub">Install these next to Larp for the biggest FPS gains.</p>
-        <ul><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/sodium" target="_blank" rel="noopener">Sodium</a></li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/lithium" target="_blank" rel="noopener">Lithium</a></li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/entityculling" target="_blank" rel="noopener">Entity Culling</a></li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/ferrite-core" target="_blank" rel="noopener">FerriteCore</a></li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/immediatelyfast" target="_blank" rel="noopener">ImmediatelyFast</a></li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg><a href="https://modrinth.com/mod/modernfix" target="_blank" rel="noopener">ModernFix</a></li></ul>
-        <a class="btn btn-glass" href="/docs/performance">Why these mods</a>
+        <span class="tag">Make it yours</span><h3>A setup that stays yours.</h3>
+        <p class="sub">Profiles, custom colors and small quality-of-life improvements throughout the client.</p>
+        <ul><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Save, load and delete profiles</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>Custom accent and editable text fields</li><li><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check_circle"/></svg>English and Spanish in the client</li></ul>
+        <a class="btn btn-glass" href="/docs/profiles">Set up your client</a>
       </article>
     </div>
   </div>
@@ -231,7 +204,7 @@
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head center"><h2>Questions people ask.</h2></div>
-    <div class="faq"><details><summary>How do I get Larp Client?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Larp Client is private and still in development, so it isn't public yet. Message Take and you'll get access.</div></details><details><summary>Is Larp Client allowed on servers?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Larp only changes what you see on your own screen. It has no combat, movement or auto-click modules, so it plays like any other visual client. Each server sets its own rules, so check theirs if you are unsure.</div></details><details><summary>Can other players see my cosmetics?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">No. Cosmetics are drawn on your screen only. Press <kbd>F5</kbd> to see them on yourself.</div></details><details><summary>How do I open the menu?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Press <kbd>Right Shift</kbd> in game, or click <b>Client</b> on the title screen. You can change the key in Options › Controls › Larp Client.</div></details><details><summary>Does it work with Sodium and other performance mods?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Yes. Larp is made to run next to Sodium, Lithium and Entity Culling, and they are the first mods we recommend. With Iris shaderpacks, some 3D effects can look different depending on the pack.</div></details><details><summary>Which Minecraft versions are supported?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Minecraft 1.21.11 with Fabric Loader 0.18.1 or newer, Fabric API and Java 21. Forge, NeoForge and older versions are not supported.</div></details><details><summary>Where are my settings saved?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">In your <code>config</code> folder: <code>larpclient.json</code> for settings, <code>larpclient-profile-1.json</code> to <code>-3</code> for profiles, and <code>larpclient-waypoints.json</code> and <code>larpclient-macros.json</code>. Copy them to move your setup to another PC.</div></details><details><summary>The Music Player doesn't show the album cover.<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">The Music Player reads Windows media controls, so it only works on Windows. If the cover still doesn't show, see <a href="/docs/music-player">Music player</a> for the log file to check.</div></details></div>
+    <div class="faq"><details><summary>How do I get Larp Client?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Larp Client is private and in active development. Message iTake to request access; there is no public download on this website.</div></details><details><summary>Which version do I need?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21.</div></details><details><summary>Do 30-second clips include sound?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone.</div></details><details><summary>Can other players see my cosmetics?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Cosmetics are rendered locally on your screen. Use third-person view to see your own setup.</div></details><details><summary>How do I open the client menu?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls.</div></details><details><summary>Does it guarantee more FPS?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup.</div></details><details><summary>Are the website previews connected to my game?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media.</div></details></div>
   </div>
 </section>
 
@@ -240,7 +213,7 @@
   <div class="wrap">
     <img class="mark" src="/assets/img/logo.svg" alt="" width="64" height="64">
     <h2>Your next session can look like this.</h2>
-    <p>Private for now. Message Take for access.</p>
+    <p>Private for now. Message iTake for access.</p>
     <div class="actions"><a class="btn btn-light" href="#access"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-person"/></svg>You are my friend?</a><a class="btn btn-glass" href="/docs">Read the docs</a></div>
   </div>
 </section>
@@ -250,7 +223,7 @@
     <div class="top">
       <div class="about">
         <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
-        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by Take.</p>
+        <p>A visual client for Minecraft 1.21.11 on Fabric. Made by iTake.</p>
       </div>
       <div><h4>Product</h4><ul>
         <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
@@ -267,7 +240,7 @@
     </div>
   </div>
 </footer>
-<script src="/assets/js/site.js" defer></script>
+<script src="/assets/js/site.js?v=6666522f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script>
 <script src="/assets/js/curtains.js" defer></script>
 </body>
 </html>
