@@ -37,7 +37,7 @@ def discord_btn(cls="btn btn-glass", label="Join our Discord"):
 
 def head(title, desc, path, extra_css=""):
     url = CFG["siteUrl"].rstrip("/") + path
-    full = title if title.startswith("Larp Client") else f"{title} — Larp Client"
+    full = "larp." if path == "/" else f"{title} — larp."
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -71,17 +71,17 @@ def nav(current=""):
     def a(href, label, key):
         cur = ' aria-current="page"' if key == current else ""
         return f'<a href="{href}"{cur}>{label}</a>'
-    links = [a("/#product", "Product", "product"), a("/#gallery", "Gallery", "gallery"), a("/#features", "Features", "features"), a("/#cosmetics", "Cosmetics", "cosmetics"),
+    links = [a("/#product", "Product", "product"), a("/#gallery", "Gallery", "gallery"), a("/#features", "Features", "features"), a("/#cosmetics", "Cosmetics", "cosmetics"), a("/#updates", "Updates", "updates"),
              a("/docs", "Docs", "docs"), a("/#faq", "FAQ", "faq")]
     dc = f'<a class="icon-link hide-m" href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener" aria-label="Discord">{icon("discord")}</a>' if CFG.get("discordUrl") else ""
     return f"""<header class="nav">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
     <nav class="nav-links" aria-label="Main">{''.join(links)}</nav>
     <div class="nav-right">
       {dc}
       <a class="hide-m" href="/docs/changelog">v{CFG['version']}</a>
-      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <a class="btn btn-light btn-sm" href="/#access">Get access {icon('arrow')}</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">{icon('menu')}</button>
     </div>
   </div>
@@ -96,7 +96,7 @@ def footer(scripts=""):
   <div class="wrap">
     <div class="top">
       <div class="about">
-        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
         <p>A visual client for Minecraft {CFG['minecraft']} on Fabric. Made by {esc(CFG['author'])}.</p>
       </div>
       <div><h4>Product</h4><ul>
@@ -187,13 +187,13 @@ FAQ = [
 
 def index():
     from menu_preview import render as current_menu, additions as preview_additions
-    from website_details import hud_preview, gallery, details
+    from website_details import hud_preview, gallery, details, release_journal, shortcuts
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
     dl_btn = (f'<a class="btn btn-light" href="{esc(contact)}" target="_blank" rel="noopener">{icon("discord")}{esc(label)}</a>' if contact
               else f'<span class="btn btn-light" aria-disabled="true">{icon("discord")}{esc(label)} on Discord</span>')
-    faq = "".join(f'<details><summary>{q}{icon("expand")}</summary><div class="answer">{a}</div></details>' for q, a in FAQ)
+    faq = "".join(f'<details><summary>{q}{icon("expand")}</summary><div class="faq-answer-wrap"><div class="answer">{a}</div></div></details>' for q, a in FAQ)
     dots = "".join(f'<i style="left:{(i * 37) % 100}%;top:{(i * 53) % 100}%;opacity:{0.15 + (i % 4) * 0.08:.2f}"></i>' for i in range(18))
     perf = [("sodium", "Sodium"), ("lithium", "Lithium"), ("entityculling", "Entity Culling"), ("ferrite-core", "FerriteCore"),
             ("immediatelyfast", "ImmediatelyFast"), ("modernfix", "ModernFix")]
@@ -286,6 +286,7 @@ def index():
       </div>
       {preview_additions(globals())}
     </div>
+    {shortcuts(globals())}
   </div>
 </section>
 
@@ -366,9 +367,11 @@ def index():
   </div>
 </section>
 
+{release_journal(globals())}
+
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
-    <div class="section-head center"><h2>Questions people ask.</h2></div>
+    <div class="section-head center"><span class="section-label">GOOD TO KNOW</span><h2>Questions people ask.</h2><p>A few clear answers before you join.</p></div>
     <div class="faq">{faq}</div>
   </div>
 </section>
@@ -384,7 +387,7 @@ def index():
 </section>
 </main>
 """
-    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + f'<script src="{asset("/assets/js/showcase.js")}" defer></script>')
+    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js']))
     (ROOT / "index.html").write_text(body)
 
 
