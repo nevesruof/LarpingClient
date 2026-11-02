@@ -2,6 +2,7 @@
 import html
 
 def render(g,interactive=False):
+ from website_details import avatar
  icon,cfg,mods=g['icon'],g['CFG'],g['MODS'];esc=html.escape
  counts={c:sum(m['category']==c for m in mods) for c in ['HUD','PVP','UTILITY','VISUALS','COSMETICS']}
  pages=[('HUD','HUD','modules'),('PVP','PvP','keystrokes'),('UTILITY','Utility','performance'),('VISUALS','Visuals','visuals'),('COSMETICS','Cosmetics','cosmetics'),('KILL','Kill Efects','killeffect'),('WAYPOINTS','Waypoints','waypoints'),('MACROS','Macros','macros'),('DISCORD','Discord','rpc'),('CLIENT','Client','settings')]
@@ -17,7 +18,7 @@ def render(g,interactive=False):
  for action,ic,label in [('PROFILES','layers','Profiles'),('HUD_EDITOR','edithud','Open HUD editor preview'),('CLIENT','settings','Client settings'),('CAPTURES','play','Recordings')]:
   footer+=f'<button type="button" class="cp-tool" data-cp-action="{action}" aria-label="{label}">{icon(ic)}</button>' if interactive else f'<span class="cp-tool">{icon(ic)}</span>'
  return f'''<div class="window client-preview{(' big' if interactive else '')}"{attrs}>
- <aside class="cp-left"><div class="cp-sidebar"><div class="cp-brand"><img src="/assets/img/logo.svg" width="36" height="36" alt=""><div><b>Larp</b><span>Client {cfg['version']}</span></div></div><nav aria-label="Client preview categories">{''.join(navigation)}</nav></div><div class="cp-profile"><img src="/assets/img/logo.svg" width="30" height="30" alt=""><div><b>{esc(cfg['author'])}</b><span>Web preview</span><small data-cp-active>Customize your setup</small></div></div></aside>
+ <aside class="cp-left"><div class="cp-sidebar"><div class="cp-brand"><img src="/assets/img/logo.svg" width="36" height="36" alt=""><div><b>Larp</b><span>Client {cfg['version']}</span></div></div><nav aria-label="Client preview categories">{''.join(navigation)}</nav></div><div class="cp-profile">{avatar()}<div><b>{esc(cfg['author'])}</b><span>Web preview</span><small data-cp-active>Customize your setup</small></div></div></aside>
  <section class="cp-panel"><header class="cp-header"><span class="cp-header-icon" data-cp-icon>{icon('modules')}</span><div><h4 data-cp-title>HUD</h4><p data-cp-sub>{counts['HUD']} modules · your information, your way</p></div><span class="cp-grip">⠿</span></header><div class="cp-content" data-cp-content>{cards}</div></section>
  <div class="cp-toolbar">{footer}</div>
  {('<div class="cp-options" data-cp-options hidden><div class="cp-options-head"><h4 data-cp-options-title>Module settings</h4><button type="button" data-cp-close aria-label="Close preview options">'+icon('close')+'</button></div><div data-cp-options-body></div></div><p class="cp-toast" data-cp-toast role="status" aria-live="polite"></p>') if interactive else ''}
