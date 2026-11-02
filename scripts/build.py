@@ -37,7 +37,7 @@ def discord_btn(cls="btn btn-glass", label="Join our Discord"):
 
 def head(title, desc, path, extra_css=""):
     url = CFG["siteUrl"].rstrip("/") + path
-    full = title if title.startswith("Larp Client") else f"{title} — Larp Client"
+    full = "larp." if path == "/" else f"{title} — larp."
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -60,6 +60,7 @@ def head(title, desc, path, extra_css=""):
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{asset("/assets/css/site.css")}">
 <link rel="stylesheet" href="{asset("/assets/css/client-preview.css")}">{extra_css}
+<link rel="stylesheet" href="{asset("/assets/css/showcase.css")}">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -70,17 +71,17 @@ def nav(current=""):
     def a(href, label, key):
         cur = ' aria-current="page"' if key == current else ""
         return f'<a href="{href}"{cur}>{label}</a>'
-    links = [a("/#product", "Product", "product"), a("/#features", "Features", "features"), a("/#cosmetics", "Cosmetics", "cosmetics"),
+    links = [a("/#product", "Product", "product"), a("/#gallery", "Gallery", "gallery"), a("/#features", "Features", "features"), a("/#cosmetics", "Cosmetics", "cosmetics"), a("/#updates", "Updates", "updates"),
              a("/docs", "Docs", "docs"), a("/#faq", "FAQ", "faq")]
     dc = f'<a class="icon-link hide-m" href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener" aria-label="Discord">{icon("discord")}</a>' if CFG.get("discordUrl") else ""
     return f"""<header class="nav">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
     <nav class="nav-links" aria-label="Main">{''.join(links)}</nav>
     <div class="nav-right">
       {dc}
       <a class="hide-m" href="/docs/changelog">v{CFG['version']}</a>
-      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <a class="btn btn-light btn-sm" href="/#access">Get access {icon('arrow')}</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">{icon('menu')}</button>
     </div>
   </div>
@@ -95,7 +96,7 @@ def footer(scripts=""):
   <div class="wrap">
     <div class="top">
       <div class="about">
-        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
         <p>A visual client for Minecraft {CFG['minecraft']} on Fabric. Made by {esc(CFG['author'])}.</p>
       </div>
       <div><h4>Product</h4><ul>
@@ -186,12 +187,13 @@ FAQ = [
 
 def index():
     from menu_preview import render as current_menu, additions as preview_additions
+    from website_details import hud_preview, gallery, details, release_journal, shortcuts
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
     dl_btn = (f'<a class="btn btn-light" href="{esc(contact)}" target="_blank" rel="noopener">{icon("discord")}{esc(label)}</a>' if contact
               else f'<span class="btn btn-light" aria-disabled="true">{icon("discord")}{esc(label)} on Discord</span>')
-    faq = "".join(f'<details><summary>{q}{icon("expand")}</summary><div class="answer">{a}</div></details>' for q, a in FAQ)
+    faq = "".join(f'<details><summary>{q}{icon("expand")}</summary><div class="faq-answer-wrap"><div class="answer">{a}</div></div></details>' for q, a in FAQ)
     dots = "".join(f'<i style="left:{(i * 37) % 100}%;top:{(i * 53) % 100}%;opacity:{0.15 + (i % 4) * 0.08:.2f}"></i>' for i in range(18))
     perf = [("sodium", "Sodium"), ("lithium", "Lithium"), ("entityculling", "Entity Culling"), ("ferrite-core", "FerriteCore"),
             ("immediatelyfast", "ImmediatelyFast"), ("modernfix", "ModernFix")]
@@ -233,6 +235,7 @@ def index():
   <canvas class="curtains" aria-hidden="true"></canvas>
   <div class="wrap">
     <div class="hero-copy">
+      <span class="hero-label"><i></i> LARP CLIENT {CFG['version']} <span>/</span> MINECRAFT {CFG['minecraft']}</span>
       <h1>Looks illegal.<span>Isn't.</span></h1>
       <p class="lead">Larp Client is a Fabric client for Minecraft {CFG['minecraft']}. {len(MODS)} modules, 3D cosmetics, a HUD you place anywhere, lyrics and clips with desktop audio. Build a setup that feels like yours.</p>
       <div class="actions">
@@ -253,7 +256,7 @@ def index():
 <section class="section" id="product">
   <div class="wrap">
     <div class="section-head">
-      <h2>Everything lives in one menu.</h2>
+      <span class="section-label">THE CLIENT</span><h2>Everything lives in one menu.</h2>
       <p>Turn mods on, place your HUD and pick your cosmetics without leaving the game. Try it here: it is a browser preview of the current layout.</p>
     </div>
     <div class="show-tabs" role="tablist" data-tabs aria-label="Product preview">
@@ -271,30 +274,7 @@ def index():
       </div>
 
       <div class="panel" id="p-hud" role="tabpanel" aria-labelledby="t-hud" hidden>
-        <div class="hud-scene">
-          <div class="grid"></div><div class="guide v"></div><div class="guide h"></div>
-          <div class="hud-el hud-box infobar" style="left:14px;top:14px">
-            <span><img class="logo" src="/assets/img/logo.svg" alt=""><span class="name"><svg class="crown" aria-hidden="true"><use href="{SPRITE}#i-crown"/></svg>{esc(CFG['author'])}</span></span>
-            <span class="muted">eskmc.net</span><span>144 FPS</span><span class="muted">12:48</span>
-          </div>
-          <div class="hud-el modlist" style="right:14px;top:14px">
-            <div>Target HUD</div><div>Keystrokes<small>Clean</small></div><div>Hit FX<small>White</small></div><div>Performance</div><div>Wings<small>Angel</small></div><div>Zoom</div>
-          </div>
-          <div class="hud-el keys" style="left:14px;top:46%">
-            <span></span><span data-k="W">W</span><span></span>
-            <span data-k="A">A</span><span data-k="S">S</span><span data-k="D">D</span>
-            <div class="mouse"><span data-k="LMB">LMB</span><span data-k="RMB">RMB</span></div>
-            <span class="wide" data-k="Space">―</span>
-          </div>
-          <div class="hud-el hud-box target" style="left:50%;top:58%;transform:translateX(-50%)">
-            <div class="head"></div>
-            <div class="info"><div class="row"><b>Steve</b><span>3.1m</span></div><div class="row"><span>12.8 ❤</span><span style="color:#3fd07a">+4.2</span></div><div class="hp"><i></i></div></div>
-          </div>
-          <div class="hud-el hotbar" style="left:50%;bottom:16px;transform:translateX(-50%)">
-            <span class="sel"><b>1</b><i style="background:linear-gradient(135deg,#7fe3ff,#2a8bb5)"></i></span><span><b>2</b><i style="background:linear-gradient(135deg,#ffe37f,#c99a1e)"></i></span><span><b>3</b><i style="background:linear-gradient(135deg,#d8b4ff,#7c3fc4)"></i></span><span><b>4</b></span><span><b>G</b><i style="background:linear-gradient(135deg,#ff8f8f,#b52a2a)"></i></span><span><b>R</b></span><span><b>7</b></span><span><b>8</b></span><span><b>9</b></span>
-          </div>
-          <div class="hud-hint">Drag anything. It snaps to the center and to other elements.</div>
-        </div>
+        {hud_preview(globals())}
       </div>
 
       <div class="panel" id="p-cos" role="tabpanel" aria-labelledby="t-cos" hidden>
@@ -306,23 +286,28 @@ def index():
       </div>
       {preview_additions(globals())}
     </div>
+    {shortcuts(globals())}
   </div>
 </section>
+
+{gallery(globals())}
 
 <section class="section" id="features" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head">
-      <h2>Built to stay out of your way.</h2>
+      <span class="section-label">THE ESSENTIALS</span><h2>Built to stay out of your way.</h2>
       <p>The visuals are loud. The client isn't: it caps frames when you're not playing and caches what it can.</p>
     </div>
     <div class="features">{feat}</div>
   </div>
 </section>
 
+{details(globals())}
+
 <section class="section" id="cosmetics" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head">
-      <h2>{len(cos['hats']['items'])} hats, {len(cos['wings']['items'])} wings, {len(cos['aura']['items'])} auras.</h2>
+      <span class="section-label">PERSONALIZATION</span><h2>{len(cos['hats']['items'])} hats, {len(cos['wings']['items'])} wings, {len(cos['aura']['items'])} auras.</h2>
       <p>Every cosmetic is real 3D geometry that moves with you. Wings flap as you walk, capes flow, auras orbit. These are actual renders from the client.</p>
     </div>
     <div class="cos-strip">{''.join(f'<figure><img src="{it["src"]}" alt="" loading="lazy" width="180" height="180"><figcaption>{it["name"]}{suf}</figcaption></figure>' for it, suf in [(cos['hats']['items'][0], ''), (cos['wings']['items'][3], ' wings'), (cos['aura']['items'][5], ' aura'), (cos['hats']['items'][18], ''), (cos['wings']['items'][1], ' wings'), (cos['target']['items'][8], ' marker'), (cos['hats']['items'][21], ''), (cos['aura']['items'][10], '')])}</div>
@@ -382,9 +367,11 @@ def index():
   </div>
 </section>
 
+{release_journal(globals())}
+
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
-    <div class="section-head center"><h2>Questions people ask.</h2></div>
+    <div class="section-head center"><span class="section-label">GOOD TO KNOW</span><h2>Questions people ask.</h2><p>A few clear answers before you join.</p></div>
     <div class="faq">{faq}</div>
   </div>
 </section>
@@ -400,7 +387,7 @@ def index():
 </section>
 </main>
 """
-    body += footer('\n<script src="/assets/js/curtains.js" defer></script>')
+    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js']))
     (ROOT / "index.html").write_text(body)
 
 
