@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Larp Client — a visual client for Minecraft 1.21.11</title>
+<title>larp.</title>
 <meta name="description" content="Larp Client is a Fabric client for Minecraft 1.21.11 with 116 modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://larpclient.vercel.app/">
@@ -11,7 +11,7 @@
 <link rel="icon" href="/favicon.png" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Larp Client — a visual client for Minecraft 1.21.11">
+<meta property="og:title" content="larp.">
 <meta property="og:description" content="Larp Client is a Fabric client for Minecraft 1.21.11 with 116 modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.">
 <meta property="og:url" content="https://larpclient.vercel.app/">
 <meta property="og:image" content="https://larpclient.vercel.app/assets/img/og.jpg">
@@ -20,23 +20,23 @@
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
 <link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
-<link rel="stylesheet" href="/assets/css/showcase.css?v=485eadf8">
+<link rel="stylesheet" href="/assets/css/showcase.css?v=04cbbdf6">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
-    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#gallery">Gallery</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs">Docs</a><a href="/#faq">FAQ</a></nav>
+    <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
+    <nav class="nav-links" aria-label="Main"><a href="/#product">Product</a><a href="/#gallery">Gallery</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/#updates">Updates</a><a href="/docs">Docs</a><a href="/#faq">FAQ</a></nav>
     <div class="nav-right">
       
       <a class="hide-m" href="/docs/changelog">v0.14.1</a>
-      <a class="btn btn-light btn-sm" href="/#access">You are my friend?</a>
+      <a class="btn btn-light btn-sm" href="/#access">Get access <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
     </div>
   </div>
 </header>
-<div class="mobile-menu"><a href="/#product">Product</a><a href="/#gallery">Gallery</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/docs">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="mobile-menu"><a href="/#product">Product</a><a href="/#gallery">Gallery</a><a href="/#features">Features</a><a href="/#cosmetics">Cosmetics</a><a href="/#updates">Updates</a><a href="/docs">Docs</a><a href="/#faq">FAQ</a><a class="btn btn-light" href="/#access">You are my friend?</a></div>
 <main id="main">
 <section class="hero">
   <canvas class="curtains" aria-hidden="true"></canvas>
@@ -121,17 +121,28 @@
         </div>
       </div>
       <div class="panel" id="p-music" role="tabpanel" aria-labelledby="t-music" hidden><div class="music-preview"><div class="music-world"><span class="preview-caption">Illustrative lyrics placement · actual gameplay background</span><div class="sample-lyrics" data-preview-lyric>Your world. Your soundtrack.</div><div class="sample-music"><img src="/assets/img/logo.svg" width="48" height="48" alt=""><div><b>A world of your own</b><span>Sample track · web preview</span></div><button type="button" data-next-lyric aria-label="Next sample lyric"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></button></div></div><div class="music-settings"><h3>Music, as part of your world.</h3><p>Lyrics from LRCLIB, shown in the world, on your HUD or in a compact line. The words below are original sample copy.</p><label>Font <select data-preview-font aria-label="Lyrics demo font"><option value="regular">Inter</option><option value="bold">Inter Bold</option></select></label><label>Size <input type="range" min="18" max="36" value="26" data-preview-size aria-label="Lyrics demo size"></label><label>Color <input type="color" value="#c4c7ff" data-preview-color aria-label="Lyrics demo color"></label><a class="btn btn-glass btn-sm" href="/docs/lyrics">Read the lyrics guide <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div></div></div>
- <div class="panel" id="p-captures" role="tabpanel" aria-labelledby="t-captures" hidden><div class="capture-preview"><div class="capture-poster"><img src="/assets/img/screenshots/aurora-800.webp" width="800" height="420" loading="lazy" alt="Actual Larp gameplay used as a sample recording poster"><span class="preview-caption">Illustrative capture interface</span><div class="capture-bottom"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg> Desktop audio</span><b>Clip-1.mp4 · 00:30</b></div></div><div class="capture-copy"><span class="new-badge">NEW</span><h3>Keep the moment. Keep the sound.</h3><p>Instant Replay saves your last 30 seconds with Windows desktop audio. Press F8, choose your own key, or save after a player kill.</p><ul><li>Clip-N.mp4 files in the Recordings gallery</li><li>Game audio and music from your output device</li><li>Bounded buffers and background export</li></ul><a class="btn btn-glass btn-sm" href="/docs/instant-replay">Instant Replay guide <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><p class="preview-note">Recorder is available for longer sessions. These previews do not record your browser or change client settings.</p></div></div></div>
+ <div class="panel" id="p-captures" role="tabpanel" aria-labelledby="t-captures" hidden><div class="capture-preview"><div class="capture-desk" data-capture-demo tabindex="0" aria-label="Interactive recordings gallery demonstration">
+      <div class="capture-desk-head"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg> Recordings</span><small>WEB DEMO</small></div>
+      <div class="capture-buffer"><div class="capture-ready"><i></i>INSTANT REPLAY</div><div class="capture-duration">00<span>:</span>30</div><p>The last thirty seconds.</p><div class="capture-wave" aria-hidden="true"><i style="--wave:12px"></i><i style="--wave:22px"></i><i style="--wave:15px"></i><i style="--wave:34px"></i><i style="--wave:20px"></i><i style="--wave:42px"></i><i style="--wave:29px"></i><i style="--wave:18px"></i><i style="--wave:36px"></i><i style="--wave:50px"></i><i style="--wave:24px"></i><i style="--wave:31px"></i><i style="--wave:17px"></i><i style="--wave:43px"></i><i style="--wave:56px"></i><i style="--wave:26px"></i><i style="--wave:39px"></i><i style="--wave:22px"></i><i style="--wave:45px"></i><i style="--wave:32px"></i><i style="--wave:16px"></i><i style="--wave:40px"></i><i style="--wave:26px"></i><i style="--wave:52px"></i><i style="--wave:34px"></i><i style="--wave:23px"></i><i style="--wave:46px"></i><i style="--wave:19px"></i><i style="--wave:37px"></i><i style="--wave:29px"></i><i style="--wave:48px"></i><i style="--wave:24px"></i><i style="--wave:41px"></i><i style="--wave:16px"></i><i style="--wave:34px"></i><i style="--wave:27px"></i></div><div class="capture-scale"><span>−30s</span><span>−15s</span><span>Now</span></div></div>
+      <div class="capture-actions"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg>Desktop audio <i>ON</i></span><button type="button" data-save-demo><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg>Save sample<kbd>F8</kbd></button></div>
+      <div class="capture-files"><div class="capture-files-head"><span>RECENT CAPTURES</span><span data-capture-count>1 clip</span></div><div data-capture-files><div class="capture-file"><span class="capture-file-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></span><span><b>Clip-1.mp4</b><small>00:30 · Video + stereo audio</small></span><span class="capture-file-tag">MP4</span></div></div></div>
+      <p class="capture-demo-status" data-capture-status role="status" aria-live="polite">Try saving a sample. No recording takes place.</p>
+    </div><div class="capture-copy"><span class="new-badge">NEW</span><h3>One key.<br>Thirty seconds.<br>Yours.</h3><p>The moment already happened. Keep it anyway, with the game audio and music that were part of it.</p><ul><li>Save with F8 or your own shortcut</li><li>Windows desktop audio, included</li><li>Find your MP4s in the Recordings gallery</li></ul><a class="btn btn-glass btn-sm" href="/docs/instant-replay">Instant Replay guide <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><p class="preview-note">Use Recorder for longer sessions. The gallery on the left is an interactive demonstration, not a recording of your browser.</p></div></div></div>
+    </div>
+    <div class="shortcut-strip" aria-label="Useful shortcuts">
+      <a href="#product" data-open-preview="t-menu"><kbd>Right Shift</kbd><span>Your control center</span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+      <a href="#product" data-open-preview="t-captures"><kbd>F8</kbd><span>The moment, saved</span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+      <a href="/docs/keybinds"><span class="shortcut-symbol"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-settings"/></svg></span><span>Make the shortcuts yours</span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
 <section class="section world-section" id="gallery"><div class="wrap">
-      <div class="section-head"><span class="section-label">IN YOUR WORLD</span><h2>Same Minecraft. Your atmosphere.</h2><p>A quieter HUD or a little more presence. Real gameplay from Larp, with a setup you control.</p></div>
+      <div class="section-head"><span class="section-label">FROM MENU TO WORLD</span><h2>Your atmosphere starts here.</h2><p>Before you join. After the sun goes down. A familiar game, with a look that feels like yours.</p></div>
       <div class="world-gallery">
-        <figure class="world-shot"><img src="/assets/img/screenshots/night-1280.webp" srcset="/assets/img/screenshots/night-800.webp 800w, /assets/img/screenshots/night-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 55vw" alt="Larp cosmetics and music beats glowing in a Minecraft forest at night" width="1280" height="673" loading="lazy"><figcaption><span><small>01 / AFTER DARK</small><b>A little louder, after sunset.</b></span><a href="/docs/cosmetics" aria-label="Explore Larp cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></figcaption></figure>
-        <figure class="world-shot"><img src="/assets/img/screenshots/aurora-1280.webp" srcset="/assets/img/screenshots/aurora-800.webp 800w, /assets/img/screenshots/aurora-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 45vw" alt="Larp HUD, cape and aurora sky in Minecraft" width="1280" height="673" loading="lazy"><figcaption><span><small>02 / ALL YOURS</small><b>Every detail, in its place.</b></span><a href="#product" data-open-preview="t-hud" aria-label="Try the HUD editor"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></figcaption></figure>
-      </div><div class="world-foot"><span>Captured in Minecraft with Larp Client.</span><a href="/docs/modules#cat-visuals">Explore visual modules <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
+        <figure class="world-shot menu-shot"><img src="/assets/img/screenshots/title-screen-1280.webp" srcset="/assets/img/screenshots/title-screen-800.webp 800w, /assets/img/screenshots/title-screen-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 55vw" alt="Larp title screen with its emblem, player model, dark curtains and music card" width="1280" height="666" loading="lazy"><figcaption><span><small>01 / BEFORE YOU JOIN</small><b>It starts with a feeling.</b></span><a href="#product" data-open-preview="t-menu" aria-label="Explore the client menu"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></figcaption></figure>
+        <figure class="world-shot"><img src="/assets/img/screenshots/night-1280.webp" srcset="/assets/img/screenshots/night-800.webp 800w, /assets/img/screenshots/night-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 45vw" alt="Larp wings and music beats glowing in a Minecraft forest at night" width="1280" height="673" loading="lazy"><figcaption><span><small>02 / AFTER DARK</small><b>Take the atmosphere with you.</b></span><a href="/docs/cosmetics" aria-label="Explore Larp cosmetics"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></figcaption></figure>
+      </div><div class="world-foot"><span>Actual menu and gameplay captures, supplied by iTake.</span><a href="/docs/modules#cat-visuals">Explore visual modules <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
     </div></section>
 
 <section class="section" id="features" style="padding-top:40px">
@@ -225,10 +236,12 @@
   </div>
 </section>
 
+<section class="section release-section" id="updates"><div class="wrap"><div class="release-intro"><div><span class="section-label">THE CHANGELOG</span><h2>Still being made.<br>Getting better.</h2></div><p>A few of the things we've been working on. Small refinements, useful additions, and more ways to make the client yours.</p></div><div class="release-list"><a class="release-row" href="/docs/changelog#v0141"><span class="release-version">0.14.1<small>LATEST</small></span><span class="release-summary"><b>Keep the sound, too.</b><span>Desktop audio joins 30-second clips, with synchronized sound and video in your exports.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><a class="release-row" href="/docs/changelog#v0140"><span class="release-version">0.14.0</span><span class="release-summary"><b>More insight. More moments.</b><span>Performance Monitor, Instant Replay and in-menu previews for Kill Efects.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><a class="release-row" href="/docs/changelog#v013"><span class="release-version">0.13.x</span><span class="release-summary"><b>Refined, from menu to world.</b><span>Samurai and Tralalero, cached geometry, smoother capture and small improvements throughout the client.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div><a class="release-all" href="/docs/changelog">Read the full changelog <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div></section>
+
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
-    <div class="section-head center"><h2>Questions people ask.</h2></div>
-    <div class="faq"><details><summary>How do I get Larp Client?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Larp Client is private and in active development. Message iTake to request access; there is no public download on this website.</div></details><details><summary>Which version do I need?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21.</div></details><details><summary>Do 30-second clips include sound?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone.</div></details><details><summary>Can other players see my cosmetics?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Cosmetics are rendered locally on your screen. Use third-person view to see your own setup.</div></details><details><summary>How do I open the client menu?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls.</div></details><details><summary>Does it guarantee more FPS?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup.</div></details><details><summary>Are the website previews connected to my game?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="answer">No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media.</div></details></div>
+    <div class="section-head center"><span class="section-label">GOOD TO KNOW</span><h2>Questions people ask.</h2><p>A few clear answers before you join.</p></div>
+    <div class="faq"><details><summary>How do I get Larp Client?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Larp Client is private and in active development. Message iTake to request access; there is no public download on this website.</div></div></details><details><summary>Which version do I need?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21.</div></div></details><details><summary>Do 30-second clips include sound?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone.</div></div></details><details><summary>Can other players see my cosmetics?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Cosmetics are rendered locally on your screen. Use third-person view to see your own setup.</div></div></details><details><summary>How do I open the client menu?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls.</div></div></details><details><summary>Does it guarantee more FPS?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup.</div></div></details><details><summary>Are the website previews connected to my game?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media.</div></div></details></div>
   </div>
 </section>
 
@@ -246,7 +259,7 @@
   <div class="wrap">
     <div class="top">
       <div class="about">
-        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26">Larp Client</a>
+        <a class="brand" href="/"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
         <p>A visual client for Minecraft 1.21.11 on Fabric. Made by iTake.</p>
       </div>
       <div><h4>Product</h4><ul>
@@ -265,6 +278,6 @@
   </div>
 </footer>
 <script src="/assets/js/site.js?v=2f225b1f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script>
-<script src="/assets/js/curtains.js" defer></script><script src="/assets/js/showcase.js?v=3e47eb75" defer></script>
+<script src="/assets/js/curtains.js" defer></script><script src="/assets/js/showcase.js?v=3e47eb75" defer></script><script src="/assets/js/faq.js?v=3b75b368" defer></script><script src="/assets/js/captures-demo.js?v=51262fd8" defer></script>
 </body>
 </html>

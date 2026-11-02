@@ -11,6 +11,9 @@ The original Larp website, updated in place. Its original landing layout, Inter 
 - Discord identity is built in. The existing private-access contact remains unchanged.
 - The HUD editor uses a real Minecraft night panorama, original item textures and the supplied player head. Its example target is FastL_ and the server is mc.hypixel.net. Keystrokes contains only actual keys.
 - A gameplay gallery and interactive Shulker Preview/profile demonstrations extend the existing design. Mobile preview tabs scroll horizontally, and key animations pause while hidden or offscreen.
+- The `larp.` wordmark is restored. The gallery starts with the supplied title screen and continues with the nighttime gameplay capture.
+- Exclusive FAQs animate open and closed, including interrupted transitions and reduced-motion support. A compact release journal and shortcut links add navigation without changing the overall design.
+- Captures uses an interactive recordings gallery demonstration instead of a screenshot poster. Saving a sample adds a local gallery row; it does not record or export media.
 
 ## Build and preview
 
@@ -38,6 +41,7 @@ Open `http://localhost:8000`. For Vercel, the repository includes the generated 
 - `scripts/content_updates.py` and `scripts/docs_build.py`: current guides and searchable reference.
 - `site.config.json`: version, requirements and existing contact.
 - `scripts/website_details.py`, `assets/css/showcase.css` and `assets/js/showcase.js`: HUD assets, gallery and small interactive feature previews.
+- `assets/js/faq.js` and `assets/js/captures-demo.js`: accessible FAQ transitions and the bounded local recording-gallery demonstration.
 
 To refresh the catalog from client source:
 
@@ -49,7 +53,7 @@ python3 scripts/validate.py
 
 ## Preview boundaries
 
-The menu is a browser demonstration; its controls never change Minecraft settings or send game commands. Supplied gameplay screenshots and original cosmetic renders are real assets. Lyrics text is original sample copy. Capture posters do not play or record actual media.
+The menu is a browser demonstration; its controls never change Minecraft settings or send game commands. Supplied gameplay screenshots and original cosmetic renders are real assets. Lyrics text is original sample copy. The capture demo only adds sample gallery entries and never records, plays or exports actual media.
 
 Client desktop media features require Windows. Website previews do not establish client FPS or native capture compatibility.
 
