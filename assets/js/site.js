@@ -96,12 +96,22 @@
     if (keys.length && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
       const seq = ["W", "W", "A", "W", "D", "LMB", "W", "LMB", "S", "LMB", "W", "Space"];
       let i = 0;
-      setInterval(() => {
+      let timer = null, visible = false;
+      const animateKeys = () => {
         keys.forEach((k) => k.classList.remove("on"));
         const k = scene.querySelector(`.keys [data-k="${seq[i++ % seq.length]}"]`);
         if (k) k.classList.add("on");
         if (i % 3 === 0) { const w = scene.querySelector('.keys [data-k="W"]'); if (w) w.classList.add("on"); }
-      }, 420);
+      };
+      const syncAnimation = () => {
+        if (visible && !document.hidden && timer === null) timer = setInterval(animateKeys, 420);
+        if ((!visible || document.hidden) && timer !== null) {
+          clearInterval(timer); timer = null;
+          keys.forEach(k => k.classList.remove('on'));
+        }
+      };
+      new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; syncAnimation(); }).observe(scene);
+      document.addEventListener('visibilitychange', syncAnimation);
     }
   }
 
