@@ -35,6 +35,7 @@ def style_lab(g):
         </div>
         <div class="lab-controls"><span class="detail-kicker">THE STYLE LAB</span><h3>Small changes.<br> Your kind of clean.</h3><label class="lab-field-title">Accent <output data-lab-hex>#B5A3E8</output></label><div class="lab-swatches" role="group" aria-label="HUD accent"><button type="button" data-lab-accent="#b5a3e8" style="--swatch:#b5a3e8" aria-label="Lavender accent" aria-pressed="true"></button><button type="button" data-lab-accent="#9acbdb" style="--swatch:#9acbdb" aria-label="Ice accent" aria-pressed="false"></button><button type="button" data-lab-accent="#e9ad91" style="--swatch:#e9ad91" aria-label="Ember accent" aria-pressed="false"></button><button type="button" data-lab-accent="#aac7a3" style="--swatch:#aac7a3" aria-label="Sage accent" aria-pressed="false"></button><label class="lab-custom" title="Choose your own accent">+<input type="color" value="#b5a3e8" data-lab-color aria-label="Custom HUD accent"></label></div>
           <label class="lab-field-title" for="lab-scale">Widget scale <output data-lab-scale-label>100%</output></label><input type="range" id="lab-scale" min="80" max="115" value="100" data-lab-scale>
+          <label class="lab-check"><span>Typeface</span><select data-lab-font><option value="inter">Inter</option><option value="mono">Mono</option><option value="serif">Editorial Serif</option></select></label>
           <label class="lab-check"><span>Compact layout</span><input type="checkbox" data-lab-compact></label><label class="lab-check"><span>Coordinates</span><input type="checkbox" data-lab-coords checked></label>
           <div class="lab-buttons"><button type="button" class="btn btn-light btn-sm" data-lab-copy>Copy style {icon('copy')}</button><button type="button" class="lab-reset" data-lab-reset>Reset</button></div><p class="lab-status" data-lab-status role="status" aria-live="polite">Preview only. Apply your choices in the client.</p><textarea class="lab-copy-fallback" data-lab-fallback aria-label="Style values to copy manually" readonly hidden></textarea>
         </div>
@@ -44,12 +45,26 @@ def style_lab(g):
 
 def effect_spotlight(g):
     icon = g['icon']
-    # Code-native graphic for a lightweight, symbolic preview, not a game capture.
-    shark = '<svg viewBox="0 0 300 160" class="effect-shark" aria-hidden="true"><path d="M25 91C65 54 125 58 153 55L181 12L189 59C217 65 231 77 245 84L286 58L274 95L292 123L245 107C217 128 188 132 155 125L123 149L128 122C87 119 55 113 25 91Z" fill="currentColor"/><path d="M57 95Q96 119 142 98" fill="none" stroke="#080a10" stroke-width="6"/><circle cx="70" cy="80" r="4" fill="#080a10"/><path d="M159 76l-7 27m18-23-7 26m18-21-7 23" stroke="#080a10" stroke-width="3" opacity=".4"/><path d="M125 146h30l6-12h-30zm53-2h29l8-12h-30z" fill="#85aecf"/></svg>'
+    shark = '''<svg viewBox="0 0 480 208" class="effect-shark" aria-hidden="true">
+      <defs>
+        <linearGradient id="shark-back" x2="0" y2="1"><stop stop-color="#7795a5"/><stop offset=".56" stop-color="#354955"/><stop offset="1" stop-color="#18252e"/></linearGradient>
+        <linearGradient id="shark-belly" x2="0" y2="1"><stop stop-color="#8199a3"/><stop offset="1" stop-color="#344a56"/></linearGradient>
+      </defs>
+      <path d="M343 103Q399 103 463 55Q454 90 430 111Q450 130 459 158Q403 135 349 130Z" fill="url(#shark-back)"/>
+      <path d="M193 82Q217 50 246 19Q246 55 258 81Z" fill="url(#shark-back)"/>
+      <path d="M23 113C54 88 111 76 169 76C245 71 316 81 371 104L405 115L371 130C294 149 211 153 140 143L96 133L46 130Q28 126 23 113Z" fill="url(#shark-back)"/>
+      <path d="M28 118C63 116 96 112 126 114C171 117 189 129 218 136C254 147 309 137 370 124C297 149 209 154 138 141L94 129L46 129Z" fill="url(#shark-belly)" opacity=".78"/>
+      <path d="M201 118Q228 126 266 174Q222 172 182 139Z" fill="#273d49" stroke="#6b8796" stroke-width="1"/>
+      <path d="M145 96Q137 109 138 124M156 96Q148 109 149 126M167 98Q160 111 160 128" fill="none" stroke="#18252c" stroke-width="3" opacity=".8"/>
+      <path d="M27 113Q56 94 102 86Q196 68 285 85" fill="none" stroke="#a1bac5" stroke-width="1.4" opacity=".6"/>
+      <circle cx="74" cy="102" r="4.6" fill="#10191f"/><circle cx="73" cy="101" r="1.45" fill="#dce9ec"/>
+      <path d="M43 124Q78 125 112 119L121 123Q85 131 51 130Z" fill="#10171d"/>
+      <g class="effect-jaw"><path d="M44 127Q76 135 122 122L137 131Q101 151 62 140Q47 136 44 127Z" fill="url(#shark-belly)"/><path d="m57 131 3-5 4 7m8 1 3-5 4 5m8-1 3-5 4 4m7-2 3-5 5 3" fill="none" stroke="#c1d3db" stroke-width="1.2" opacity=".78"/></g>
+    </svg>'''
     pieces = ''.join(f'<i style="--piece:{i};--dx:{(-1 if i % 2 else 1) * (45 + i * 8)}px;--dy:{(-1 if i < 3 else 1) * (24 + i * 9)}px;--turn:{(-1 if i % 2 else 1) * (12 + i * 6)}deg"></i>' for i in range(6))
     return f'''<section class="section effect-section" id="kill-effects"><div class="wrap"><div class="effect-layout">
       <div class="effect-copy"><span class="section-label">THE FINISHING TOUCH <span class="new-badge">NEW ON THE WEB</span></span><h2>Two endings.<br>Your call.</h2><p>Samurai or Tralalero. Choose one effect for a player kill and keep the rest of your setup your own.</p><div class="effect-choice" role="group" aria-label="Kill effect demonstration"><button type="button" data-effect="samurai" aria-pressed="true">01 <b>Samurai</b></button><button type="button" data-effect="tralalero" aria-pressed="false">02 <b>Tralalero</b></button></div><p class="effect-description" data-effect-description>A sharp cut. A brief burst. Then back to the game.</p><a class="detail-link" href="/docs/kill-effects">Explore Kill Efects options {icon('arrow')}</a></div>
-      <div class="effect-study" data-effect-study data-effect-mode="samurai"><div class="effect-study-head"><span>AN INTERACTION STUDY</span><span data-effect-caption>SAMURAI</span></div><div class="effect-arena"><div class="effect-grid"></div><div class="effect-mark">{pieces}</div><div class="effect-slash"></div>{shark}<span class="effect-spark">✦</span></div><div class="effect-study-foot"><span>Stylized web preview<br><small>Actual effects render in Minecraft.</small></span><button type="button" class="btn btn-glass btn-sm" data-effect-play>{icon('play')}Play effect</button></div><p class="effect-result sr-only" data-effect-result role="status" aria-live="polite"></p></div>
+      <div class="effect-study" data-effect-study data-effect-mode="samurai"><div class="effect-study-head"><span>EFFECT PREVIEW</span><span data-effect-caption>SAMURAI</span></div><div class="effect-arena" aria-hidden="true"><div class="effect-grid"></div><div class="effect-mark">{pieces}</div><div class="effect-slash"></div>{shark}<div class="effect-wake"></div><span class="effect-spark">✦</span></div><div class="effect-study-foot"><span>Stylized web preview<br><small>Actual effects render in Minecraft.</small></span><button type="button" class="btn btn-glass btn-sm" data-effect-play>{icon('play')}Play effect</button></div><p class="effect-result sr-only" data-effect-result role="status" aria-live="polite"></p></div>
     </div></div></section>'''
 
 

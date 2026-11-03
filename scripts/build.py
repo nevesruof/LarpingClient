@@ -193,6 +193,7 @@ def index():
     from menu_preview import render as current_menu, additions as preview_additions
     from website_details import hud_preview, gallery, details, release_journal, shortcuts
     from experience_sections import module_explorer, style_lab, effect_spotlight, session_guide, field_notes
+    from editorial import chapter_index, chapter_header, creator_studio, performance_room
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
@@ -226,7 +227,8 @@ def index():
     cats_btn = "".join(f'<button type="button" data-cat="{k}" aria-selected="{str(i == 0).lower()}">{v["label"]}</button>' for i, (k, v) in enumerate(cos.items()))
 
     body = head("Larp Client — a visual client for Minecraft " + CFG["minecraft"],
-                f"Larp Client is a Fabric client for Minecraft {CFG['minecraft']} with {len(MODS)} modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.", "/")
+                f"Larp Client is a Fabric client for Minecraft {CFG['minecraft']} with {len(MODS)} modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.", "/",
+                f'\n<link rel="stylesheet" href="{asset("/assets/css/editorial.css")}">')
     body += nav()
     body += f"""<main id="main">
 <section class="hero">
@@ -235,7 +237,7 @@ def index():
     <div class="hero-copy">
       <span class="hero-label"><i></i> LARP CLIENT {CFG['version']} <span>/</span> MINECRAFT {CFG['minecraft']}</span>
       <h1>Looks illegal.<span>Isn't.</span></h1>
-      <p class="lead">Larp Client is a Fabric client for Minecraft {CFG['minecraft']}. {len(MODS)} modules, 3D cosmetics, a HUD you place anywhere, lyrics and clips with desktop audio. Build a setup that feels like yours.</p>
+      <p class="lead">Make Minecraft feel like yours. Shape your HUD, find your look and keep the moments you want to replay. Larp Client runs on Fabric for Minecraft {CFG['minecraft']}.</p>
       <div class="actions">
         <a class="btn btn-light" href="#access">{icon('person')}You are my friend?</a>
         {discord_btn() or f'<a class="btn btn-glass" href="/docs">{icon("doc")}Read the docs</a>'}
@@ -250,6 +252,11 @@ def index():
 </section>
 
 <section class="strip" aria-label="Larp Client in numbers"><div class="wrap">{stats()}</div></section>
+
+{chapter_index(globals())}
+
+<section class="page-chapter" data-tone="explore" aria-labelledby="chapter-01-title">
+{chapter_header(0, 'Meet the', 'client.', [('product', 'Preview'), ('gallery', 'Gallery'), ('modules', 'Modules')])}
 
 <section class="section" id="product">
   <div class="wrap">
@@ -290,6 +297,12 @@ def index():
 
 {gallery(globals())}
 
+{module_explorer(globals())}
+</section>
+
+<section class="page-chapter" data-tone="workshop" aria-labelledby="chapter-02-title">
+{chapter_header(1, 'Make it', 'yours.', [('style-lab', 'Style lab'), ('cosmetics', 'Cosmetics'), ('kill-effects', 'Kill effects')])}
+
 {style_lab(globals())}
 
 <section class="section" id="features" style="padding-top:40px">
@@ -302,11 +315,7 @@ def index():
   </div>
 </section>
 
-{module_explorer(globals())}
-
 {details(globals())}
-
-{effect_spotlight(globals())}
 
 <section class="section" id="cosmetics" style="padding-top:40px">
   <div class="wrap">
@@ -318,6 +327,18 @@ def index():
     <p class="cos-more"><a href="/docs/cosmetics">See every cosmetic {icon('arrow')}</a></p>
   </div>
 </section>
+
+{effect_spotlight(globals())}
+</section>
+
+<section class="page-chapter" data-tone="studio" aria-labelledby="chapter-03-title">
+{chapter_header(2, 'Keep the', 'moment.', [('studio', 'Lyric studio'), ('product', 'Client preview')])}
+{creator_studio(globals())}
+</section>
+
+<section class="page-chapter" data-tone="guide" aria-labelledby="chapter-04-title">
+{chapter_header(3, 'Ready to', 'play.', [('performance-room', 'Performance'), ('first-session', 'First session'), ('faq', 'FAQ')])}
+{performance_room(globals())}
 
 <div id="install">{session_guide(globals())}</div>
 
@@ -333,6 +354,10 @@ def index():
     </div>
   </div>
 </section>
+
+{field_notes(globals())}
+
+{release_journal(globals())}
 
 <section class="section" id="access">
   <div class="wrap">
@@ -366,15 +391,12 @@ def index():
   </div>
 </section>
 
-{release_journal(globals())}
-
-{field_notes(globals())}
-
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head center"><span class="section-label">GOOD TO KNOW</span><h2>Questions people ask.</h2><p>A few clear answers before you join.</p></div>
     <div class="faq">{faq}</div>
   </div>
+</section>
 </section>
 
 <section class="section cta">
@@ -388,7 +410,7 @@ def index():
 </section>
 </main>
 """
-    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js', 'module-explorer.js', 'style-lab.js', 'session-guide.js', 'effect-study.js']))
+    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js', 'module-explorer.js', 'style-lab.js', 'session-guide.js', 'effect-study.js', 'editorial.js']))
     (ROOT / "index.html").write_text(body)
 
 
