@@ -20,8 +20,9 @@
 <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css?v=a5a6121b">
 <link rel="stylesheet" href="/assets/css/client-preview.css?v=ba8f1708">
+<link rel="stylesheet" href="/assets/css/editorial.css?v=06a1deac">
 <link rel="stylesheet" href="/assets/css/showcase.css?v=04cbbdf6">
-<link rel="stylesheet" href="/assets/css/experience.css?v=634afa5c">
+<link rel="stylesheet" href="/assets/css/experience.css?v=1a449509">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -46,7 +47,7 @@
     <div class="hero-copy">
       <span class="hero-label"><i></i> LARP CLIENT 0.14.1 <span>/</span> MINECRAFT 1.21.11</span>
       <h1>Looks illegal.<span>Isn't.</span></h1>
-      <p class="lead">Larp Client is a Fabric client for Minecraft 1.21.11. 116 modules, 3D cosmetics, a HUD you place anywhere, lyrics and clips with desktop audio. Build a setup that feels like yours.</p>
+      <p class="lead">Make Minecraft feel like yours. Shape your HUD, find your look and keep the moments you want to replay. Larp Client runs on Fabric for Minecraft 1.21.11.</p>
       <div class="actions">
         <a class="btn btn-light" href="#access"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-person"/></svg>You are my friend?</a>
         <a class="btn btn-glass" href="/docs"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-doc"/></svg>Read the docs</a>
@@ -66,6 +67,30 @@
 </section>
 
 <section class="strip" aria-label="Larp Client in numbers"><div class="wrap"><div class="stat"><b>116</b><span>Modules</span></div><div class="stat"><b>22</b><span>Hats</span></div><div class="stat"><b>8</b><span>Wing styles</span></div><div class="stat"><b>9</b><span>Target markers</span></div><div class="stat"><b>2</b><span>Kill effects</span></div></div></section>
+
+<nav class="chapter-index" aria-label="Explore the homepage"><div class="wrap">
+      <div class="chapter-index-title"><span>THE LARP INDEX</span><span>04 CHAPTERS</span></div>
+      <div class="chapter-links"><a href="#product" class="chapter-link">
+          <span class="chapter-link-top"><small>01 / EXPLORE</small><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span>
+          <b>The client in motion</b><span>Menu, screenshots and the full module catalog.</span>
+        </a><a href="#style-lab" class="chapter-link">
+          <span class="chapter-link-top"><small>02 / MAKE IT YOURS</small><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span>
+          <b>A look of your own</b><span>HUD styles, cosmetics and kill effects.</span>
+        </a><a href="#studio" class="chapter-link">
+          <span class="chapter-link-top"><small>03 / STUDIO</small><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span>
+          <b>Sound and captures</b><span>Try lyric placement and find the clip tools.</span>
+        </a><a href="#performance-room" class="chapter-link">
+          <span class="chapter-link-top"><small>04 / FIELD GUIDE</small><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span>
+          <b>Ready for a session</b><span>Frame times, setup steps and release notes.</span>
+        </a></div>
+    </div></nav>
+
+<section class="page-chapter" data-tone="explore" aria-labelledby="chapter-01-title">
+<div class="chapter-heading wrap" data-chapter-reveal>
+      <div><span class="chapter-eyebrow">01 / EXPLORE</span>
+      <h2 id="chapter-01-title">Meet the <em>client.</em></h2></div>
+      <nav aria-label="Explore sections"><a href="#product">Preview</a><a href="#gallery">Gallery</a><a href="#modules">Modules</a></nav>
+    </div>
 
 <section class="section" id="product">
   <div class="wrap">
@@ -147,6 +172,24 @@
       </div><div class="world-foot"><span>Actual menu and gameplay captures, supplied by iTake.</span><a href="/docs/modules#cat-visuals">Explore visual modules <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
     </div></section>
 
+<section class="section explore-section" id="modules"><div class="wrap">
+      <div class="experience-head"><div><span class="section-label">FIND YOUR ESSENTIALS <span class="new-badge">NEW ON THE WEB</span></span><h2>Less scrolling.<br>More finding your thing.</h2></div><p>116 modules. Six categories. Search by a name, an idea or a setting, and go straight to the details.</p></div>
+      <div class="explore-toolbar"><label class="explore-search"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" data-explore-search aria-label="Search module explorer" placeholder="Try wings, audio, crosshair…" autocomplete="off"></label><button class="explore-new" type="button" data-explore-new aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>New additions</button></div>
+      <div class="explore-filters" role="group" aria-label="Module categories"><button type="button" data-explore-category="all" aria-pressed="true">All<small>116</small></button><button type="button" data-explore-category="HUD" aria-pressed="false">HUD<small>30</small></button><button type="button" data-explore-category="PVP" aria-pressed="false">PvP<small>8</small></button><button type="button" data-explore-category="UTILITY" aria-pressed="false">Utility<small>22</small></button><button type="button" data-explore-category="VISUALS" aria-pressed="false">Visuals<small>42</small></button><button type="button" data-explore-category="COSMETICS" aria-pressed="false">Cosmetics<small>11</small></button><button type="button" data-explore-category="CLIENT" aria-pressed="false">Client<small>3</small></button></div>
+      <div class="explore-meta"><p data-explore-count role="status" aria-live="polite">A few favorites to start with.</p><button type="button" data-explore-clear hidden>Clear filters ×</button></div>
+      <div class="explore-grid" data-explore-grid><a class="explore-card" href="/docs/modules#instantreplay"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg><small>Utility</small><span class="new-badge">NEW</span></span><h3>Instant Replay</h3><p>Save the last 30 seconds with desktop audio; enable explicitly, then use the save-clip key</p><span class="explore-card-bottom">1 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#lyrics"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg><small>HUD</small><span class="new-badge">NEW</span></span><h3>Lyrics</h3><p>Time-synced lyrics from LRCLIB</p><span class="explore-card-bottom">22 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#shulkerpreview"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg><small>Utility</small><span class="new-badge">NEW</span></span><h3>Shulker Preview</h3><p>Hold the preview key to see all 27 shulker slots; rebind it in Controls</p><span class="explore-card-bottom">3 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#killeffect"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg><small>Visuals</small><span class="new-badge">NEW</span></span><h3>Kill Efects</h3><p>Choose one animation after a player kill: Tralalero or Samurai</p><span class="explore-card-bottom">6 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#performancemonitor"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg><small>HUD</small><span class="new-badge">NEW</span></span><h3>Performance Monitor</h3><p>Frame times, 1% lows, memory and optional module tick CPU profiling</p><span class="explore-card-bottom">9 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#musicbeats"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg><small>Cosmetics</small></span><h3>Music Beats</h3><p>Visualizes audio around your player (works with Spotify, or any other music player)</p><span class="explore-card-bottom">14 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a></div>
+      <div class="explore-empty" data-explore-empty hidden><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg></span><h3>Nothing here yet.</h3><p>Try a shorter search or another category.</p><button class="btn btn-glass btn-sm" type="button" data-explore-reset>Show all modules</button></div>
+      <div class="explore-foot"><button class="btn btn-glass btn-sm" type="button" data-explore-more hidden>Show more modules <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></button><a href="/docs/modules">The complete reference <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
+    </div></section>
+</section>
+
+<section class="page-chapter" data-tone="workshop" aria-labelledby="chapter-02-title">
+<div class="chapter-heading wrap" data-chapter-reveal>
+      <div><span class="chapter-eyebrow">02 / MAKE IT YOURS</span>
+      <h2 id="chapter-02-title">Make it <em>yours.</em></h2></div>
+      <nav aria-label="Make it yours sections"><a href="#style-lab">Style lab</a><a href="#cosmetics">Cosmetics</a><a href="#kill-effects">Kill effects</a></nav>
+    </div>
+
 <section class="section lab-section" id="style-lab"><div class="wrap">
       <div class="section-head"><span class="section-label">A LITTLE MORE YOU <span class="new-badge">NEW ON THE WEB</span></span><h2>Find your shade of larp.</h2><p>Different accent. Different scale. Same world. Put together a look before you open the client.</p></div>
       <div class="style-lab" data-style-lab>
@@ -156,6 +199,7 @@
         </div>
         <div class="lab-controls"><span class="detail-kicker">THE STYLE LAB</span><h3>Small changes.<br> Your kind of clean.</h3><label class="lab-field-title">Accent <output data-lab-hex>#B5A3E8</output></label><div class="lab-swatches" role="group" aria-label="HUD accent"><button type="button" data-lab-accent="#b5a3e8" style="--swatch:#b5a3e8" aria-label="Lavender accent" aria-pressed="true"></button><button type="button" data-lab-accent="#9acbdb" style="--swatch:#9acbdb" aria-label="Ice accent" aria-pressed="false"></button><button type="button" data-lab-accent="#e9ad91" style="--swatch:#e9ad91" aria-label="Ember accent" aria-pressed="false"></button><button type="button" data-lab-accent="#aac7a3" style="--swatch:#aac7a3" aria-label="Sage accent" aria-pressed="false"></button><label class="lab-custom" title="Choose your own accent">+<input type="color" value="#b5a3e8" data-lab-color aria-label="Custom HUD accent"></label></div>
           <label class="lab-field-title" for="lab-scale">Widget scale <output data-lab-scale-label>100%</output></label><input type="range" id="lab-scale" min="80" max="115" value="100" data-lab-scale>
+          <label class="lab-check"><span>Typeface</span><select data-lab-font><option value="inter">Inter</option><option value="mono">Mono</option><option value="serif">Editorial Serif</option></select></label>
           <label class="lab-check"><span>Compact layout</span><input type="checkbox" data-lab-compact></label><label class="lab-check"><span>Coordinates</span><input type="checkbox" data-lab-coords checked></label>
           <div class="lab-buttons"><button type="button" class="btn btn-light btn-sm" data-lab-copy>Copy style <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-copy"/></svg></button><button type="button" class="lab-reset" data-lab-reset>Reset</button></div><p class="lab-status" data-lab-status role="status" aria-live="polite">Preview only. Apply your choices in the client.</p><textarea class="lab-copy-fallback" data-lab-fallback aria-label="Style values to copy manually" readonly hidden></textarea>
         </div>
@@ -171,16 +215,6 @@
     <div class="features"><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></div><h3>Smart FPS limits</h3><p>Menus, AFK and alt-tab get their own frame cap. Your FPS limit in Options is never touched.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-wings"/></svg></div><h3>Cached 3D cosmetics</h3><p>Prepared geometry, reusable buffers and adjustable refresh rates reduce repeated work. Tune effects to suit your hardware.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-edithud"/></svg></div><h3>A HUD that snaps</h3><p>Drag any element. It snaps to edges, the center and other elements, with a grid and 1 px arrow-key nudges.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></div><h3>Three profiles</h3><p>Save, load or delete a setup in three profile slots. Use the confirmed reset when you want a fresh start.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-rpc"/></svg></div><h3>Discord presence</h3><p>The application identity and logo are built in. Choose your status details and links without creating a Discord app.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hotbarkeybinds"/></svg></div><h3>Your real hotbar keys</h3><p>Each hotbar slot shows the key it's bound to, even if your binds are 1 2 3 4 G R.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></div><h3>Instant Replay <span class="new-badge">NEW</span></h3><p>Keep the last 30 seconds with game audio and music on Windows. Save with F8 or after a player kill.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg></div><h3>Kill Efects <span class="new-badge">NEW</span></h3><p>Choose Tralalero or Samurai in their own section. One selected animation after a player kill, with an in-menu preview.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg></div><h3>Lyrics <span class="new-badge">NEW</span></h3><p>LRCLIB lyrics in the world, on the HUD or in a compact line. Adjust size, placement, font, color and transitions.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg></div><h3>Shulker Preview <span class="new-badge">NEW</span></h3><p>All 27 slots in a color-matched tooltip, with a preview key you can rebind.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></div><h3>Performance Monitor <span class="new-badge">NEW</span></h3><p>Frame times, 1% lows, P95 and memory use. Optional module-tick CPU profiling shows where to look closer.</p></article><article class="feature"><div class="fi"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg></div><h3>Recorder & screenshots <span class="new-badge">NEW</span></h3><p>Windowed or F11 capture, a Recordings gallery, numbered screenshots and animated previews.</p></article></div>
   </div>
 </section>
-
-<section class="section explore-section" id="modules"><div class="wrap">
-      <div class="experience-head"><div><span class="section-label">FIND YOUR ESSENTIALS <span class="new-badge">NEW ON THE WEB</span></span><h2>Less scrolling.<br>More finding your thing.</h2></div><p>116 modules. Six categories. Search by a name, an idea or a setting, and go straight to the details.</p></div>
-      <div class="explore-toolbar"><label class="explore-search"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg><input type="search" data-explore-search aria-label="Search module explorer" placeholder="Try wings, audio, crosshair…" autocomplete="off"></label><button class="explore-new" type="button" data-explore-new aria-pressed="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-update"/></svg>New additions</button></div>
-      <div class="explore-filters" role="group" aria-label="Module categories"><button type="button" data-explore-category="all" aria-pressed="true">All<small>116</small></button><button type="button" data-explore-category="HUD" aria-pressed="false">HUD<small>30</small></button><button type="button" data-explore-category="PVP" aria-pressed="false">PvP<small>8</small></button><button type="button" data-explore-category="UTILITY" aria-pressed="false">Utility<small>22</small></button><button type="button" data-explore-category="VISUALS" aria-pressed="false">Visuals<small>42</small></button><button type="button" data-explore-category="COSMETICS" aria-pressed="false">Cosmetics<small>11</small></button><button type="button" data-explore-category="CLIENT" aria-pressed="false">Client<small>3</small></button></div>
-      <div class="explore-meta"><p data-explore-count role="status" aria-live="polite">A few favorites to start with.</p><button type="button" data-explore-clear hidden>Clear filters ×</button></div>
-      <div class="explore-grid" data-explore-grid><a class="explore-card" href="/docs/modules#instantreplay"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg><small>Utility</small><span class="new-badge">NEW</span></span><h3>Instant Replay</h3><p>Save the last 30 seconds with desktop audio; enable explicitly, then use the save-clip key</p><span class="explore-card-bottom">1 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#lyrics"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg><small>HUD</small><span class="new-badge">NEW</span></span><h3>Lyrics</h3><p>Time-synced lyrics from LRCLIB</p><span class="explore-card-bottom">22 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#shulkerpreview"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-inventoryhud"/></svg><small>Utility</small><span class="new-badge">NEW</span></span><h3>Shulker Preview</h3><p>Hold the preview key to see all 27 shulker slots; rebind it in Controls</p><span class="explore-card-bottom">3 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#killeffect"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-hitfx"/></svg><small>Visuals</small><span class="new-badge">NEW</span></span><h3>Kill Efects</h3><p>Choose one animation after a player kill: Tralalero or Samurai</p><span class="explore-card-bottom">6 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#performancemonitor"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg><small>HUD</small><span class="new-badge">NEW</span></span><h3>Performance Monitor</h3><p>Frame times, 1% lows, memory and optional module tick CPU profiling</p><span class="explore-card-bottom">9 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a><a class="explore-card" href="/docs/modules#musicbeats"><span class="explore-card-top"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg><small>Cosmetics</small></span><h3>Music Beats</h3><p>Visualizes audio around your player (works with Spotify, or any other music player)</p><span class="explore-card-bottom">14 settings<span>Explore <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></span></a></div>
-      <div class="explore-empty" data-explore-empty hidden><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg></span><h3>Nothing here yet.</h3><p>Try a shorter search or another category.</p><button class="btn btn-glass btn-sm" type="button" data-explore-reset>Show all modules</button></div>
-      <div class="explore-foot"><button class="btn btn-glass btn-sm" type="button" data-explore-more hidden>Show more modules <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></button><a href="/docs/modules">The complete reference <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
-    </div></section>
 
 <section class="section detail-section" id="details"><div class="wrap">
       <div class="section-head"><span class="section-label">THE SMALL THINGS</span><h2>A better session is in the details.</h2><p>Useful when you need them. Out of the way when you don't.</p></div>
@@ -200,11 +234,6 @@
       </div>
     </div></section>
 
-<section class="section effect-section" id="kill-effects"><div class="wrap"><div class="effect-layout">
-      <div class="effect-copy"><span class="section-label">THE FINISHING TOUCH <span class="new-badge">NEW ON THE WEB</span></span><h2>Two endings.<br>Your call.</h2><p>Samurai or Tralalero. Choose one effect for a player kill and keep the rest of your setup your own.</p><div class="effect-choice" role="group" aria-label="Kill effect demonstration"><button type="button" data-effect="samurai" aria-pressed="true">01 <b>Samurai</b></button><button type="button" data-effect="tralalero" aria-pressed="false">02 <b>Tralalero</b></button></div><p class="effect-description" data-effect-description>A sharp cut. A brief burst. Then back to the game.</p><a class="detail-link" href="/docs/kill-effects">Explore Kill Efects options <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
-      <div class="effect-study" data-effect-study data-effect-mode="samurai"><div class="effect-study-head"><span>AN INTERACTION STUDY</span><span data-effect-caption>SAMURAI</span></div><div class="effect-arena"><div class="effect-grid"></div><div class="effect-mark"><i style="--piece:0;--dx:45px;--dy:-24px;--turn:12deg"></i><i style="--piece:1;--dx:-53px;--dy:-33px;--turn:-18deg"></i><i style="--piece:2;--dx:61px;--dy:-42px;--turn:24deg"></i><i style="--piece:3;--dx:-69px;--dy:51px;--turn:-30deg"></i><i style="--piece:4;--dx:77px;--dy:60px;--turn:36deg"></i><i style="--piece:5;--dx:-85px;--dy:69px;--turn:-42deg"></i></div><div class="effect-slash"></div><svg viewBox="0 0 300 160" class="effect-shark" aria-hidden="true"><path d="M25 91C65 54 125 58 153 55L181 12L189 59C217 65 231 77 245 84L286 58L274 95L292 123L245 107C217 128 188 132 155 125L123 149L128 122C87 119 55 113 25 91Z" fill="currentColor"/><path d="M57 95Q96 119 142 98" fill="none" stroke="#080a10" stroke-width="6"/><circle cx="70" cy="80" r="4" fill="#080a10"/><path d="M159 76l-7 27m18-23-7 26m18-21-7 23" stroke="#080a10" stroke-width="3" opacity=".4"/><path d="M125 146h30l6-12h-30zm53-2h29l8-12h-30z" fill="#85aecf"/></svg><span class="effect-spark">✦</span></div><div class="effect-study-foot"><span>Stylized web preview<br><small>Actual effects render in Minecraft.</small></span><button type="button" class="btn btn-glass btn-sm" data-effect-play><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg>Play effect</button></div><p class="effect-result sr-only" data-effect-result role="status" aria-live="polite"></p></div>
-    </div></div></section>
-
 <section class="section" id="cosmetics" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head">
@@ -215,6 +244,98 @@
     <p class="cos-more"><a href="/docs/cosmetics">See every cosmetic <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></p>
   </div>
 </section>
+
+<section class="section effect-section" id="kill-effects"><div class="wrap"><div class="effect-layout">
+      <div class="effect-copy"><span class="section-label">THE FINISHING TOUCH <span class="new-badge">NEW ON THE WEB</span></span><h2>Two endings.<br>Your call.</h2><p>Samurai or Tralalero. Choose one effect for a player kill and keep the rest of your setup your own.</p><div class="effect-choice" role="group" aria-label="Kill effect demonstration"><button type="button" data-effect="samurai" aria-pressed="true">01 <b>Samurai</b></button><button type="button" data-effect="tralalero" aria-pressed="false">02 <b>Tralalero</b></button></div><p class="effect-description" data-effect-description>A sharp cut. A brief burst. Then back to the game.</p><a class="detail-link" href="/docs/kill-effects">Explore Kill Efects options <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div>
+      <div class="effect-study" data-effect-study data-effect-mode="samurai"><div class="effect-study-head"><span>EFFECT PREVIEW</span><span data-effect-caption>SAMURAI</span></div><div class="effect-arena" aria-hidden="true"><div class="effect-grid"></div><div class="effect-mark"><i style="--piece:0;--dx:45px;--dy:-24px;--turn:12deg"></i><i style="--piece:1;--dx:-53px;--dy:-33px;--turn:-18deg"></i><i style="--piece:2;--dx:61px;--dy:-42px;--turn:24deg"></i><i style="--piece:3;--dx:-69px;--dy:51px;--turn:-30deg"></i><i style="--piece:4;--dx:77px;--dy:60px;--turn:36deg"></i><i style="--piece:5;--dx:-85px;--dy:69px;--turn:-42deg"></i></div><div class="effect-slash"></div><svg viewBox="0 0 480 208" class="effect-shark" aria-hidden="true">
+      <defs>
+        <linearGradient id="shark-back" x2="0" y2="1"><stop stop-color="#7795a5"/><stop offset=".56" stop-color="#354955"/><stop offset="1" stop-color="#18252e"/></linearGradient>
+        <linearGradient id="shark-belly" x2="0" y2="1"><stop stop-color="#8199a3"/><stop offset="1" stop-color="#344a56"/></linearGradient>
+      </defs>
+      <path d="M343 103Q399 103 463 55Q454 90 430 111Q450 130 459 158Q403 135 349 130Z" fill="url(#shark-back)"/>
+      <path d="M193 82Q217 50 246 19Q246 55 258 81Z" fill="url(#shark-back)"/>
+      <path d="M23 113C54 88 111 76 169 76C245 71 316 81 371 104L405 115L371 130C294 149 211 153 140 143L96 133L46 130Q28 126 23 113Z" fill="url(#shark-back)"/>
+      <path d="M28 118C63 116 96 112 126 114C171 117 189 129 218 136C254 147 309 137 370 124C297 149 209 154 138 141L94 129L46 129Z" fill="url(#shark-belly)" opacity=".78"/>
+      <path d="M201 118Q228 126 266 174Q222 172 182 139Z" fill="#273d49" stroke="#6b8796" stroke-width="1"/>
+      <path d="M145 96Q137 109 138 124M156 96Q148 109 149 126M167 98Q160 111 160 128" fill="none" stroke="#18252c" stroke-width="3" opacity=".8"/>
+      <path d="M27 113Q56 94 102 86Q196 68 285 85" fill="none" stroke="#a1bac5" stroke-width="1.4" opacity=".6"/>
+      <circle cx="74" cy="102" r="4.6" fill="#10191f"/><circle cx="73" cy="101" r="1.45" fill="#dce9ec"/>
+      <path d="M43 124Q78 125 112 119L121 123Q85 131 51 130Z" fill="#10171d"/>
+      <g class="effect-jaw"><path d="M44 127Q76 135 122 122L137 131Q101 151 62 140Q47 136 44 127Z" fill="url(#shark-belly)"/><path d="m57 131 3-5 4 7m8 1 3-5 4 5m8-1 3-5 4 4m7-2 3-5 5 3" fill="none" stroke="#c1d3db" stroke-width="1.2" opacity=".78"/></g>
+    </svg><div class="effect-wake"></div><span class="effect-spark">✦</span></div><div class="effect-study-foot"><span>Stylized web preview<br><small>Actual effects render in Minecraft.</small></span><button type="button" class="btn btn-glass btn-sm" data-effect-play><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg>Play effect</button></div><p class="effect-result sr-only" data-effect-result role="status" aria-live="polite"></p></div>
+    </div></div></section>
+</section>
+
+<section class="page-chapter" data-tone="studio" aria-labelledby="chapter-03-title">
+<div class="chapter-heading wrap" data-chapter-reveal>
+      <div><span class="chapter-eyebrow">03 / STUDIO</span>
+      <h2 id="chapter-03-title">Keep the <em>moment.</em></h2></div>
+      <nav aria-label="Studio sections"><a href="#studio">Lyric studio</a><a href="#product">Client preview</a></nav>
+    </div>
+<section class="section studio-section" id="studio"><div class="wrap">
+      <div class="studio-layout" data-lyric-studio>
+        <div class="studio-scene" data-studio-layout="stack" data-studio-font="inter">
+          <img src="/assets/img/screenshots/night-800.webp" width="800" height="421" loading="lazy" alt="">
+          <div class="studio-scene-top"><span>LYRIC PLACEMENT</span><span>WEB DEMO</span></div>
+          <ol class="studio-lines" aria-label="Original sample lyrics"><li class="is-current" aria-current="true">The sky goes quiet.</li><li>Leave a light on for the night.</li><li>We have a world of our own.</li><li>Keep this moment a little longer.</li></ol>
+          <div class="studio-track"><span class="studio-track-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg></span><div><b>World of our own</b><small>Original sample · lyric timeline</small></div></div>
+        </div>
+        <div class="studio-control">
+          <span class="section-label">LYRIC STUDIO <span class="new-badge">NEW</span></span>
+          <h3>Give the words a place.</h3>
+          <p>Scrub through the sample, then try a compact line or a full stack over the world.</p>
+          <label class="studio-control-row" for="studio-seek">Timeline <output data-studio-time>00:00 / 00:24</output></label>
+          <input id="studio-seek" type="range" min="0" max="24" value="0" aria-valuetext="0 of 24 seconds">
+          <label class="studio-control-row">Placement <select data-studio-layout-select><option value="stack">Stacked</option><option value="compact">Compact</option></select></label>
+          <label class="studio-control-row">Typeface <select data-studio-font-select><option value="inter">Inter</option><option value="serif">Editorial Serif</option><option value="mono">Mono</option></select></label>
+          <label class="studio-control-row">Accent <input type="color" data-studio-accent value="#c9dcda"></label>
+          <a class="detail-link" href="/docs/lyrics">Set up lyrics in Minecraft <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="studio-tools">
+        <a href="#product" data-open-preview="t-music"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg></span><div><b>Now playing</b><small>See the music card and lyrics in the client preview.</small></div><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+        <a href="#product" data-open-preview="t-captures"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-modules"/></svg></span><div><b>Instant Replay</b><small>Try the recordings gallery and its 30-second clip flow.</small></div><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+        <a href="/docs/captures"><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-play"/></svg></span><div><b>Capture guide</b><small>Set up desktop audio, recordings and screenshots.</small></div><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+      </div>
+    </div></section>
+</section>
+
+<section class="page-chapter" data-tone="guide" aria-labelledby="chapter-04-title">
+<div class="chapter-heading wrap" data-chapter-reveal>
+      <div><span class="chapter-eyebrow">04 / FIELD GUIDE</span>
+      <h2 id="chapter-04-title">Ready to <em>play.</em></h2></div>
+      <nav aria-label="Field guide sections"><a href="#performance-room">Performance</a><a href="#first-session">First session</a><a href="#faq">FAQ</a></nav>
+    </div>
+<section class="section performance-room" id="performance-room"><div class="wrap">
+      <div class="room-layout" data-frame-room>
+        <div class="room-copy"><span class="section-label">PERFORMANCE ROOM <span class="new-badge">NEW</span></span>
+          <h3>See the frame behind the FPS.</h3>
+          <p>A few slow frames can stand out in an otherwise steady session. Compare two sample traces, then use Performance Monitor to measure the same scene in Minecraft.</p>
+          <div class="room-choices" role="group" aria-label="Frame time sample">
+            <button type="button" data-frame-sample="steady" aria-pressed="true">Steady scene</button>
+            <button type="button" data-frame-sample="busy" aria-pressed="false">Busy scene</button>
+          </div>
+          <a class="detail-link" href="/docs/performance">Read the performance guide <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+        </div>
+        <figure class="room-monitor">
+          <figcaption><span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg> Frame times</span><small>ILLUSTRATIVE DATA</small></figcaption>
+          <div class="room-metrics" aria-live="polite">
+            <div><small>Median</small><b data-frame-median>8.0 ms</b></div>
+            <div><small>95th percentile</small><b data-frame-p95>9.0 ms</b></div>
+            <div><small>Slowest frame</small><b data-frame-max>10.0 ms</b></div>
+          </div>
+          <svg class="room-chart" viewBox="0 0 440 166" role="img" aria-labelledby="frame-chart-title frame-chart-description">
+            <title id="frame-chart-title">Frame time by frame</title>
+            <desc id="frame-chart-description" data-frame-description>A steady sample with frame times from 7 to 10 milliseconds.</desc>
+            <path class="room-grid" d="M34 14H424 M34 57H424 M34 100H424 M34 143H424"/>
+            <g class="room-axis"><text x="0" y="18">30</text><text x="0" y="61">20</text><text x="0" y="104">10</text><text x="0" y="147">0</text><text x="34" y="163">Frame 1</text><text x="381" y="163">Frame 24</text></g>
+            <path class="room-area" data-frame-area d="M34 143L34 108L424 108L424 143Z"/>
+            <polyline class="room-line" data-frame-line points="34,108 424,108"/>
+          </svg>
+          <p class="room-note" data-frame-note>Steady frames stay close together in this sample.</p>
+        </figure>
+      </div>
+    </div></section>
 
 <div id="install"><section class="section session-section" id="first-session"><div class="wrap"><div class="session-layout"><div class="session-intro"><span class="section-label">YOUR FIRST SESSION <span class="new-badge">NEW ON THE WEB</span></span><h2>From hello<br>to your own setup.</h2><p>A short list for a good start. Tick things off as you go; your checklist stays in this browser.</p><div class="session-progress"><span data-session-progress role="status" aria-live="polite">0 of 4 ready</span><span class="session-progress-track"><i data-session-progress-bar></i></span></div><button type="button" data-session-reset>Reset checklist</button><p class="session-storage-note" data-session-note></p></div><div class="session-tasks"><article class="session-task"><label><input type="checkbox" data-session-task="access"><span class="session-check"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check"/></svg></span><span><small>01</small><b>Get your invite.</b><span>Larp is private. Request the client from iTake.</span></span></label><a href="/#access" aria-label="Access details"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></article><article class="session-task"><label><input type="checkbox" data-session-task="install"><span class="session-check"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check"/></svg></span><span><small>02</small><b>Build a clean start.</b><span>Minecraft 1.21.11, Java 21, Fabric and the matching Fabric API.</span></span></label><a href="/docs/installation" aria-label="Installation guide"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></article><article class="session-task"><label><input type="checkbox" data-session-task="layout"><span class="session-check"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check"/></svg></span><span><small>03</small><b>Keep what you use.</b><span>Place your HUD, choose your modules and save a profile.</span></span></label><a href="/docs/hud-editor" aria-label="Arrange your HUD"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></article><article class="session-task"><label><input type="checkbox" data-session-task="capture"><span class="session-check"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-check"/></svg></span><span><small>04</small><b>Make the first moment count.</b><span>Choose your clip key and check your Windows audio output.</span></span></label><a href="/docs/instant-replay" aria-label="Set up your clips"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></article></div></div></div></section></div>
 
@@ -230,6 +351,10 @@
     </div>
   </div>
 </section>
+
+<section class="section notes-section" id="field-notes"><div class="wrap"><div class="section-head"><span class="section-label">A FEW FIELD NOTES <span class="new-badge">NEW ON THE WEB</span></span><h2>Good looks. Better habits.</h2><p>Three small things worth getting right.</p></div><div class="field-notes"><a class="field-note" href="/docs/performance"><span class="field-note-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></span><small>01 / FRAME TIMES</small><h3>A smoother session starts with a comparison.</h3><p>Keep the scene the same. Change one effect. Compare frame times with Performance Monitor.</p><span class="field-note-link">Tune your setup<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></a><a class="field-note" href="/docs/lyrics"><span class="field-note-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg></span><small>02 / YOUR SOUNDTRACK</small><h3>Let the song find its place.</h3><p>Your media session, LRCLIB lyrics and a layout that leaves room for the world.</p><span class="field-note-link">Style your lyrics<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></a><a class="field-note" href="/docs/profiles"><span class="field-note-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></span><small>03 / THE LITTLE BACKUP</small><h3>A good layout deserves a second copy.</h3><p>Save a profile before experimenting. Keep your configuration when moving between instances.</p><span class="field-note-link">Keep your setup<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></a></div></div></section>
+
+<section class="section release-section" id="updates"><div class="wrap"><div class="release-intro"><div><span class="section-label">THE CHANGELOG</span><h2>Still being made.<br>Getting better.</h2></div><p>A few of the things we've been working on. Small refinements, useful additions, and more ways to make the client yours.</p></div><div class="release-list"><a class="release-row" href="/docs/changelog#v0141"><span class="release-version">0.14.1<small>LATEST</small></span><span class="release-summary"><b>Keep the sound, too.</b><span>Desktop audio joins 30-second clips, with synchronized sound and video in your exports.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><a class="release-row" href="/docs/changelog#v0140"><span class="release-version">0.14.0</span><span class="release-summary"><b>More insight. More moments.</b><span>Performance Monitor, Instant Replay and in-menu previews for Kill Efects.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><a class="release-row" href="/docs/changelog#v013"><span class="release-version">0.13.x</span><span class="release-summary"><b>Refined, from menu to world.</b><span>Samurai and Tralalero, cached geometry, smoother capture and small improvements throughout the client.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div><a class="release-all" href="/docs/changelog">Read the full changelog <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div></section>
 
 <section class="section" id="access">
   <div class="wrap">
@@ -263,15 +388,12 @@
   </div>
 </section>
 
-<section class="section release-section" id="updates"><div class="wrap"><div class="release-intro"><div><span class="section-label">THE CHANGELOG</span><h2>Still being made.<br>Getting better.</h2></div><p>A few of the things we've been working on. Small refinements, useful additions, and more ways to make the client yours.</p></div><div class="release-list"><a class="release-row" href="/docs/changelog#v0141"><span class="release-version">0.14.1<small>LATEST</small></span><span class="release-summary"><b>Keep the sound, too.</b><span>Desktop audio joins 30-second clips, with synchronized sound and video in your exports.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><a class="release-row" href="/docs/changelog#v0140"><span class="release-version">0.14.0</span><span class="release-summary"><b>More insight. More moments.</b><span>Performance Monitor, Instant Replay and in-menu previews for Kill Efects.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a><a class="release-row" href="/docs/changelog#v013"><span class="release-version">0.13.x</span><span class="release-summary"><b>Refined, from menu to world.</b><span>Samurai and Tralalero, cached geometry, smoother capture and small improvements throughout the client.</span></span><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div><a class="release-all" href="/docs/changelog">Read the full changelog <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a></div></section>
-
-<section class="section notes-section" id="field-notes"><div class="wrap"><div class="section-head"><span class="section-label">A FEW FIELD NOTES <span class="new-badge">NEW ON THE WEB</span></span><h2>Good looks. Better habits.</h2><p>Three small things worth getting right.</p></div><div class="field-notes"><a class="field-note" href="/docs/performance"><span class="field-note-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-performance"/></svg></span><small>01 / FRAME TIMES</small><h3>A smoother session starts with a comparison.</h3><p>Keep the scene the same. Change one effect. Compare frame times with Performance Monitor.</p><span class="field-note-link">Tune your setup<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></a><a class="field-note" href="/docs/lyrics"><span class="field-note-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-music"/></svg></span><small>02 / YOUR SOUNDTRACK</small><h3>Let the song find its place.</h3><p>Your media session, LRCLIB lyrics and a layout that leaves room for the world.</p><span class="field-note-link">Style your lyrics<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></a><a class="field-note" href="/docs/profiles"><span class="field-note-icon"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-layers"/></svg></span><small>03 / THE LITTLE BACKUP</small><h3>A good layout deserves a second copy.</h3><p>Save a profile before experimenting. Keep your configuration when moving between instances.</p><span class="field-note-link">Keep your setup<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></span></a></div></div></section>
-
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head center"><span class="section-label">GOOD TO KNOW</span><h2>Questions people ask.</h2><p>A few clear answers before you join.</p></div>
     <div class="faq"><details><summary>How do I get Larp Client?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Larp Client is private and in active development. Message iTake to request access; there is no public download on this website.</div></div></details><details><summary>Which version do I need?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21.</div></div></details><details><summary>Do 30-second clips include sound?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone.</div></div></details><details><summary>Can other players see my cosmetics?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Cosmetics are rendered locally on your screen. Use third-person view to see your own setup.</div></div></details><details><summary>How do I open the client menu?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls.</div></div></details><details><summary>Does it guarantee more FPS?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup.</div></div></details><details><summary>Are the website previews connected to my game?<svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-expand"/></svg></summary><div class="faq-answer-wrap"><div class="answer">No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media.</div></div></details></div>
   </div>
+</section>
 </section>
 
 <section class="section cta">
@@ -306,8 +428,8 @@
     </div>
   </div>
 </footer>
-<script src="/assets/js/quick-search.js?v=309e8be2" defer></script>
+<script src="/assets/js/quick-search.js?v=364c04cc" defer></script>
 <script src="/assets/js/site.js?v=2f225b1f" defer></script><script src="/assets/js/client-preview.js?v=506745d6" defer></script>
-<script src="/assets/js/curtains.js" defer></script><script src="/assets/js/showcase.js?v=3e47eb75" defer></script><script src="/assets/js/faq.js?v=3b75b368" defer></script><script src="/assets/js/captures-demo.js?v=51262fd8" defer></script><script src="/assets/js/module-explorer.js?v=700f2e36" defer></script><script src="/assets/js/style-lab.js?v=d46e159f" defer></script><script src="/assets/js/session-guide.js?v=fde32a27" defer></script><script src="/assets/js/effect-study.js?v=b66bf505" defer></script>
+<script src="/assets/js/curtains.js" defer></script><script src="/assets/js/showcase.js?v=3e47eb75" defer></script><script src="/assets/js/faq.js?v=3b75b368" defer></script><script src="/assets/js/captures-demo.js?v=51262fd8" defer></script><script src="/assets/js/module-explorer.js?v=700f2e36" defer></script><script src="/assets/js/style-lab.js?v=99c0ccc8" defer></script><script src="/assets/js/session-guide.js?v=fde32a27" defer></script><script src="/assets/js/effect-study.js?v=3b4c572a" defer></script><script src="/assets/js/editorial.js?v=888b26bb" defer></script>
 </body>
 </html>
