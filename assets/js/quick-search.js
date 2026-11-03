@@ -9,6 +9,8 @@
   const extra = [
     {t:'Module explorer', u:'/#modules', x:'Search the client catalog'},
     {t:'Style lab', u:'/#style-lab', x:'Try accents, scale and layout'},
+    {t:'Lyric studio', u:'/#studio', x:'Preview lyrics, typography and a sample timeline'},
+    {t:'Performance room', u:'/#performance-room', x:'Compare frame times and slow frames'},
     {t:'Kill Efects preview', u:'/#kill-effects', x:'Samurai and Tralalero'},
     {t:'First session checklist', u:'/#first-session', x:'A short list for your setup'},
     {t:'Gallery', u:'/#gallery', x:'From menu to world'},
