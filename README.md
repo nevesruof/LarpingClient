@@ -15,6 +15,12 @@ The original Larp website, updated in place. Its original landing layout, Inter 
 - Exclusive FAQs animate open and closed, including interrupted transitions and reduced-motion support. A compact release journal and shortcut links add navigation without changing the overall design.
 - Captures uses an interactive recordings gallery demonstration instead of a screenshot poster. Saving a sample adds a local gallery row; it does not record or export media.
 
+- A searchable landing-page module explorer uses the existing 116-module catalog, category filters, recent additions and progressive results. The catalog loads only as the section approaches the viewport.
+- A style lab previews custom accents, scale, compact mode and coordinates. Copy style notes for manual application; it does not import client profiles.
+- Samurai and Tralalero have lightweight, symbolic web studies with on-demand animations and reduced-motion alternatives. They are not game footage.
+- The first-session checklist can be saved locally and reset. Field notes link to performance, lyrics and profile guides.
+- A shared quick-search dialog (Ctrl/⌘ K, or Search in the mobile menu) finds real pages, modules and settings. Its index loads only when opened.
+
 ## Build and preview
 
 No Node packages or framework installation are required. Python 3 builds the site:
@@ -50,6 +56,9 @@ python3 scripts/extract_modules.py PATH_TO_CLIENT/src/main/java/dev/larp/client 
 python3 scripts/build.py
 python3 scripts/validate.py
 ```
+
+- `scripts/experience_sections.py` and `assets/css/experience.css`: module explorer, style lab, effect studies, checklist and field notes.
+- `assets/js/module-explorer.js`, `style-lab.js`, `effect-study.js`, `session-guide.js` and `quick-search.js`: small, independent interactions with no render loops.
 
 ## Preview boundaries
 
