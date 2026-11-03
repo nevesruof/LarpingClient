@@ -61,6 +61,7 @@ def head(title, desc, path, extra_css=""):
 <link rel="stylesheet" href="{asset("/assets/css/site.css")}">
 <link rel="stylesheet" href="{asset("/assets/css/client-preview.css")}">{extra_css}
 <link rel="stylesheet" href="{asset("/assets/css/showcase.css")}">
+<link rel="stylesheet" href="{asset("/assets/css/experience.css")}">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -71,7 +72,7 @@ def nav(current=""):
     def a(href, label, key):
         cur = ' aria-current="page"' if key == current else ""
         return f'<a href="{href}"{cur}>{label}</a>'
-    links = [a("/#product", "Product", "product"), a("/#gallery", "Gallery", "gallery"), a("/#features", "Features", "features"), a("/#cosmetics", "Cosmetics", "cosmetics"), a("/#updates", "Updates", "updates"),
+    links = [a("/#product", "Product", "product"), a("/#gallery", "Gallery", "gallery"), a("/#modules", "Modules", "modules"), a("/#cosmetics", "Cosmetics", "cosmetics"), a("/#updates", "Updates", "updates"),
              a("/docs", "Docs", "docs"), a("/#faq", "FAQ", "faq")]
     dc = f'<a class="icon-link hide-m" href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener" aria-label="Discord">{icon("discord")}</a>' if CFG.get("discordUrl") else ""
     return f"""<header class="nav">
@@ -80,19 +81,21 @@ def nav(current=""):
     <nav class="nav-links" aria-label="Main">{''.join(links)}</nav>
     <div class="nav-right">
       {dc}
+      <button class="nav-search" type="button" data-search-open aria-label="Quick search" title="Search · Ctrl/⌘ K">{icon('search')}</button>
       <a class="hide-m" href="/docs/changelog">v{CFG['version']}</a>
       <a class="btn btn-light btn-sm" href="/#access">Get access {icon('arrow')}</a>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">{icon('menu')}</button>
     </div>
   </div>
 </header>
-<div class="mobile-menu">{''.join(links)}{('<a href="' + esc(CFG['discordUrl']) + '">Discord</a>') if CFG.get('discordUrl') else ''}<a class="btn btn-light" href="/#access">You are my friend?</a></div>
+<div class="mobile-menu"><button class="mobile-search" type="button" data-search-open>Search pages &amp; modules ↗</button>{''.join(links)}{('<a href="' + esc(CFG['discordUrl']) + '">Discord</a>') if CFG.get('discordUrl') else ''}<a class="btn btn-light" href="/#access">You are my friend?</a></div>
 """
 
 
 def footer(scripts=""):
+    from experience_sections import search_dialog
     dc = f'<li><a href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener">Discord</a></li>' if CFG.get("discordUrl") else ""
-    return f"""<footer class="foot">
+    return f"""{search_dialog(globals())}<footer class="foot">
   <div class="wrap">
     <div class="top">
       <div class="about">
@@ -100,7 +103,7 @@ def footer(scripts=""):
         <p>A visual client for Minecraft {CFG['minecraft']} on Fabric. Made by {esc(CFG['author'])}.</p>
       </div>
       <div><h4>Product</h4><ul>
-        <li><a href="/#features">Features</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
+        <li><a href="/#modules">Module explorer</a></li><li><a href="/#style-lab">Style lab</a></li><li><a href="/#first-session">First session</a></li><li><a href="/#cosmetics">Cosmetics</a></li>
         <li><a href="/#access">Get access</a></li><li><a href="/docs/changelog">Changelog</a></li></ul></div>
       <div><h4>Docs</h4><ul>
         <li><a href="/docs/installation">Installation</a></li><li><a href="/docs/modules">All modules</a></li>
@@ -114,6 +117,7 @@ def footer(scripts=""):
     </div>
   </div>
 </footer>
+<script src="{asset("/assets/js/quick-search.js")}" defer></script>
 <script src="{asset("/assets/js/site.js")}" defer></script><script src="{asset("/assets/js/client-preview.js")}" defer></script>{scripts}
 </body>
 </html>
@@ -188,6 +192,7 @@ FAQ = [
 def index():
     from menu_preview import render as current_menu, additions as preview_additions
     from website_details import hud_preview, gallery, details, release_journal, shortcuts
+    from experience_sections import module_explorer, style_lab, effect_spotlight, session_guide, field_notes
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
@@ -216,13 +221,6 @@ def index():
     ]
     feat = "".join(f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t}</h3><p>{d}</p></article>' for i, t, d in features)
     feat += "".join(f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t} <span class="new-badge">NEW</span></h3><p>{d}</p></article>' for i,t,d in fresh)
-    steps = [
-        ("Install Fabric", f'Run the <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px">Fabric installer</a> for Minecraft {CFG["minecraft"]}.'),
-        ("Add the mods", "Put the Larp Client jar you got from Take and <a href=\"https://modrinth.com/mod/fabric-api\" target=\"_blank\" rel=\"noopener\" style=\"text-decoration:underline;text-underline-offset:3px\">Fabric API</a> in your <code>.minecraft/mods</code> folder."),
-        ("Launch Fabric", f"Pick the Fabric {CFG['minecraft']} profile in the Minecraft Launcher and press Play."),
-        ("Open the menu", "Press <kbd>Right Shift</kbd> or click Client on the title screen. Turn on what you like."),
-    ]
-    step_html = "".join(f'<div class="step"><div class="n">{i + 1}</div><h3>{t}</h3><p>{d}</p></div>' for i, (t, d) in enumerate(steps))
     nots = ["Tracers and chams", "Reach, aim assist or velocity", "Auto clicker", "X-ray or ore finders", "Entity radar"]
     nots_li = "".join(f"<li>{icon('block')}{n}</li>" for n in nots)
     cats_btn = "".join(f'<button type="button" data-cat="{k}" aria-selected="{str(i == 0).lower()}">{v["label"]}</button>' for i, (k, v) in enumerate(cos.items()))
@@ -292,6 +290,8 @@ def index():
 
 {gallery(globals())}
 
+{style_lab(globals())}
+
 <section class="section" id="features" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head">
@@ -302,7 +302,11 @@ def index():
   </div>
 </section>
 
+{module_explorer(globals())}
+
 {details(globals())}
+
+{effect_spotlight(globals())}
 
 <section class="section" id="cosmetics" style="padding-top:40px">
   <div class="wrap">
@@ -315,12 +319,7 @@ def index():
   </div>
 </section>
 
-<section class="section" id="install">
-  <div class="wrap">
-    <div class="section-head"><h2>Installed in four steps.</h2><p>About two minutes if you already have Minecraft {CFG['minecraft']}.</p></div>
-    <div class="steps">{step_html}</div>
-  </div>
-</section>
+<div id="install">{session_guide(globals())}</div>
 
 <section class="section" style="padding-top:20px">
   <div class="wrap">
@@ -369,6 +368,8 @@ def index():
 
 {release_journal(globals())}
 
+{field_notes(globals())}
+
 <section class="section" id="faq" style="padding-top:40px">
   <div class="wrap">
     <div class="section-head center"><span class="section-label">GOOD TO KNOW</span><h2>Questions people ask.</h2><p>A few clear answers before you join.</p></div>
@@ -387,7 +388,7 @@ def index():
 </section>
 </main>
 """
-    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js']))
+    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js', 'module-explorer.js', 'style-lab.js', 'session-guide.js', 'effect-study.js']))
     (ROOT / "index.html").write_text(body)
 
 
