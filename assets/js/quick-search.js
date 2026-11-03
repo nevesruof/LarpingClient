@@ -19,7 +19,7 @@
   const render = () => {
     const query = normalize(input.value.trim());
     if (!query) { results.replaceChildren(...initial.map(el => el.cloneNode(true))); count.textContent = 'Quick links'; return; }
-    if (!index) { count.textContent = 'Loading the search index…'; return; }
+    if (!index) { results.replaceChildren(); count.textContent = 'Loading the search index…'; return; }
     const terms = query.split(/\s+/);
     const matches = index.filter(item => terms.every(t => item.searchText.includes(t))).sort((a, b) => Number(normalize(b.t).startsWith(query)) - Number(normalize(a.t).startsWith(query))).slice(0, 8);
     count.textContent = matches.length ? `${matches.length} results · pages, modules and settings` : 'No results. Try a module name or a shorter search.';
@@ -57,6 +57,11 @@
   });
   input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 70); });
   dialog.addEventListener('keydown', e => {
+    // Flush pending input before keyboard navigation can activate an older result.
+    if (e.target === input && ['ArrowDown', 'ArrowUp', 'Enter'].includes(e.key)) {
+      clearTimeout(timer);
+      render();
+    }
     const links = [...results.querySelectorAll('a')];
     const current = links.indexOf(document.activeElement);
     if (e.key === 'ArrowDown') { e.preventDefault(); (links[current + 1] || links[0] || input).focus(); }
