@@ -193,7 +193,7 @@ def index():
     from menu_preview import render as current_menu, additions as preview_additions
     from website_details import hud_preview, gallery, details, release_journal, shortcuts
     from experience_sections import module_explorer, style_lab, effect_spotlight, session_guide, field_notes
-    from editorial import chapter_index, chapter_header, creator_studio, performance_room
+    from editorial import chapter_header, creator_studio, performance_room
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
@@ -252,8 +252,6 @@ def index():
 </section>
 
 <section class="strip" aria-label="Larp Client in numbers"><div class="wrap">{stats()}</div></section>
-
-{chapter_index(globals())}
 
 <section class="page-chapter" data-tone="explore" aria-labelledby="chapter-01-title">
 {chapter_header(0, 'Meet the', 'client.', [('product', 'Preview'), ('gallery', 'Gallery'), ('modules', 'Modules')])}
