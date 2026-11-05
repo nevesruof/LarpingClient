@@ -25,24 +25,24 @@ def hud_preview(g):
                     for i, ((name, label), bind) in enumerate(zip(ITEMS, binds)))
     return f'''<div class="hud-scene">
       <div class="grid"></div><div class="guide v"></div><div class="guide h"></div>
-      <div class="hud-el hud-box infobar" style="left:14px;top:14px">
+      <div class="hud-el hud-box infobar" tabindex="0" role="button" aria-label="Move info bar" aria-describedby="hud-help">
         <span>{avatar()}<span class="name">{escape(cfg['author'])}</span></span>
         <span class="muted">mc.hypixel.net</span><span>144 FPS</span><span class="muted">12:48</span>
       </div>
-      <div class="hud-el modlist" style="right:14px;top:92px"><div>Target HUD</div><div>Keystrokes<small>Clean</small></div><div>Hit FX<small>White</small></div><div>Performance</div><div>Wings<small>Angel</small></div><div>Zoom</div></div>
-      <div class="hud-el keys" style="left:20px;top:43%">
+      <div class="hud-el modlist" tabindex="0" role="button" aria-label="Move module list" aria-describedby="hud-help"><div>Target HUD</div><div>Keystrokes<small>Clean</small></div><div>Hit FX<small>White</small></div><div>Performance</div><div>Wings<small>Angel</small></div><div>Zoom</div></div>
+      <div class="hud-el keys" tabindex="0" role="button" aria-label="Move keystrokes" aria-describedby="hud-help">
         <span class="key-w" data-k="W">W</span>
         <span class="key-a" data-k="A">A</span><span class="key-s" data-k="S">S</span><span class="key-d" data-k="D">D</span>
         <div class="mouse"><span data-k="LMB">LMB</span><span data-k="RMB">RMB</span></div>
         <span class="wide" data-k="Space">―</span>
       </div>
-      <div class="hud-el hud-box target" style="left:20px;top:88px">
-        {avatar('FastL_ player head')}<div class="info"><div class="row"><b>FastL_</b><span>3.1m</span></div><div class="row"><span>12.8 ❤</span><span class="heal">+4.2</span></div><div class="hp"><i></i></div></div>
+      <div class="hud-el hud-box target" tabindex="0" role="button" aria-label="Move FastL_ target HUD" aria-describedby="hud-help">
+        {avatar('FastL_ player head')}<div class="info"><div class="row"><b>FastL_</b><span>3.1m</span></div><div class="row"><span class="target-health">12.8 <img class="minecraft-heart" src="/assets/img/minecraft/heart.png" width="9" height="9" alt="health" draggable="false"></span><span class="heal">+4.2</span></div><div class="hp"><i></i></div></div>
       </div>
-      <div class="hud-el hotbar" style="left:50%;bottom:22px;transform:translateX(-50%)">{slots}</div>
+      <div class="hud-el hotbar" tabindex="0" role="button" aria-label="Move hotbar" aria-describedby="hud-help">{slots}</div>
       <div class="hud-hint">{icon('edithud')}Drag to make it yours</div>
-      <span class="hud-scene-note">Interactive HUD preview</span>
-    </div>'''
+      <span class="hud-scene-note">Cherry grove · HUD preview</span>
+    </div><div class="hud-controls"><p id="hud-help">Drag a widget, or focus it and use the arrow keys. Hold Shift for bigger steps.</p><button type="button" data-hud-reset>{icon('reset')}Reset layout</button><span class="sr-only" data-hud-status role="status" aria-live="polite"></span></div>'''
 
 
 def gallery(g):
@@ -51,7 +51,7 @@ def gallery(g):
       <div class="section-head"><span class="section-label">FROM MENU TO WORLD</span><h2>Your atmosphere starts here.</h2><p>Before you join. After the sun goes down. A familiar game, with a look that feels like yours.</p></div>
       <div class="world-gallery">
         <figure class="world-shot menu-shot"><img src="/assets/img/screenshots/title-screen-1280.webp" srcset="/assets/img/screenshots/title-screen-800.webp 800w, /assets/img/screenshots/title-screen-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 55vw" alt="Larp title screen with its emblem, player model, dark curtains and music card" width="1280" height="666" loading="lazy"><figcaption><span><small>01 / BEFORE YOU JOIN</small><b>It starts with a feeling.</b></span><a href="#product" data-open-preview="t-menu" aria-label="Explore the client menu">{icon('arrow')}</a></figcaption></figure>
-        <figure class="world-shot"><img src="/assets/img/screenshots/night-1280.webp" srcset="/assets/img/screenshots/night-800.webp 800w, /assets/img/screenshots/night-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 45vw" alt="Larp wings and music beats glowing in a Minecraft forest at night" width="1280" height="673" loading="lazy"><figcaption><span><small>02 / AFTER DARK</small><b>Take the atmosphere with you.</b></span><a href="/docs/cosmetics" aria-label="Explore Larp cosmetics">{icon('arrow')}</a></figcaption></figure>
+        <figure class="world-shot"><img src="/assets/img/screenshots/aurora-1280.webp" srcset="/assets/img/screenshots/aurora-800.webp 800w, /assets/img/screenshots/aurora-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 45vw" alt="Larp cosmetics and a pink music visualizer beneath an aurora sky" width="1280" height="673" loading="lazy"><figcaption><span><small>02 / YOUR KIND OF ATMOSPHERE</small><b>A familiar world. A different feeling.</b></span><a href="/docs/cosmetics" aria-label="Explore Larp cosmetics">{icon('arrow')}</a></figcaption></figure>
       </div><div class="world-foot"><span>Actual menu and gameplay captures, supplied by iTake.</span><a href="/docs/visuals">Explore visual modules {icon('arrow')}</a></div>
     </div></section>'''.replace('/docs/visuals', '/docs/modules#cat-visuals')
 

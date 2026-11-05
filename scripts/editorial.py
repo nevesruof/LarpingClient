@@ -31,7 +31,7 @@ def creator_studio(g):
     return f'''<section class="section studio-section" id="studio"><div class="wrap">
       <div class="studio-layout" data-lyric-studio>
         <div class="studio-scene" data-studio-layout="stack" data-studio-font="inter">
-          <img src="/assets/img/screenshots/night-800.webp" width="800" height="421" loading="lazy" alt="">
+          <img src="/assets/img/minecraft/pale-garden.webp" width="1024" height="1024" loading="lazy" alt="Minecraft pale garden panorama">
           <div class="studio-scene-top"><span>LYRIC PLACEMENT</span><span>WEB DEMO</span></div>
           <ol class="studio-lines" aria-label="Original sample lyrics">{lines}</ol>
           <div class="studio-track"><span class="studio-track-icon">{icon('music')}</span><div><b>World of our own</b><small>Original sample · lyric timeline</small></div></div>

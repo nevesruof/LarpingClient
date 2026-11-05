@@ -118,7 +118,7 @@ def footer(scripts=""):
   </div>
 </footer>
 <script src="{asset("/assets/js/quick-search.js")}" defer></script>
-<script src="{asset("/assets/js/site.js")}" defer></script><script src="{asset("/assets/js/client-preview.js")}" defer></script>{scripts}
+<script src="{asset("/assets/js/site.js")}" defer></script><script src="{asset("/assets/js/hud-editor.js")}" defer></script><script src="{asset("/assets/js/client-preview.js")}" defer></script>{scripts}
 </body>
 </html>
 """
