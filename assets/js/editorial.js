@@ -3,17 +3,39 @@
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
   if ('IntersectionObserver' in window && !reducedMotion.matches) {
-    const headings = new IntersectionObserver(entries => {
-      for (const entry of entries) {
+    const running = new Set();
+    const appearances = new IntersectionObserver(entries => {
+      for (const [index, entry] of entries.entries()) {
         if (!entry.isIntersecting) continue;
-        headings.unobserve(entry.target);
-        if (!reducedMotion.matches) entry.target.animate?.([
-          { opacity: .72, transform: 'translateY(10px)' },
+        appearances.unobserve(entry.target);
+        if (reducedMotion.matches || entry.target.contains(document.activeElement)) continue;
+        const animation = entry.target.animate?.([
+          { opacity: 0, transform: 'translateY(22px)' },
           { opacity: 1, transform: 'translateY(0)' }
-        ], { duration: 420, easing: 'cubic-bezier(.16,1,.3,1)' });
+        ], {
+          duration: 620,
+          delay: Math.min(index * 45, 135),
+          fill: 'backwards',
+          easing: 'cubic-bezier(.16,1,.3,1)'
+        });
+        if (animation) {
+          running.add(animation);
+          animation.onfinish = animation.oncancel = () => running.delete(animation);
+        }
       }
-    }, { threshold: .2 });
-    document.querySelectorAll('[data-chapter-reveal]').forEach(heading => headings.observe(heading));
+    }, { threshold: .03, rootMargin: '0px 0px -20px 0px' });
+    const blocks = [
+      '.chapter-heading', '.section-head', '.show-frame', '.shortcut-strip',
+      '.world-shot', '.style-lab', '.feature', '.explore-toolbar',
+      '.explore-filters', '.explore-grid', '.detail-card', '.detail-guide',
+      '.effect-layout', '.cos-strip', '.studio-layout', '.studio-tools',
+      '.room-layout', '.session-layout', '.fair', '.field-note',
+      '.release-intro', '.release-list', '.dl', '.faq'
+    ];
+    document.querySelectorAll(blocks.join(',')).forEach(block => appearances.observe(block));
+    reducedMotion.addEventListener('change', event => {
+      if (event.matches) for (const animation of running) animation.cancel();
+    });
   }
 
   const studio = document.querySelector('[data-lyric-studio]');
