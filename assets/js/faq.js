@@ -1,53 +1,72 @@
-/* Exclusive, interruptible FAQ transitions with native summary keyboard support. */
 (() => {
-  const root = document.querySelector('.faq');
-  if (!root) return;
-  const items = [...root.querySelectorAll('details')];
-  const motions = new WeakMap();
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
-  root.classList.add('is-enhanced');
+  const faq = document.querySelector('.faq');
+  if (!faq) return;
 
-  function transition(item, expand) {
-    const summary = item.querySelector('summary');
-    const start = item.getBoundingClientRect().height;
-    motions.get(item)?.cancel();
-    item.style.height = '';
-    if (expand) item.open = true;
-    const borders = parseFloat(getComputedStyle(item).borderTopWidth) + parseFloat(getComputedStyle(item).borderBottomWidth);
-    const end = expand ? item.getBoundingClientRect().height : summary.getBoundingClientRect().height + borders;
-    item.dataset.expanded = String(expand);
-    summary.setAttribute('aria-expanded', String(expand));
-    const finish = () => {
-      item.open = expand;
-      item.style.height = '';
-      item.style.overflow = '';
-      motions.delete(item);
-    };
-    if (reduced.matches || !item.animate) { finish(); return; }
-    item.style.height = `${start}px`;
-    item.style.overflow = 'hidden';
-    const motion = item.animate([{ height: `${start}px` }, { height: `${end}px` }], {
-      duration: 300,
-      easing: 'cubic-bezier(.16, 1, .3, 1)',
-    });
-    motions.set(item, motion);
-    motion.onfinish = () => { finish(); motion.cancel(); };
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  const panels = [...faq.querySelectorAll('details')].map((item) => ({
+    item,
+    summary: item.querySelector('summary'),
+    answer: item.querySelector('.faq-answer-wrap'),
+    expanded: item.open,
+    closeTimer: 0,
+  }));
+  const panelBySummary = new Map(panels.map((panel) => [panel.summary, panel]));
+
+  function finishClosing(panel) {
+    clearTimeout(panel.closeTimer);
+    if (!panel.expanded) panel.item.open = false;
   }
 
-  items.forEach(item => {
-    const summary = item.querySelector('summary');
-    item.dataset.expanded = String(item.open);
-    summary.setAttribute('aria-expanded', String(item.open));
-    summary.addEventListener('click', event => {
-      event.preventDefault();
-      const expand = item.dataset.expanded !== 'true';
-      items.forEach(other => {
-        if (other !== item && other.dataset.expanded === 'true') transition(other, false);
+  function setExpanded(panel, expanded) {
+    clearTimeout(panel.closeTimer);
+    panel.expanded = expanded;
+    panel.summary.setAttribute('aria-expanded', String(expanded));
+    panel.answer.inert = !expanded;
+    panel.answer.setAttribute('aria-hidden', String(!expanded));
+
+    if (expanded && !panel.item.open) {
+      panel.item.open = true;
+      if (!reducedMotion.matches) void panel.answer.offsetHeight;
+    }
+    panel.item.dataset.expanded = String(expanded);
+
+    if (!expanded) {
+      if (reducedMotion.matches) finishClosing(panel);
+      else panel.closeTimer = setTimeout(() => finishClosing(panel), 280);
+    }
+  }
+
+  panels.forEach((panel) => {
+    panel.item.dataset.expanded = String(panel.expanded);
+    panel.summary.setAttribute('aria-expanded', String(panel.expanded));
+    panel.answer.inert = !panel.expanded;
+    panel.answer.setAttribute('aria-hidden', String(!panel.expanded));
+    panel.answer.addEventListener('transitionend', (event) => {
+      if (event.target === panel.answer && event.propertyName === 'grid-template-rows')
+        finishClosing(panel);
+    });
+  });
+  faq.classList.add('is-enhanced');
+
+  faq.addEventListener('click', (event) => {
+    const panel = panelBySummary.get(event.target.closest('summary'));
+    if (!panel) return;
+    event.preventDefault();
+    const expanded = !panel.expanded;
+    if (expanded)
+      panels.forEach((other) => {
+        if (other !== panel && other.expanded) setExpanded(other, false);
       });
-      transition(item, expand);
-    });
-    summary.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && item.dataset.expanded === 'true') transition(item, false);
-    });
+    setExpanded(panel, expanded);
+  });
+
+  faq.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+    const panel = panelBySummary.get(event.target.closest('summary'));
+    if (panel?.expanded) setExpanded(panel, false);
+  });
+
+  reducedMotion.addEventListener('change', (event) => {
+    if (event.matches) panels.forEach(finishClosing);
   });
 })();
