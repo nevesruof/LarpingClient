@@ -1,11 +1,15 @@
-"""Real Minecraft assets and focused feature demonstrations for the landing."""
 from html import escape
 
 ITEMS = [
-    ('diamond_sword', 'Diamond sword'), ('bow', 'Bow'),
-    ('golden_apple', 'Golden apple'), ('ender_pearl', 'Ender pearl'),
-    ('totem_of_undying', 'Totem of Undying'), ('water_bucket', 'Water bucket'),
-    ('cooked_beef', 'Steak'), ('firework_rocket', 'Firework rocket'), ('arrow', 'Arrow'),
+    ('diamond_sword', 'Diamond sword'),
+    ('bow', 'Bow'),
+    ('golden_apple', 'Golden apple'),
+    ('ender_pearl', 'Ender pearl'),
+    ('totem_of_undying', 'Totem of Undying'),
+    ('water_bucket', 'Water bucket'),
+    ('cooked_beef', 'Steak'),
+    ('firework_rocket', 'Firework rocket'),
+    ('arrow', 'Arrow'),
 ]
 
 
@@ -21,8 +25,10 @@ def avatar(label='Player head supplied by iTake'):
 def hud_preview(g):
     icon, cfg = g['icon'], g['CFG']
     binds = ['1', '2', '3', '4', 'G', 'R', '7', '8', '9']
-    slots = ''.join(f'<span class="{"sel" if i == 0 else ""}" title="{label}">{item_image(name, label)}<b>{bind}</b></span>'
-                    for i, ((name, label), bind) in enumerate(zip(ITEMS, binds)))
+    slots = ''.join(
+        f'<span class="{"sel" if i == 0 else ""}" title="{label}">{item_image(name, label)}<b>{bind}</b></span>'
+        for i, ((name, label), bind) in enumerate(zip(ITEMS, binds))
+    )
     return f'''<div class="hud-scene">
       <div class="grid"></div><div class="guide v"></div><div class="guide h"></div>
       <div class="hud-el hud-box infobar" tabindex="0" role="button" aria-label="Move info bar" aria-describedby="hud-help">
@@ -58,8 +64,19 @@ def gallery(g):
 
 def details(g):
     icon = g['icon']
-    contents = ITEMS + [('diamond', 'Diamond'), ('emerald', 'Emerald'), ('experience_bottle', 'Bottle o’ Enchanting')]
-    slots = ''.join(f'<span>{item_image(*contents[i])}<small>{[1, 1, 16, 16, 1, 1, 64, 64, 64, 32, 24, 16][i]}</small></span>' if i < len(contents) else '<span></span>' for i in range(27))
+    contents = ITEMS + [
+        ('diamond', 'Diamond'),
+        ('emerald', 'Emerald'),
+        ('experience_bottle', 'Bottle o’ Enchanting'),
+    ]
+    slots = ''.join(
+        (
+            f'<span>{item_image(*contents[i])}<small>{[1, 1, 16, 16, 1, 1, 64, 64, 64, 32, 24, 16][i]}</small></span>'
+            if i < len(contents)
+            else '<span></span>'
+        )
+        for i in range(27)
+    )
     return f'''<section class="section detail-section" id="details"><div class="wrap">
       <div class="section-head"><span class="section-label">THE SMALL THINGS</span><h2>A better session is in the details.</h2><p>Useful when you need them. Out of the way when you don't.</p></div>
       <div class="detail-grid">
@@ -91,17 +108,72 @@ def shortcuts(g):
 def release_journal(g):
     icon = g['icon']
     entries = [
-        ('0.14.1', 'v0141', 'Keep the sound, too.', 'Desktop audio joins 30-second clips, with synchronized sound and video in your exports.'),
-        ('0.14.0', 'v0140', 'More insight. More moments.', 'Performance Monitor, Instant Replay and in-menu previews for Kill Efects.'),
-        ('0.13.x', 'v013', 'Refined, from menu to world.', 'Samurai and Tralalero, cached geometry, smoother capture and small improvements throughout the client.'),
+        (
+            '0.14.1',
+            'v0141',
+            'Keep the sound, too.',
+            'Desktop audio joins 30-second clips, with synchronized sound and video in your exports.',
+        ),
+        (
+            '0.14.0',
+            'v0140',
+            'More insight. More moments.',
+            'Performance Monitor, Instant Replay and in-menu previews for Kill Efects.',
+        ),
+        (
+            '0.13.x',
+            'v013',
+            'Refined, from menu to world.',
+            'Samurai and Tralalero, cached geometry, smoother capture and small improvements throughout the client.',
+        ),
     ]
-    rows = ''.join(f'<a class="release-row" href="/docs/changelog#{anchor}"><span class="release-version">{version}{("<small>LATEST</small>" if i == 0 else "")}</span><span class="release-summary"><b>{title}</b><span>{description}</span></span>{icon("arrow")}</a>' for i, (version, anchor, title, description) in enumerate(entries))
+    rows = ''.join(
+        f'<a class="release-row" href="/docs/changelog#{anchor}"><span class="release-version">{version}{("<small>LATEST</small>" if i == 0 else "")}</span><span class="release-summary"><b>{title}</b><span>{description}</span></span>{icon("arrow")}</a>'
+        for i, (version, anchor, title, description) in enumerate(entries)
+    )
     return f'''<section class="section release-section" id="updates"><div class="wrap"><div class="release-intro"><div><span class="section-label">THE CHANGELOG</span><h2>Still being made.<br>Getting better.</h2></div><p>A few of the things we've been working on. Small refinements, useful additions, and more ways to make the client yours.</p></div><div class="release-list">{rows}</div><a class="release-all" href="/docs/changelog">Read the full changelog {icon('arrow')}</a></div></section>'''
 
 
 def capture_demo(g):
     icon = g['icon']
-    heights = [12,22,15,34,20,42,29,18,36,50,24,31,17,43,56,26,39,22,45,32,16,40,26,52,34,23,46,19,37,29,48,24,41,16,34,27]
+    heights = [
+        12,
+        22,
+        15,
+        34,
+        20,
+        42,
+        29,
+        18,
+        36,
+        50,
+        24,
+        31,
+        17,
+        43,
+        56,
+        26,
+        39,
+        22,
+        45,
+        32,
+        16,
+        40,
+        26,
+        52,
+        34,
+        23,
+        46,
+        19,
+        37,
+        29,
+        48,
+        24,
+        41,
+        16,
+        34,
+        27,
+    ]
     wave = ''.join(f'<i style="--wave:{height}px"></i>' for height in heights)
     return f'''<div class="capture-desk" data-capture-demo tabindex="0" aria-label="Interactive recordings gallery demonstration">
       <div class="capture-desk-head"><span>{icon('camera')} Recordings</span><small>WEB DEMO</small></div>

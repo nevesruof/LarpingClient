@@ -1,14 +1,23 @@
-"""Focused, source-backed ways to explore the existing client."""
 from html import escape
 from website_details import avatar, item_image
 
 
 def module_explorer(g):
     icon, mods, cats = (g[k] for k in ['icon', 'MODS', 'CATS'])
-    filters = ''.join(f'<button type="button" data-explore-category="{key}" aria-pressed="false">{label}<small>{sum(m["category"] == key for m in mods)}</small></button>' for key, label in cats)
+    filters = ''.join(
+        f'<button type="button" data-explore-category="{key}" aria-pressed="false">{label}<small>{sum(m["category"] == key for m in mods)}</small></button>'
+        for key, label in cats
+    )
     cards = ''
-    # Useful even when scripting is unavailable; the complete reference is always linked.
-    for mid in ['instantreplay', 'lyrics', 'shulkerpreview', 'killeffect', 'performancemonitor', 'musicbeats']:
+
+    for mid in [
+        'instantreplay',
+        'lyrics',
+        'shulkerpreview',
+        'killeffect',
+        'performancemonitor',
+        'musicbeats',
+    ]:
         m = next(m for m in mods if m['id'] == mid)
         badge = '<span class="new-badge">NEW</span>' if m.get('new') else ''
         cards += f'<a class="explore-card" href="/docs/modules#{m["id"]}"><span class="explore-card-top">{icon(m["id"])}<small>{escape(dict(cats)[m["category"]])}</small>{badge}</span><h3>{escape(m["name"])}</h3><p>{escape(m["description"])}</p><span class="explore-card-bottom">{len(m["settings"])} settings<span>Explore {icon("arrow")}</span></span></a>'
@@ -25,7 +34,15 @@ def module_explorer(g):
 
 def style_lab(g):
     icon = g['icon']
-    slots = ''.join(item_image(n, label) for n, label in [('diamond_sword', 'Diamond sword'), ('ender_pearl', 'Ender pearl'), ('golden_apple', 'Golden apple'), ('bow', 'Bow')])
+    slots = ''.join(
+        item_image(n, label)
+        for n, label in [
+            ('diamond_sword', 'Diamond sword'),
+            ('ender_pearl', 'Ender pearl'),
+            ('golden_apple', 'Golden apple'),
+            ('bow', 'Bow'),
+        ]
+    )
     return f'''<section class="section lab-section" id="style-lab"><div class="wrap">
       <div class="section-head"><span class="section-label">A LITTLE MORE YOU <span class="new-badge">NEW ON THE WEB</span></span><h2>Find your shade of larp.</h2><p>Different accent. Different scale. Same world. Put together a look before you open the client.</p></div>
       <div class="style-lab" data-style-lab>
@@ -61,7 +78,10 @@ def effect_spotlight(g):
       <path d="M43 124Q78 125 112 119L121 123Q85 131 51 130Z" fill="#10171d"/>
       <g class="effect-jaw"><path d="M44 127Q76 135 122 122L137 131Q101 151 62 140Q47 136 44 127Z" fill="url(#shark-belly)"/><path d="m57 131 3-5 4 7m8 1 3-5 4 5m8-1 3-5 4 4m7-2 3-5 5 3" fill="none" stroke="#c1d3db" stroke-width="1.2" opacity=".78"/></g>
     </svg>'''
-    pieces = ''.join(f'<i style="--piece:{i};--dx:{(-1 if i % 2 else 1) * (45 + i * 8)}px;--dy:{(-1 if i < 3 else 1) * (24 + i * 9)}px;--turn:{(-1 if i % 2 else 1) * (12 + i * 6)}deg"></i>' for i in range(6))
+    pieces = ''.join(
+        f'<i style="--piece:{i};--dx:{(-1 if i % 2 else 1) * (45 + i * 8)}px;--dy:{(-1 if i < 3 else 1) * (24 + i * 9)}px;--turn:{(-1 if i % 2 else 1) * (12 + i * 6)}deg"></i>'
+        for i in range(6)
+    )
     return f'''<section class="section effect-section" id="kill-effects"><div class="wrap"><div class="effect-layout">
       <div class="effect-copy"><span class="section-label">THE FINISHING TOUCH <span class="new-badge">NEW ON THE WEB</span></span><h2>Two endings.<br>Your call.</h2><p>Samurai or Tralalero. Choose one effect for a player kill and keep the rest of your setup your own.</p><div class="effect-choice" role="group" aria-label="Kill effect demonstration"><button type="button" data-effect="samurai" aria-pressed="true">01 <b>Samurai</b></button><button type="button" data-effect="tralalero" aria-pressed="false">02 <b>Tralalero</b></button></div><p class="effect-description" data-effect-description>A sharp cut. A brief burst. Then back to the game.</p><a class="detail-link" href="/docs/kill-effects">Explore Kill Efects options {icon('arrow')}</a></div>
       <div class="effect-study" data-effect-study data-effect-mode="samurai"><div class="effect-study-head"><span>EFFECT PREVIEW</span><span data-effect-caption>SAMURAI</span></div><div class="effect-arena" aria-hidden="true"><div class="effect-grid"></div><div class="effect-mark">{pieces}</div><div class="effect-slash"></div>{shark}<div class="effect-wake"></div><span class="effect-spark">✦</span></div><div class="effect-study-foot"><span>Stylized web preview<br><small>Actual effects render in Minecraft.</small></span><button type="button" class="btn btn-glass btn-sm" data-effect-play>{icon('play')}Play effect</button></div><p class="effect-result sr-only" data-effect-result role="status" aria-live="polite"></p></div>
@@ -71,23 +91,74 @@ def effect_spotlight(g):
 def session_guide(g):
     icon = g['icon']
     tasks = [
-        ('access', 'Get your invite.', 'Larp is <u>private</u>. Request the client from <u>iTake</u>.', '/#access', 'Access details'),
-        ('install', 'Build a clean start.', '<u>Minecraft 1.21.11</u>, <u>Java 21</u>, <u>Fabric</u> and the matching <u>Fabric API</u>.', '/docs/installation', 'Installation guide'),
-        ('layout', 'Keep what you use.', 'Place your HUD, choose your modules and <u>save a profile</u>.', '/docs/hud-editor', 'Arrange your HUD'),
-        ('capture', 'Make the first moment count.', 'Choose your <u>clip key</u> and check your <u>Windows audio output</u>.', '/docs/instant-replay', 'Set up your clips'),
+        (
+            'access',
+            'Get your invite.',
+            'Larp is <u>private</u>. Request the client from <u>iTake</u>.',
+            '/#access',
+            'Access details',
+        ),
+        (
+            'install',
+            'Build a clean start.',
+            '<u>Minecraft 1.21.11</u>, <u>Java 21</u>, <u>Fabric</u> and the matching <u>Fabric API</u>.',
+            '/docs/installation',
+            'Installation guide',
+        ),
+        (
+            'layout',
+            'Keep what you use.',
+            'Place your HUD, choose your modules and <u>save a profile</u>.',
+            '/docs/hud-editor',
+            'Arrange your HUD',
+        ),
+        (
+            'capture',
+            'Make the first moment count.',
+            'Choose your <u>clip key</u> and check your <u>Windows audio output</u>.',
+            '/docs/instant-replay',
+            'Set up your clips',
+        ),
     ]
-    rows = ''.join(f'<article class="session-task"><label><input type="checkbox" data-session-task="{key}"><span class="session-check">{icon("check")}</span><span><small>0{i+1}</small><b>{title}</b><span>{description}</span></span></label><a href="{href}" aria-label="{link}">{icon("arrow")}</a></article>' for i, (key, title, description, href, link) in enumerate(tasks))
+    rows = ''.join(
+        f'<article class="session-task"><label><input type="checkbox" data-session-task="{key}"><span class="session-check">{icon("check")}</span><span><small>0{i+1}</small><b>{title}</b><span>{description}</span></span></label><a href="{href}" aria-label="{link}">{icon("arrow")}</a></article>'
+        for i, (key, title, description, href, link) in enumerate(tasks)
+    )
     return f'''<section class="section session-section" id="first-session"><div class="wrap"><div class="session-layout"><div class="session-intro"><span class="section-label">YOUR FIRST SESSION <span class="new-badge">NEW ON THE WEB</span></span><h2>From hello<br>to your own setup.</h2><p>A short list for a good start. Tick things off as you go; your checklist stays in this browser.</p><div class="session-progress"><span data-session-progress role="status" aria-live="polite">0 of 4 ready</span><span class="session-progress-track"><i data-session-progress-bar></i></span></div><button type="button" data-session-reset>Reset checklist</button><p class="session-storage-note" data-session-note></p></div><div class="session-tasks">{rows}</div></div></div></section>'''
 
 
 def field_notes(g):
     icon = g['icon']
     notes = [
-        ('performance', '01 / FRAME TIMES', 'A smoother session starts with a comparison.', 'Keep the scene the same. Change one effect. Compare frame times with Performance Monitor.', '/docs/performance', 'Tune your setup'),
-        ('music', '02 / YOUR SOUNDTRACK', 'Let the song find its place.', 'Your media session, LRCLIB lyrics and a layout that leaves room for the world.', '/docs/lyrics', 'Style your lyrics'),
-        ('layers', '03 / THE LITTLE BACKUP', 'A good layout deserves a second copy.', 'Save a profile before experimenting. Keep your configuration when moving between instances.', '/docs/profiles', 'Keep your setup'),
+        (
+            'performance',
+            '01 / FRAME TIMES',
+            'A smoother session starts with a comparison.',
+            'Keep the scene the same. Change one effect. Compare frame times with Performance Monitor.',
+            '/docs/performance',
+            'Tune your setup',
+        ),
+        (
+            'music',
+            '02 / YOUR SOUNDTRACK',
+            'Let the song find its place.',
+            'Your media session, LRCLIB lyrics and a layout that leaves room for the world.',
+            '/docs/lyrics',
+            'Style your lyrics',
+        ),
+        (
+            'layers',
+            '03 / THE LITTLE BACKUP',
+            'A good layout deserves a second copy.',
+            'Save a profile before experimenting. Keep your configuration when moving between instances.',
+            '/docs/profiles',
+            'Keep your setup',
+        ),
     ]
-    cards = ''.join(f'<a class="field-note" href="{href}"><span class="field-note-icon">{icon(ic)}</span><small>{number}</small><h3>{title}</h3><p>{text}</p><span class="field-note-link">{label}{icon("arrow")}</span></a>' for ic, number, title, text, href, label in notes)
+    cards = ''.join(
+        f'<a class="field-note" href="{href}"><span class="field-note-icon">{icon(ic)}</span><small>{number}</small><h3>{title}</h3><p>{text}</p><span class="field-note-link">{label}{icon("arrow")}</span></a>'
+        for ic, number, title, text, href, label in notes
+    )
     return f'<section class="section notes-section" id="field-notes"><div class="wrap"><div class="section-head"><span class="section-label">A FEW FIELD NOTES <span class="new-badge">NEW ON THE WEB</span></span><h2>Good looks. Better habits.</h2><p>Three small things worth getting right.</p></div><div class="field-notes">{cards}</div></div></section>'
 
 

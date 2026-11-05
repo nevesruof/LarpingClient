@@ -1,5 +1,3 @@
-"""Landing page chapters and small, self-contained browser demonstrations."""
-
 CHAPTERS = (
     ('01', 'Explore'),
     ('02', 'Make it yours'),

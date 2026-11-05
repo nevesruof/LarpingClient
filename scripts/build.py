@@ -1,10 +1,3 @@
-"""
-Genera el sitio estático (index.html + docs/*.html) a partir de site.config.json,
-assets/data/modules.json y el contenido de scripts/docs_content.py.
-
-Uso:  python scripts/build.py
-Vercel sirve los .html generados tal cual (no necesita paso de build).
-"""
 import json, html, re, pathlib, datetime, sys, hashlib, shutil
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -12,21 +5,41 @@ sys.path.insert(0, str(ROOT / "scripts"))
 CFG = json.loads((ROOT / "site.config.json").read_text())
 MODS = json.loads((ROOT / "assets/data/modules.json").read_text())
 SPRITE = "/assets/img/icons.svg"
-ALIAS = {"fps":"fpsdisplay","ping":"pingdisplay","killeffect":"hitfx","instantreplay":"play","recorder":"camera","lyrics":"music","shulkerpreview":"inventoryhud","performancemonitor":"performance","lightmeter":"fullbright","itemdetails":"info","inventoryalert":"inventoryhud"}
+ALIAS = {
+    "fps": "fpsdisplay",
+    "ping": "pingdisplay",
+    "killeffect": "hitfx",
+    "instantreplay": "play",
+    "recorder": "camera",
+    "lyrics": "music",
+    "shulkerpreview": "inventoryhud",
+    "performancemonitor": "performance",
+    "lightmeter": "fullbright",
+    "itemdetails": "info",
+    "inventoryalert": "inventoryhud",
+}
 KNOWN = set(re.findall(r'id="i-([^\"]+)"', (ROOT / "assets/img/icons.svg").read_text()))
-CATS = [("HUD", "HUD"), ("PVP", "PvP"), ("UTILITY", "Utility"), ("VISUALS", "Visuals"), ("COSMETICS", "Cosmetics"), ("CLIENT", "Client")]
+CATS = [
+    ("HUD", "HUD"),
+    ("PVP", "PvP"),
+    ("UTILITY", "Utility"),
+    ("VISUALS", "Visuals"),
+    ("COSMETICS", "Cosmetics"),
+    ("CLIENT", "Client"),
+]
 CAT_LABEL = dict(CATS)
 esc = html.escape
 
 
 def icon(name, cls="ico"):
-    name=ALIAS.get(name,name)
-    if name not in KNOWN:name="modules"
+    name = ALIAS.get(name, name)
+    if name not in KNOWN:
+        name = "modules"
     return f'<svg class="{cls}" aria-hidden="true"><use href="{SPRITE}#i-{name}"/></svg>'
 
 
 def asset(path):
-    return path + '?v=' + hashlib.sha256((ROOT/path.lstrip('/')).read_bytes()).hexdigest()[:8]
+    return path + '?v=' + hashlib.sha256((ROOT / path.lstrip('/')).read_bytes()).hexdigest()[:8]
 
 
 def discord_btn(cls="btn btn-glass", label="Join our Discord"):
@@ -73,9 +86,21 @@ def nav(current=""):
     def a(href, label, key):
         cur = ' aria-current="page"' if key == current else ""
         return f'<a href="{href}"{cur}>{label}</a>'
-    links = [a("/#product", "Product", "product"), a("/#gallery", "Gallery", "gallery"), a("/#modules", "Modules", "modules"), a("/#cosmetics", "Cosmetics", "cosmetics"), a("/#updates", "Updates", "updates"),
-             a("/docs", "Docs", "docs"), a("/#faq", "FAQ", "faq")]
-    dc = f'<a class="icon-link hide-m" href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener" aria-label="Discord">{icon("discord")}</a>' if CFG.get("discordUrl") else ""
+
+    links = [
+        a("/#product", "Product", "product"),
+        a("/#gallery", "Gallery", "gallery"),
+        a("/#modules", "Modules", "modules"),
+        a("/#cosmetics", "Cosmetics", "cosmetics"),
+        a("/#updates", "Updates", "updates"),
+        a("/docs", "Docs", "docs"),
+        a("/#faq", "FAQ", "faq"),
+    ]
+    dc = (
+        f'<a class="icon-link hide-m" href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener" aria-label="Discord">{icon("discord")}</a>'
+        if CFG.get("discordUrl")
+        else ""
+    )
     return f"""<header class="nav">
   <div class="wrap">
     <a class="brand" href="/" aria-label="Larp Client home"><img src="/assets/img/logo.svg" alt="" width="26" height="26"><span class="brand-name">larp<span class="brand-dot">.</span></span></a>
@@ -102,7 +127,12 @@ def nav(current=""):
 
 def footer(scripts=""):
     from experience_sections import search_dialog
-    dc = f'<li><a href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener">Discord</a></li>' if CFG.get("discordUrl") else ""
+
+    dc = (
+        f'<li><a href="{esc(CFG["discordUrl"])}" target="_blank" rel="noopener">Discord</a></li>'
+        if CFG.get("discordUrl")
+        else ""
+    )
     return f"""{search_dialog(globals())}<footer class="foot">
   <div class="wrap">
     <div class="top">
@@ -140,14 +170,22 @@ def window_side(big=False):
     attr = lambda p: f' data-page="{p}"' if big else ""
     tag = "button type=\"button\"" if big else "div"
     end = "button" if big else "div"
-    items = [("modules", "Modules", True), ("cosmetics", "Cosmetics", False), ("visuals", "Visuals", False),
-             ("waypoints", "Waypoints", None), ("macros", "Macros", None), ("rpc", "RPC", None)]
+    items = [
+        ("modules", "Modules", True),
+        ("cosmetics", "Cosmetics", False),
+        ("visuals", "Visuals", False),
+        ("waypoints", "Waypoints", None),
+        ("macros", "Macros", None),
+        ("rpc", "RPC", None),
+    ]
     out = []
     for key, label, on in items:
         cnt = "<b></b>" if (big and on is not None) else ""
         interactive = big and on is not None
         t, e = (tag, end) if interactive else ("div", "div")
-        out.append(f'<{t} class="navi{" on" if on else ""}"{attr(key) if interactive else ""}>{icon(key)}{label}{cnt}</{e}>')
+        out.append(
+            f'<{t} class="navi{" on" if on else ""}"{attr(key) if interactive else ""}>{icon(key)}{label}{cnt}</{e}>'
+        )
     return f"""<div class="side">
   <div class="wordmark"><img src="/assets/img/logo.svg" alt="" width="32" height="32"><span>LARP<br>CLIENT</span></div>
   <div class="welcome">Welcome, {esc(CFG['author'])}</div>
@@ -161,24 +199,58 @@ def window_side(big=False):
 
 def stats():
     by = {m["name"]: m for m in MODS}
+
     def opts(mod, setting):
         return len(next(s for s in by[mod]["settings"] if s["name"] == setting)["options"])
-    items = [(len(MODS), "Modules"), (opts("Hats", "Hat"), "Hats"), (opts("Wings", "Style"), "Wing styles"),
-             (opts("Target ESP", "Style"), "Target markers"), (opts("Kill Efects", "Effect"), "Kill effects")]
+
+    items = [
+        (len(MODS), "Modules"),
+        (opts("Hats", "Hat"), "Hats"),
+        (opts("Wings", "Style"), "Wing styles"),
+        (opts("Target ESP", "Style"), "Target markers"),
+        (opts("Kill Efects", "Effect"), "Kill effects"),
+    ]
     return "".join(f'<div class="stat"><b>{n}</b><span>{l}</span></div>' for n, l in items)
 
 
 def cosmetics_data():
     by = {m["name"]: m for m in MODS}
+
     def labels(mod, setting):
         return next(s for s in by[mod]["settings"] if s["name"] == setting)["options"]
+
     slug = lambda s: re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
     groups = {
-        "hats": {"label": "Hats", "items": [{"name": n, "src": f"/assets/img/cosmetics/hats/{slug(n)}.webp"} for n in labels("Hats", "Hat")]},
-        "wings": {"label": "Wings", "items": [{"name": n, "src": f"/assets/img/cosmetics/wings/{slug(n)}.webp"} for n in labels("Wings", "Style")]},
-        "aura": {"label": "Aura", "items": [{"name": n, "src": f"/assets/img/cosmetics/aura/{slug(n)}.webp"}
-                                             for n in labels("Aura", "Orbit style") + labels("Aura", "Element") + ["Ground Runes"]]},
-        "target": {"label": "Target", "items": [{"name": n, "src": f"/assets/img/cosmetics/target/{slug(n)}.webp"} for n in labels("Target ESP", "Style")]},
+        "hats": {
+            "label": "Hats",
+            "items": [
+                {"name": n, "src": f"/assets/img/cosmetics/hats/{slug(n)}.webp"}
+                for n in labels("Hats", "Hat")
+            ],
+        },
+        "wings": {
+            "label": "Wings",
+            "items": [
+                {"name": n, "src": f"/assets/img/cosmetics/wings/{slug(n)}.webp"}
+                for n in labels("Wings", "Style")
+            ],
+        },
+        "aura": {
+            "label": "Aura",
+            "items": [
+                {"name": n, "src": f"/assets/img/cosmetics/aura/{slug(n)}.webp"}
+                for n in labels("Aura", "Orbit style")
+                + labels("Aura", "Element")
+                + ["Ground Runes"]
+            ],
+        },
+        "target": {
+            "label": "Target",
+            "items": [
+                {"name": n, "src": f"/assets/img/cosmetics/target/{slug(n)}.webp"}
+                for n in labels("Target ESP", "Style")
+            ],
+        },
     }
     for g in groups.values():
         for it in g["items"]:
@@ -187,56 +259,168 @@ def cosmetics_data():
 
 
 FAQ = [
-    ("How do I get Larp Client?", "Larp Client is private and in active development. Message iTake to request access; there is no public download on this website."),
-    ("Which version do I need?", "Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21."),
-    ("Do 30-second clips include sound?", "Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone."),
-    ("Can other players see my cosmetics?", "Cosmetics are rendered locally on your screen. Use third-person view to see your own setup."),
-    ("How do I open the client menu?", "Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls."),
-    ("Does it guarantee more FPS?", "No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup."),
-    ("Are the website previews connected to my game?", "No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media."),
+    (
+        "How do I get Larp Client?",
+        "Larp Client is private and in active development. Message iTake to request access; there is no public download on this website.",
+    ),
+    (
+        "Which version do I need?",
+        "Minecraft 1.21.11, Fabric Loader 0.20.1 or newer, Fabric API and Java 21.",
+    ),
+    (
+        "Do 30-second clips include sound?",
+        "Yes. Instant Replay captures your default Windows desktop output, including game audio and music. It does not capture the microphone.",
+    ),
+    (
+        "Can other players see my cosmetics?",
+        "Cosmetics are rendered locally on your screen. Use third-person view to see your own setup.",
+    ),
+    (
+        "How do I open the client menu?",
+        "Press Right Shift or choose Larp Client on the title screen. Change shortcuts in Minecraft Controls.",
+    ),
+    (
+        "Does it guarantee more FPS?",
+        "No. The renderer uses caching and bounded resources, but performance depends on hardware, worlds and enabled effects. Use Performance Monitor to compare your setup.",
+    ),
+    (
+        "Are the website previews connected to my game?",
+        "No. They are browser demonstrations of the current menu and features. They do not change your client settings or record media.",
+    ),
 ]
 
 
 def index():
     from menu_preview import render as current_menu, additions as preview_additions
     from website_details import hud_preview, gallery, details, release_journal, shortcuts
-    from experience_sections import module_explorer, style_lab, effect_spotlight, session_guide, field_notes
+    from experience_sections import (
+        module_explorer,
+        style_lab,
+        effect_spotlight,
+        session_guide,
+        field_notes,
+    )
     from editorial import chapter_header, creator_studio, performance_room
+
     cos = cosmetics_data()
     contact = CFG.get("contactUrl") or CFG.get("discordUrl") or ""
     label = CFG.get("contactLabel") or f"Message {CFG['author']}"
-    dl_btn = (f'<a class="btn btn-light" href="{esc(contact)}" target="_blank" rel="noopener">{icon("discord")}{esc(label)}</a>' if contact
-              else f'<span class="btn btn-light" aria-disabled="true">{icon("discord")}{esc(label)} on Discord</span>')
-    faq = "".join(f'<details><summary>{q}{icon("expand")}</summary><div class="faq-answer-wrap"><div class="answer">{a}</div></div></details>' for q, a in FAQ)
-    dots = "".join(f'<i style="left:{(i * 37) % 100}%;top:{(i * 53) % 100}%;opacity:{0.15 + (i % 4) * 0.08:.2f}"></i>' for i in range(18))
-    perf = [("sodium", "Sodium"), ("lithium", "Lithium"), ("entityculling", "Entity Culling"), ("ferrite-core", "FerriteCore"),
-            ("immediatelyfast", "ImmediatelyFast"), ("modernfix", "ModernFix")]
-    perf_li = "".join(f'<li>{icon("check_circle")}<a href="https://modrinth.com/mod/{s}" target="_blank" rel="noopener">{n}</a></li>' for s, n in perf)
+    dl_btn = (
+        f'<a class="btn btn-light" href="{esc(contact)}" target="_blank" rel="noopener">{icon("discord")}{esc(label)}</a>'
+        if contact
+        else f'<span class="btn btn-light" aria-disabled="true">{icon("discord")}{esc(label)} on Discord</span>'
+    )
+    faq = "".join(
+        f'<details><summary>{q}{icon("expand")}</summary><div class="faq-answer-wrap"><div class="faq-answer-clip"><div class="answer">{a}</div></div></div></details>'
+        for q, a in FAQ
+    )
+    dots = "".join(
+        f'<i style="left:{(i * 37) % 100}%;top:{(i * 53) % 100}%;opacity:{0.15 + (i % 4) * 0.08:.2f}"></i>'
+        for i in range(18)
+    )
+    perf = [
+        ("sodium", "Sodium"),
+        ("lithium", "Lithium"),
+        ("entityculling", "Entity Culling"),
+        ("ferrite-core", "FerriteCore"),
+        ("immediatelyfast", "ImmediatelyFast"),
+        ("modernfix", "ModernFix"),
+    ]
+    perf_li = "".join(
+        f'<li>{icon("check_circle")}<a href="https://modrinth.com/mod/{s}" target="_blank" rel="noopener">{n}</a></li>'
+        for s, n in perf
+    )
     features = [
-        ("performance", "Smart FPS limits", "Menus, AFK and alt-tab get their own frame cap. Your FPS limit in Options is never touched."),
-        ("wings", "Cached 3D cosmetics", "Prepared geometry, reusable buffers and adjustable refresh rates reduce repeated work. Tune effects to suit your hardware."),
-        ("edithud", "A HUD that snaps", "Drag any element. It snaps to edges, the center and other elements, with a grid and 1 px arrow-key nudges."),
-        ("layers", "Three profiles", "Save, load or delete a setup in three profile slots. Use the confirmed reset when you want a fresh start."),
-        ("rpc", "Discord presence", "The application identity and logo are built in. Choose your status details and links without creating a Discord app."),
-        ("hotbarkeybinds", "Your real hotbar keys", "Each hotbar slot shows the key it's bound to, even if your binds are 1 2 3 4 G R."),
+        (
+            "performance",
+            "Smart FPS limits",
+            "Menus, AFK and alt-tab get their own frame cap. Your FPS limit in Options is never touched.",
+        ),
+        (
+            "wings",
+            "Cached 3D cosmetics",
+            "Prepared geometry, reusable buffers and adjustable refresh rates reduce repeated work. Tune effects to suit your hardware.",
+        ),
+        (
+            "edithud",
+            "A HUD that snaps",
+            "Drag any element. It snaps to edges, the center and other elements, with a grid and 1 px arrow-key nudges.",
+        ),
+        (
+            "layers",
+            "Three profiles",
+            "Save, load or delete a setup in three profile slots. Use the confirmed reset when you want a fresh start.",
+        ),
+        (
+            "rpc",
+            "Discord presence",
+            "The application identity and logo are built in. Choose your status details and links without creating a Discord app.",
+        ),
+        (
+            "hotbarkeybinds",
+            "Your real hotbar keys",
+            "Each hotbar slot shows the key it's bound to, even if your binds are 1 2 3 4 G R.",
+        ),
     ]
     fresh = [
-        ("instantreplay", "Instant Replay", "Keep the last 30 seconds with game audio and music on Windows. Save with F8 or after a player kill."),
-        ("killeffect", "Kill Efects", "Choose Tralalero or Samurai in their own section. One selected animation after a player kill, with an in-menu preview."),
-        ("lyrics", "Lyrics", "LRCLIB lyrics in the world, on the HUD or in a compact line. Adjust size, placement, font, color and transitions."),
-        ("shulkerpreview", "Shulker Preview", "All 27 slots in a color-matched tooltip, with a preview key you can rebind."),
-        ("performancemonitor", "Performance Monitor", "Frame times, 1% lows, P95 and memory use. Optional module-tick CPU profiling shows where to look closer."),
-        ("recorder", "Recorder & screenshots", "Windowed or F11 capture, a Recordings gallery, numbered screenshots and animated previews.")
+        (
+            "instantreplay",
+            "Instant Replay",
+            "Keep the last 30 seconds with game audio and music on Windows. Save with F8 or after a player kill.",
+        ),
+        (
+            "killeffect",
+            "Kill Efects",
+            "Choose Tralalero or Samurai in their own section. One selected animation after a player kill, with an in-menu preview.",
+        ),
+        (
+            "lyrics",
+            "Lyrics",
+            "LRCLIB lyrics in the world, on the HUD or in a compact line. Adjust size, placement, font, color and transitions.",
+        ),
+        (
+            "shulkerpreview",
+            "Shulker Preview",
+            "All 27 slots in a color-matched tooltip, with a preview key you can rebind.",
+        ),
+        (
+            "performancemonitor",
+            "Performance Monitor",
+            "Frame times, 1% lows, P95 and memory use. Optional module-tick CPU profiling shows where to look closer.",
+        ),
+        (
+            "recorder",
+            "Recorder & screenshots",
+            "Windowed or F11 capture, a Recordings gallery, numbered screenshots and animated previews.",
+        ),
     ]
-    feat = "".join(f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t}</h3><p>{d}</p></article>' for i, t, d in features)
-    feat += "".join(f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t} <span class="new-badge">NEW</span></h3><p>{d}</p></article>' for i,t,d in fresh)
-    nots = ["Tracers and chams", "Reach, aim assist or velocity", "Auto clicker", "X-ray or ore finders", "Entity radar"]
+    feat = "".join(
+        f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t}</h3><p>{d}</p></article>'
+        for i, t, d in features
+    )
+    feat += "".join(
+        f'<article class="feature"><div class="fi">{icon(i)}</div><h3>{t} <span class="new-badge">NEW</span></h3><p>{d}</p></article>'
+        for i, t, d in fresh
+    )
+    nots = [
+        "Tracers and chams",
+        "Reach, aim assist or velocity",
+        "Auto clicker",
+        "X-ray or ore finders",
+        "Entity radar",
+    ]
     nots_li = "".join(f"<li>{icon('block')}{n}</li>" for n in nots)
-    cats_btn = "".join(f'<button type="button" data-cat="{k}" aria-selected="{str(i == 0).lower()}">{v["label"]}</button>' for i, (k, v) in enumerate(cos.items()))
+    cats_btn = "".join(
+        f'<button type="button" data-cat="{k}" aria-selected="{str(i == 0).lower()}">{v["label"]}</button>'
+        for i, (k, v) in enumerate(cos.items())
+    )
 
-    body = head("Larp Client — a visual client for Minecraft " + CFG["minecraft"],
-                f"Larp Client is a Fabric client for Minecraft {CFG['minecraft']} with {len(MODS)} modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.", "/",
-                f'\n<link rel="stylesheet" href="{asset("/assets/css/editorial.css")}">')
+    body = head(
+        "Larp Client — a visual client for Minecraft " + CFG["minecraft"],
+        f"Larp Client is a Fabric client for Minecraft {CFG['minecraft']} with {len(MODS)} modules, 3D cosmetics, a snapping HUD editor and clips with desktop audio.",
+        "/",
+        f'\n<link rel="stylesheet" href="{asset("/assets/css/editorial.css")}">',
+    )
     body += nav()
     body += f"""<main id="main">
 <section class="hero">
@@ -416,7 +600,22 @@ def index():
 </section>
 </main>
 """
-    body += footer('\n<script src="/assets/js/curtains.js" defer></script>' + ''.join(f'<script src="{asset("/assets/js/" + name)}" defer></script>' for name in ['showcase.js', 'faq.js', 'captures-demo.js', 'module-explorer.js', 'style-lab.js', 'session-guide.js', 'effect-study.js', 'editorial.js']))
+    body += footer(
+        f'\n<script src="{asset("/assets/js/curtains.js")}" defer></script>'
+        + ''.join(
+            f'<script src="{asset("/assets/js/" + name)}" defer></script>'
+            for name in [
+                'showcase.js',
+                'faq.js',
+                'captures-demo.js',
+                'module-explorer.js',
+                'style-lab.js',
+                'session-guide.js',
+                'effect-study.js',
+                'editorial.js',
+            ]
+        )
+    )
     (ROOT / "index.html").write_text(body)
 
 
@@ -433,26 +632,31 @@ def not_found():
   </div>
 </section></main>
 """
-    body += footer('\n<script src="/assets/js/curtains.js" defer></script>')
+    body += footer(f'\n<script src="{asset("/assets/js/curtains.js")}" defer></script>')
     (ROOT / "404.html").write_text(body)
 
 
 def deploy_folder():
-    dist=ROOT/'dist';dist.mkdir(exist_ok=True)
-    for name in ['index.html','404.html','favicon.png']:shutil.copy2(ROOT/name,dist/name)
-    shutil.copytree(ROOT/'assets',dist/'assets',dirs_exist_ok=True)
-    for page in (ROOT/'docs').glob('*.html'):
-        target=dist/'docs' if page.stem=='index' else dist/'docs'/page.stem
-        target.mkdir(parents=True,exist_ok=True);shutil.copy2(page,target/'index.html')
-    for name in ['sitemap.xml','robots.txt']:
-        if (ROOT/name).exists():shutil.copy2(ROOT/name,dist/name)
+    dist = ROOT / 'dist'
+    dist.mkdir(exist_ok=True)
+    for name in ['index.html', '404.html', 'favicon.png']:
+        shutil.copy2(ROOT / name, dist / name)
+    shutil.copytree(ROOT / 'assets', dist / 'assets', dirs_exist_ok=True)
+    for page in (ROOT / 'docs').glob('*.html'):
+        target = dist / 'docs' if page.stem == 'index' else dist / 'docs' / page.stem
+        target.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(page, target / 'index.html')
+    for name in ['sitemap.xml', 'robots.txt']:
+        if (ROOT / name).exists():
+            shutil.copy2(ROOT / name, dist / name)
 
 
 if __name__ == "__main__":
     index()
     not_found()
     import docs_build
+
     docs_build.build(globals())
-    (ROOT/"assets/data/icons.json").write_text(json.dumps(sorted(KNOWN)))
+    (ROOT / "assets/data/icons.json").write_text(json.dumps(sorted(KNOWN)))
     deploy_folder()
     print("ok")
