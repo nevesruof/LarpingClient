@@ -32,14 +32,16 @@
         const p = document.getElementById(t.getAttribute("aria-controls"));
         if (p) p.hidden = !on;
       });
-      if (focus) tab.focus();
+      if (focus) tab.focus({ preventScroll: true });
+      if (list.scrollWidth > list.clientWidth) tab.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
     };
     tabs.forEach((t, i) => {
       t.addEventListener("click", () => select(t));
       t.addEventListener("keydown", (e) => {
-        if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(e.key)) return;
         e.preventDefault();
-        select(tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length], true);
+        const next = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+        select(tabs[next], true);
       });
     });
   });
@@ -47,50 +49,6 @@
   /* ---------- HUD arrastrable con guías (como el editor de HUD) ---------- */
   const scene = document.querySelector(".hud-scene");
   if (scene) {
-    const gv = scene.querySelector(".guide.v"), gh = scene.querySelector(".guide.h"), hint = scene.querySelector(".hud-hint");
-    const SNAP = 6;
-    scene.querySelectorAll(".hud-el").forEach((el) => {
-      el.addEventListener("pointerdown", (e) => {
-        e.preventDefault();
-        el.setPointerCapture(e.pointerId);
-        const sr = scene.getBoundingClientRect(), er = el.getBoundingClientRect();
-        const ox = e.clientX - er.left, oy = e.clientY - er.top;
-        scene.classList.add("dragging"); el.classList.add("drag");
-        if (hint) hint.style.opacity = 0;
-        const others = [...scene.querySelectorAll(".hud-el")].filter((o) => o !== el).map((o) => {
-          const r = o.getBoundingClientRect();
-          return { l: r.left - sr.left, r: r.right - sr.left, t: r.top - sr.top, b: r.bottom - sr.top };
-        });
-        const move = (ev) => {
-          let x = ev.clientX - sr.left - ox, y = ev.clientY - sr.top - oy;
-          const w = er.width, hh = er.height;
-          x = Math.max(4, Math.min(sr.width - w - 4, x));
-          y = Math.max(4, Math.min(sr.height - hh - 4, y));
-          let vx = null, hy = null;
-          // centro de la pantalla
-          if (Math.abs(x + w / 2 - sr.width / 2) < SNAP) { x = sr.width / 2 - w / 2; vx = sr.width / 2; }
-          if (Math.abs(y + hh / 2 - sr.height / 2) < SNAP) { y = sr.height / 2 - hh / 2; hy = sr.height / 2; }
-          // bordes de otros elementos
-          for (const o of others) {
-            if (vx === null) for (const [a, b] of [[x, o.l], [x, o.r], [x + w, o.l], [x + w, o.r]]) if (Math.abs(a - b) < SNAP) { x += b - a; vx = b; break; }
-            if (hy === null) for (const [a, b] of [[y, o.t], [y, o.b], [y + hh, o.t], [y + hh, o.b]]) if (Math.abs(a - b) < SNAP) { y += b - a; hy = b; break; }
-          }
-          el.style.left = x + "px"; el.style.top = y + "px"; el.style.right = "auto"; el.style.bottom = "auto"; el.style.transform = "none";
-          gv.classList.toggle("show", vx !== null); if (vx !== null) gv.style.left = vx + "px";
-          gh.classList.toggle("show", hy !== null); if (hy !== null) gh.style.top = hy + "px";
-        };
-        const up = () => {
-          el.removeEventListener("pointermove", move);
-          el.removeEventListener("pointerup", up);
-          el.removeEventListener("pointercancel", up);
-          scene.classList.remove("dragging"); el.classList.remove("drag");
-          gv.classList.remove("show"); gh.classList.remove("show");
-        };
-        el.addEventListener("pointermove", move);
-        el.addEventListener("pointerup", up);
-        el.addEventListener("pointercancel", up);
-      });
-    });
     // Teclas de keystrokes que se iluminan solas, como si alguien jugara
     const keys = scene.querySelectorAll(".keys [data-k]");
     if (keys.length && !matchMedia("(prefers-reduced-motion: reduce)").matches) {

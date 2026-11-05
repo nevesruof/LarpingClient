@@ -30,7 +30,8 @@
       '.explore-filters', '.explore-grid', '.detail-card', '.detail-guide',
       '.effect-layout', '.cos-strip', '.studio-layout', '.studio-tools',
       '.room-layout', '.session-layout', '.fair', '.field-note',
-      '.release-intro', '.release-list', '.dl', '.faq'
+      '.release-intro', '.release-list', '.dl', '.faq',
+      '.install-heading', '.install-requirements', '.install-step', '.install-footer'
     ];
     document.querySelectorAll(blocks.join(',')).forEach(block => appearances.observe(block));
     reducedMotion.addEventListener('change', event => {
