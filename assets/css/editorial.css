@@ -1,4 +1,5 @@
 /* Landing chapters and the two new preview rooms. */
+.strip { background: #000; }
 .page-chapter {
   --chapter-accent: #c8b9e5;
   --editorial-font: Georgia, 'Times New Roman', serif;
@@ -13,7 +14,7 @@
 .page-chapter {
   border-top: 1px solid var(--edge-soft);
   padding-top: clamp(38px, 6vw, 78px);
-  background: linear-gradient(180deg, #101014 0, #000 280px);
+  background: #000;
 }
 .page-chapter[data-tone=workshop] { --chapter-accent: #c8b9e5; }
 .page-chapter[data-tone=studio] { --chapter-accent: #b2d6d3; }
