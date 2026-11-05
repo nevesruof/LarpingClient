@@ -1,28 +1,15 @@
 """Landing page chapters and small, self-contained browser demonstrations."""
 
 CHAPTERS = (
-    ('01', 'Explore', 'The client in motion', 'Menu, screenshots and the full module catalog.', 'product'),
-    ('02', 'Make it yours', 'A look of your own', 'HUD styles, cosmetics and kill effects.', 'style-lab'),
-    ('03', 'Studio', 'Sound and captures', 'Try lyric placement and find the clip tools.', 'studio'),
-    ('04', 'Field guide', 'Ready for a session', 'Frame times, setup steps and release notes.', 'performance-room'),
+    ('01', 'Explore'),
+    ('02', 'Make it yours'),
+    ('03', 'Studio'),
+    ('04', 'Field guide'),
 )
 
 
-def chapter_index(g):
-    cards = []
-    for number, name, title, text, anchor in CHAPTERS:
-        cards.append(f'''<a href="#{anchor}" class="chapter-link">
-          <span class="chapter-link-top"><small>{number} / {name.upper()}</small>{g['icon']('arrow')}</span>
-          <b>{title}</b><span>{text}</span>
-        </a>''')
-    return f'''<nav class="chapter-index" aria-label="Explore the homepage"><div class="wrap">
-      <div class="chapter-index-title"><span>THE LARP INDEX</span><span>04 CHAPTERS</span></div>
-      <div class="chapter-links">{''.join(cards)}</div>
-    </div></nav>'''
-
-
 def chapter_header(index, title, accent, links):
-    number, name, _, _, _ = CHAPTERS[index]
+    number, name = CHAPTERS[index]
     shortcuts = ''.join(f'<a href="#{anchor}">{label}</a>' for anchor, label in links)
     return f'''<div class="chapter-heading wrap" data-chapter-reveal>
       <div><span class="chapter-eyebrow">{number} / {name.upper()}</span>
