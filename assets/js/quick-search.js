@@ -23,7 +23,10 @@
     if (!query) { results.replaceChildren(...initial.map(el => el.cloneNode(true))); count.textContent = 'Quick links'; return; }
     if (!index) { results.replaceChildren(); count.textContent = 'Loading the search index…'; return; }
     const terms = query.split(/\s+/);
-    const matches = index.filter(item => terms.every(t => item.searchText.includes(t))).sort((a, b) => Number(normalize(b.t).startsWith(query)) - Number(normalize(a.t).startsWith(query))).slice(0, 8);
+    const matches = index.filter(item => {
+      const translated = window.LarpLocale ? normalize(window.LarpLocale.t(item.t) + ' ' + window.LarpLocale.t(item.x)) : '';
+      return terms.every(t => (item.searchText + ' ' + translated).includes(t));
+    }).sort((a, b) => Number(normalize(b.t).startsWith(query)) - Number(normalize(a.t).startsWith(query))).slice(0, 8);
     count.textContent = matches.length ? `${matches.length} results · pages, modules and settings` : 'No results. Try a module name or a shorter search.';
     results.replaceChildren(...matches.map(item => {
       const a = document.createElement('a'); a.href = item.u;
@@ -58,6 +61,7 @@
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); if (dialog.open) dialog.close(); else open(); }
   });
   input.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(render, 70); });
+  document.addEventListener('larp:languagechange', () => { if (dialog.open) render(); });
   dialog.addEventListener('keydown', e => {
     // Flush pending input before keyboard navigation can activate an older result.
     if (e.target === input && ['ArrowDown', 'ArrowUp', 'Enter'].includes(e.key)) {

@@ -38,7 +38,10 @@
   const render = () => {
     if (!modules) return;
     const terms = normalize(search.value.trim()).split(/\s+/).filter(Boolean);
-    const filtered = modules.filter(m => (category === 'all' || m.category === category) && (!onlyNew || m.new) && terms.every(t => m.searchText.includes(t)));
+    const filtered = modules.filter(m => {
+      const translated = window.LarpLocale ? normalize([m.name, m.description, ...m.settings.map(s => s.name)].map(window.LarpLocale.t).join(' ')) : '';
+      return (category === 'all' || m.category === category) && (!onlyNew || m.new) && terms.every(t => (m.searchText + ' ' + translated).includes(t));
+    });
     grid.replaceChildren(...filtered.slice(0, limit).map(card));
     count.textContent = filtered.length ? `Showing ${Math.min(limit, filtered.length)} of ${filtered.length} modules` : '0 modules found';
     more.hidden = limit >= filtered.length;
@@ -83,6 +86,7 @@
     limit += 9; render();
     grid.children[previous]?.focus({preventScroll:true});
   });
+  document.addEventListener('larp:languagechange', () => { if (modules) render(); });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
       if (entries.some(entry => entry.isIntersecting)) { load(); observer.disconnect(); }
