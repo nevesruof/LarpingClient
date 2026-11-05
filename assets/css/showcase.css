@@ -18,7 +18,24 @@
 .stage .client-preview .cp-profile>.player-avatar{width:29px;height:29px}
 
 /* A real vanilla Minecraft panorama, optimized to a 45 KB local WebP. */
-.hud-scene{isolation:isolate;background:#0b101a url('/assets/img/minecraft/night-panorama.webp') center 58%/cover;touch-action:pan-y}
+.hud-scene{isolation:isolate;background:#0b101a url('/assets/img/minecraft/cherry.webp') center 58%/cover;touch-action:pan-y;user-select:none}
+.hud-scene .infobar{left:14px;top:14px}
+.hud-scene .target{left:20px;top:88px}
+.hud-scene .modlist{right:14px;top:92px}
+.hud-scene .keys{left:20px;top:43%}
+.hud-scene .hotbar{left:50%;bottom:22px;transform:translateX(-50%);max-width:calc(100% - 8px)}
+.hud-scene .hotbar span{min-width:0}
+.hud-scene .guide{z-index:4}
+.hud-scene .grid{pointer-events:none}
+.hud-scene .hud-el{z-index:1}
+.hud-scene .hud-el.drag{z-index:3;box-shadow:0 8px 25px #0006;will-change:left,top}
+.target-health{display:inline-flex;align-items:center;gap:5px}
+.minecraft-heart{display:inline-block;width:12px;height:12px;image-rendering:pixelated;pointer-events:none}
+.hud-controls{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 5px 3px}
+.hud-controls p{font-size:10px;color:#8f8d99;max-width:460px;line-height:1.7}
+.hud-controls button{display:flex;align-items:center;gap:6px;flex:none;font-size:10px;padding:9px 12px;border:1px solid var(--edge);border-radius:8px;transition:background .2s,border-color .2s}
+.hud-controls button:hover{background:#b5a3e80c;border-color:#b5a3e85c}
+.hud-controls .ico{font-size:13px}
 .hud-scene::before{inset:0;height:auto;background:linear-gradient(180deg,#03061015,#03061000 35%,#02040a48);pointer-events:none;z-index:-1}
 .hud-el{touch-action:none}
 .hud-box{background:#0a0d17c9;border:1px solid #ffffff0d;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 5px 18px #0002}
@@ -120,11 +137,11 @@
   .show-tabs{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:6px;gap:7px;margin-bottom:12px}
   .show-tab{flex:0 0 auto;padding:11px 15px;border-radius:10px;white-space:nowrap}.show-tab b{font-size:11px}
   .hud-scene{height:455px;border-radius:12px}
-  .hud-scene .infobar{left:12px!important;right:12px;top:12px!important;width:max-content;max-width:calc(100% - 24px);font-size:9px}
+  .hud-scene .infobar{left:12px;right:auto;top:12px;width:max-content;max-width:calc(100% - 24px);font-size:9px}
   .infobar>span{padding:7px 7px;gap:4px}.infobar .player-avatar{width:14px;height:14px}
-  .hud-scene .target{left:15px!important;top:70px!important;width:190px}
-  .hud-scene .modlist{top:172px!important;right:12px!important}.modlist div{font-size:9px;padding:3px 5px}.modlist div small{font-size:8px}
-  .hud-scene .keys{top:38%!important;left:15px!important;grid-template-columns:repeat(3,28px);gap:3px}.keys span{height:28px;font-size:10px}.keys .wide{height:20px}.keys .mouse span{height:25px;font-size:9px}
+  .hud-scene .target{left:15px;top:70px;width:190px}
+  .hud-scene .modlist{top:172px;right:12px}.modlist div{font-size:9px;padding:3px 5px}.modlist div small{font-size:8px}
+  .hud-scene .keys{top:38%;left:15px;grid-template-columns:repeat(3,28px);gap:3px}.keys span{height:28px;font-size:10px}.keys .wide{height:20px}.keys .mouse span{height:25px;font-size:9px}
   .hotbar{gap:2px;padding:3px}.hotbar span{width:29px;height:29px}.hotbar span img{inset:4px;width:21px;height:21px}.hotbar span b{font-size:7px;right:2px}
   .hud-hint{bottom:79px;font-size:9px}.hud-scene-note{font-size:7px;left:15px;bottom:8px}
   .section-label{font-size:9px;margin-bottom:13px}.detail-guide{padding:18px;gap:11px}.detail-guide b{font-size:11px}.detail-guide small{font-size:9px}.guide-key{display:none}
