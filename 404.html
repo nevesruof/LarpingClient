@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="/assets/css/client-preview.css?v=2a7238a6">
 <link rel="stylesheet" href="/assets/css/showcase.css?v=c4ba8b02">
 <link rel="stylesheet" href="/assets/css/experience.css?v=b81feabd">
+<link rel="stylesheet" href="/assets/css/language.css?v=e1895b05">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -34,6 +35,13 @@
       <button class="nav-search" type="button" data-search-open aria-label="Quick search" title="Search · Ctrl/⌘ K"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-search"/></svg></button>
       <a class="hide-m" href="/docs/changelog">v0.14.1</a>
       <a class="btn btn-light btn-sm" href="/#access">Get access <svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-arrow"/></svg></a>
+      <div class="language-picker" data-language-picker>
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Choose language" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu"><img src="/assets/img/flag-us.svg" width="22" height="16" alt="" data-language-flag><span class="sr-only" data-language-current>English</span><span class="language-chevron" aria-hidden="true"></span></button>
+        <div class="language-menu" id="language-menu" role="menu" aria-label="Website language" hidden>
+          <button type="button" role="menuitemradio" aria-checked="true" data-language-option="en" lang="en"><img src="/assets/img/flag-us.svg" width="24" height="17" alt=""><span>English<small>United States</small></span><span class="language-check" aria-hidden="true">✓</span></button>
+          <button type="button" role="menuitemradio" aria-checked="false" data-language-option="es" lang="es"><img src="/assets/img/flag-es.svg" width="24" height="17" alt=""><span>Español<small>España</small></span><span class="language-check" aria-hidden="true">✓</span></button>
+        </div>
+      </div>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="ico" aria-hidden="true"><use href="/assets/img/icons.svg#i-menu"/></svg></button>
     </div>
   </div>
@@ -70,8 +78,8 @@
     </div>
   </div>
 </footer>
-<script src="/assets/js/quick-search.js?v=364c04cc" defer></script>
-<script src="/assets/js/site.js?v=c7d5d5be" defer></script><script src="/assets/js/hud-editor.js?v=30ff6c09" defer></script><script src="/assets/js/client-preview.js?v=58dd5e9d" defer></script>
+<script src="/assets/js/language.js?v=7e789a0b" defer></script><script src="/assets/js/quick-search.js?v=cf6acc01" defer></script>
+<script src="/assets/js/site.js?v=c7d5d5be" defer></script><script src="/assets/js/hud-editor.js?v=30ff6c09" defer></script><script src="/assets/js/client-preview.js?v=88d05d46" defer></script>
 <script src="/assets/js/curtains.js" defer></script>
 </body>
 </html>
