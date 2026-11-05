@@ -62,6 +62,7 @@ def head(title, desc, path, extra_css=""):
 <link rel="stylesheet" href="{asset("/assets/css/client-preview.css")}">{extra_css}
 <link rel="stylesheet" href="{asset("/assets/css/showcase.css")}">
 <link rel="stylesheet" href="{asset("/assets/css/experience.css")}">
+<link rel="stylesheet" href="{asset("/assets/css/language.css")}">
 </head>
 <body>
 <a class="sr-only" href="#main">Skip to content</a>
@@ -84,6 +85,13 @@ def nav(current=""):
       <button class="nav-search" type="button" data-search-open aria-label="Quick search" title="Search · Ctrl/⌘ K">{icon('search')}</button>
       <a class="hide-m" href="/docs/changelog">v{CFG['version']}</a>
       <a class="btn btn-light btn-sm" href="/#access">Get access {icon('arrow')}</a>
+      <div class="language-picker" data-language-picker>
+        <button class="language-toggle" type="button" data-language-toggle aria-label="Choose language" aria-haspopup="menu" aria-expanded="false" aria-controls="language-menu"><img src="/assets/img/flag-us.svg" width="22" height="16" alt="" data-language-flag><span class="sr-only" data-language-current>English</span><span class="language-chevron" aria-hidden="true"></span></button>
+        <div class="language-menu" id="language-menu" role="menu" aria-label="Website language" hidden>
+          <button type="button" role="menuitemradio" aria-checked="true" data-language-option="en" lang="en"><img src="/assets/img/flag-us.svg" width="24" height="17" alt=""><span>English<small>United States</small></span><span class="language-check" aria-hidden="true">✓</span></button>
+          <button type="button" role="menuitemradio" aria-checked="false" data-language-option="es" lang="es"><img src="/assets/img/flag-es.svg" width="24" height="17" alt=""><span>Español<small>España</small></span><span class="language-check" aria-hidden="true">✓</span></button>
+        </div>
+      </div>
       <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">{icon('menu')}</button>
     </div>
   </div>
@@ -117,7 +125,7 @@ def footer(scripts=""):
     </div>
   </div>
 </footer>
-<script src="{asset("/assets/js/quick-search.js")}" defer></script>
+<script src="{asset("/assets/js/language.js")}" defer></script><script src="{asset("/assets/js/quick-search.js")}" defer></script>
 <script src="{asset("/assets/js/site.js")}" defer></script><script src="{asset("/assets/js/hud-editor.js")}" defer></script><script src="{asset("/assets/js/client-preview.js")}" defer></script>{scripts}
 </body>
 </html>

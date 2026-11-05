@@ -69,15 +69,15 @@ def effect_spotlight(g):
 
 
 def session_guide(g):
-    icon, cfg = g['icon'], g['CFG']
-    steps = [
-        ('access', 'Your invite comes first.', 'Get the Larp JAR directly from iTake. The client is private while it is in development.', '/#access', 'Request access', 'Private access'),
-        ('install', 'Start with Fabric.', f"Create a Minecraft {cfg['minecraft']} instance with Fabric Loader 0.20.1+ and Java 21. Add Fabric API for the same game version.", '/docs/installation#requirements', 'Check requirements', 'Minecraft · Fabric · Java'),
-        ('mods', 'Drop it into mods.', f"Put Fabric API and <code>larp-client-{cfg['version']}.jar</code> in your instance’s <code>mods/</code> folder. Keep only one Larp version.", '/docs/installation#install', 'Open the install guide', 'mods/'),
-        ('launch', 'Launch. Make it yours.', 'Start the Fabric instance. Press <kbd>Right Shift</kbd> to open Larp, arrange your HUD and save your first profile.', '/docs/hud-editor', 'Arrange your HUD', 'Right Shift'),
+    icon = g['icon']
+    tasks = [
+        ('access', 'Get your invite.', 'Larp is <u>private</u>. Request the client from <u>iTake</u>.', '/#access', 'Access details'),
+        ('install', 'Build a clean start.', '<u>Minecraft 1.21.11</u>, <u>Java 21</u>, <u>Fabric</u> and the matching <u>Fabric API</u>.', '/docs/installation', 'Installation guide'),
+        ('layout', 'Keep what you use.', 'Place your HUD, choose your modules and <u>save a profile</u>.', '/docs/hud-editor', 'Arrange your HUD'),
+        ('capture', 'Make the first moment count.', 'Choose your <u>clip key</u> and check your <u>Windows audio output</u>.', '/docs/instant-replay', 'Set up your clips'),
     ]
-    cards = ''.join(f'''<article class="install-step"><div class="install-step-top"><span class="install-number">0{i+1}</span><span class="install-meta">{meta}</span></div><h3>{title}</h3><p>{copy}</p><a href="{href}" class="install-link">{link}{icon('arrow')}</a><label class="install-done"><input type="checkbox" data-session-task="{key}"><span class="session-check">{icon('check')}</span>Done</label></article>''' for i, (key, title, copy, href, link, meta) in enumerate(steps))
-    return f'''<section class="section session-section" id="first-session"><div class="wrap"><div class="install-heading"><div><span class="section-label">A SIMPLE START</span><h2>Four steps.<br>Then it is your world.</h2><p>Everything you need to get into Larp, in order.</p></div><a class="btn btn-glass btn-sm" href="/docs/installation">Full installation guide {icon('arrow')}</a></div><div class="install-requirements"><span>Minecraft {cfg['minecraft']}</span><span>Fabric 0.20.1+</span><span>Fabric API</span><span>Java 21</span></div><div class="install-steps">{cards}</div><div class="install-footer"><div class="session-progress"><span data-session-progress role="status" aria-live="polite">0 of 4 ready</span><span class="session-progress-track"><i data-session-progress-bar></i></span></div><button type="button" data-session-reset>Reset progress</button></div><p class="session-storage-note" data-session-note></p></div></section>'''
+    rows = ''.join(f'<article class="session-task"><label><input type="checkbox" data-session-task="{key}"><span class="session-check">{icon("check")}</span><span><small>0{i+1}</small><b>{title}</b><span>{description}</span></span></label><a href="{href}" aria-label="{link}">{icon("arrow")}</a></article>' for i, (key, title, description, href, link) in enumerate(tasks))
+    return f'''<section class="section session-section" id="first-session"><div class="wrap"><div class="session-layout"><div class="session-intro"><span class="section-label">YOUR FIRST SESSION <span class="new-badge">NEW ON THE WEB</span></span><h2>From hello<br>to your own setup.</h2><p>A short list for a good start. Tick things off as you go; your checklist stays in this browser.</p><div class="session-progress"><span data-session-progress role="status" aria-live="polite">0 of 4 ready</span><span class="session-progress-track"><i data-session-progress-bar></i></span></div><button type="button" data-session-reset>Reset checklist</button><p class="session-storage-note" data-session-note></p></div><div class="session-tasks">{rows}</div></div></div></section>'''
 
 
 def field_notes(g):
